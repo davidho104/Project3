@@ -1,4 +1,4 @@
-# Project3: Jump-Start
+# Project3: Jump-Start v2
 
 JUMP-START (℠) is training program for your first day at work that will provide a series of challenges to test how much you absorbed through your orientation.
 
@@ -39,4 +39,4 @@ Jump-Start Bot was originally created by David Ho, Laurence Martinez, Raymond Wo
 * PUT /api/results/<id> - update result
   
 ### Deployment
-Through Heroku at: https://jump-start.herokuapp.com/
+Through Heroku at: https://jump-start2.herokuapp.com/
