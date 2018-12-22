@@ -1,6 +1,4 @@
-# Project3
-
-# Jump-Start
+# Project3: Jump-Start
 
 JUMP-START (℠) is training program for your first day at work that will provide a series of challenges to test how much you absorbed through your orientation.
 
