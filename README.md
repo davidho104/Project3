@@ -24,7 +24,7 @@ JUMP-START (℠)is created and developed by David Ho, Laurence Martinez, Raymond
 
 ## API Routes:
 #### GET
-* GET /api/users - return all user profiles
+* /api/users - return all user profiles
 * GET /api/users/<email>   - return one user profile by email
 * GET /api/quizzes - return all questions
 * GET /api/results - return all results
