@@ -23,6 +23,7 @@ JUMP-START (℠)is created and developed by David Ho, Laurence Martinez, Raymond
 * Google Charts API
 
 ## API Routes:
+#### GET
 * GET /api/users - return all user profiles
 * GET /api/users/<email>   - return one user profile by email
 * GET /api/quizzes - return all questions
@@ -30,10 +31,12 @@ JUMP-START (℠)is created and developed by David Ho, Laurence Martinez, Raymond
 * GET /api/results/<email> - return one user result by email
 * GET /api/checkrole/<email> - return role i.e. manager, employee
 
+#### POST
 * POST /api/users - insert user
 * POST /api/quizzes - insert question
 * POST /api/results - insert results
 
+#### PUT
 * PUT /api/users/<email> - update user
 * PUT /api/quizzes/<id> - update question
 * PUT /api/results/<id> - update result
