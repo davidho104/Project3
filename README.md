@@ -10,7 +10,7 @@ Each time an employee completes the challenges they can compare their scores wit
 What is in MYSQL?: The questions, the answers, the accounts of each player, the scores and times of each attempt.
 
 ## Contributors
-Jump-Start Bot was originally created by David Ho, Laurence Martinez, Raymond Won, and Brian Swift.
+JUMP-START (℠)is created and developed by David Ho, Laurence Martinez, Raymond Won, and Brian Swift.
 
 ## Technology
 
@@ -24,19 +24,19 @@ Jump-Start Bot was originally created by David Ho, Laurence Martinez, Raymond Wo
 
 ## API Routes:
 * GET /api/users - return all user profiles
-* GET /api/users/<email>   - return one user profile by email
-* GET /api/quizzes - return all questions
-* GET /api/results - return all results
-* GET /api/results/<email> - return one user result by email
-* GET /api/checkrole/<email> - return role i.e. manager, employee
+      /api/users/<email>   - return one user profile by email
+      /api/quizzes - return all questions
+      /api/results - return all results
+      /api/results/<email> - return one user result by email
+      /api/checkrole/<email> - return role i.e. manager, employee
 
 * POST /api/users - insert user
-* POST /api/quizzes - insert question
-* POST /api/results - insert results
+       /api/quizzes - insert question
+       /api/results - insert results
 
 * PUT /api/users/<email> - update user
-* PUT /api/quizzes/<id> - update question
-* PUT /api/results/<id> - update result
+      /api/quizzes/<id> - update question
+      /api/results/<id> - update result
   
 ### Deployment
-Through Heroku at: https://jump-start2.herokuapp.com/
+through Heroku at: https://jump-start2.herokuapp.com/
