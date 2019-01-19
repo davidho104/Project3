@@ -1,6 +1,11 @@
 const express = require("express");
 
+// Mongo DB
 const mongoose = require("mongoose");
+
+// MySQL DB
+const db = require("./models");
+
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -12,13 +17,19 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
 // Add routes, both API and view
 app.use(routes);
+
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
 
-// Start the API server
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+// Start our server so that it can begin listening to client requests.
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    // Log (server-side) when our server has started
+    console.log("Server listening on: http://localhost:" + PORT);
+    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  });
 });
