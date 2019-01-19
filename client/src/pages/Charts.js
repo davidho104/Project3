@@ -8,6 +8,8 @@ import API from "../utils/API";
   // Set chart 1 options
   const options1 = (questions) => ({
     title: "User Scores",
+    width: "100%",
+    height: "400px",
     chartArea: { width: '80%', height: '400px' },
     hAxis: { 
       title: "Score", viewWindow: { 
@@ -20,20 +22,20 @@ import API from "../utils/API";
     legend: "none"
   });
 
-  
 
 // Set chart 2 options
-const options2 = {
-  title: "User Scores",
-  // height: 500,
-  // chartArea: { width: '50%', height: '50%' },
-  hAxis: { 
-    title: "Score", viewWindow: { min: 0 } 
-  },
-  vAxis: { title: "Users", viewWindow: { min: 0 } },
+const options2 = (user, questions) => ({
+  title: "Correct Answers Per Question",
+  chartArea: { width: '80%', height: '400px' },
+  // hAxis: { 
+  //   title: "Number of Users who got it Right", 
+  //   viewWindow: { min: 0, max: user } 
+  // },
+  // vAxis: { title: "Question Number", 
+  //   viewWindow: { min: questions, max: 0 } },
   colors: ['lightgray'],
   legend: "none"
-};
+});
 
 
 // const data = [
@@ -46,6 +48,7 @@ const options2 = {
 
 class Charts extends Component {
   state = {
+      totalUsers: 0,
       totalQuestions: 0,
       graph1: [],
       graph2: []
@@ -59,7 +62,7 @@ class Charts extends Component {
 
   countQuestions = () => {
     console.log();
-    API.getData()
+    API.getData2()
     .then(res => { 
       // console.log(res.data);
       let numberOfQuestions = res.data.length;
@@ -71,7 +74,19 @@ class Charts extends Component {
     .catch(err => console.log(err));
   };
 
-
+  countUsers = () => {
+    console.log();
+    API.getData()
+    .then(res => { 
+      // console.log(res.data);
+      let numberOfUsers = res.data.length;
+      console.log("number of Users: " + numberOfUsers)
+      this.setState({ 
+        totalUsers: numberOfUsers
+      })
+    })
+    .catch(err => console.log(err));
+  };
 
   graphdata1 = () => {
     console.log();
@@ -102,16 +117,18 @@ class Charts extends Component {
     API.getData2()
     .then(res => { 
       // console.log(res.data);
-      let arr2 = [["Question", "Number Correct"]];
+      let arr2 = [];
       for (let i = 0; i < res.data.length; i++) {
           let temArr = [];
-          // console.log(res.data[i].firstName);
-          temArr.push(res.data[i].id);
+          // console.log(res.data[i].id);
+          let ques = res.data[i].id.toString();
+          temArr.push(ques);
           temArr.push(parseInt(res.data[i].sum));
           // console.log(temArr);
           arr2.push(temArr);
       } 
-      console.log(arr2)
+      arr2.unshift(["Question", "Number Correct"])
+      console.log(arr2);
       this.setState({ 
         graph2: arr2
       })
@@ -137,18 +154,19 @@ class Charts extends Component {
             <Chart chartType="BarChart" id="chart" 
             data={this.state.graph1} 
             options={options1(this.state.totalQuestions)}          
-            // hAxis.viewWindow.max={this.state.totalQuestions}  
-            width="100%" 
-            height="400px" 
             />
         </div>
 
         <div size="md-12 text-center">
             {/* the 2nd chart */}
-            <Chart chartType="BarChart" 
-            id="chart" 
-            width="90%" height="400px" 
-            data={this.state.graph2} options={options2}/>
+            <Chart chartType="BarChart" id="chart" 
+            data={this.state.graph2} 
+            options={
+              options2(
+                this.state.totalUsers, this.state.totalQuestions)} 
+            width="100%" 
+            height="400px"          
+            />
         </div>
 
         <Row>
