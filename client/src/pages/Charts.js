@@ -4,21 +4,63 @@ import { Link } from "react-router-dom";
 import Chart from "react-google-charts";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-// import API from "../utils/API";
+import API from "../utils/API";
 
 const data = [
-  ["Year", "Visitations", { role: "style" }],
-  ["2010", 10, "color: gray"],
-  ["2020", 14, "color: #76A7FA"],
+    ["Year", "Visitations"],
+    ["Bob", 10],
+    ["Tom", 14],
+    ["Tim", 16],
+    ["Eddy", 22]
+  ];
 
-  ["2030", 16, "color: blue"],
-  ["2040", 22, "stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF"],
-  [
-    "2050",
-    28,
-    "stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2"
-  ]
-];
+const graph1 = data;
+
+const graph2 = data;
+
+class Charts extends Component {
+    state = {
+        graph1: []
+    };
+
+    componentDidMount() {
+        this.graphdata1();
+        this.graphdata2();
+      }
+
+    graphdata1 = () => {
+        console.log();
+        API.getData()
+        .then(res => { console.log(res.data);
+            let arr0 = [["Employee", "Score"]];
+            for (let i = 0; i < res.data.length; i++) {
+                let temArr = [];
+                console.log(res.data[i].firstName);
+                temArr.push(res.data[i].firstName);
+                temArr.push(parseInt(res.data[i].sum));
+                console.log(temArr);
+                arr0.push(temArr);
+            } 
+            console.log(arr0)
+            this.setState({ 
+                graph1: arr0 })
+        })
+        .catch(err => console.log(err));
+    };
+
+        //this needs to be fixed!!!
+  graphdata2 = () => {
+    console.log();
+    API.getData2()
+      .then(res => { console.log(res);
+        // this.setState({ 
+        //     books: res.data, title: "", author: "", synopsis: "" })
+    })
+      .catch(err => console.log(err));
+  };
+
+
+
 
 // class Charts extends Component {
 //   state = {
@@ -33,7 +75,6 @@ const data = [
 //       .catch(err => console.log(err));
 //   }
 
-class Charts extends Component {
   render() {
     return (
       <Container fluid>
@@ -47,8 +88,19 @@ class Charts extends Component {
           </Col>
         </Row>
         <div className="Chart">
-          <Chart chartType="BarChart" width="100%" height="400px" data={data} />
+            <Chart chartType="BarChart" width="100%" height="400px" data={data} />
         </div>
+
+        <div size="md-12 text-center">
+            {/* the 1st chart */}
+            <Chart chartType="BarChart" id="chart" width="100%" height="400px" data={this.state.graph1} />
+        </div>
+
+        <div size="md-12 text-center">
+            {/* the 2nd chart */}
+            <Chart chartType="BarChart" id="chart" width="100%" height="400px" data={graph2} />
+        </div>
+
         <Row>
           <Col size="md-2">
             <Link to="/">← Back to Authors</Link>

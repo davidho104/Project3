@@ -289,7 +289,7 @@ module.exports = function(app) {
   function getData(callback) {
     sequelize
       .query(
-        "SELECT users.firstName, SUM(results.score) FROM results JOIN users ON results.userId = users.id GROUP BY users.firstName"
+        "SELECT users.firstName, SUM(results.score) as sum FROM results JOIN users ON results.userId = users.id GROUP BY users.firstName"
       )
       .spread(function(results1, metadata) {
         // Results will be resulting array and metadata will contain the number of affected rows.

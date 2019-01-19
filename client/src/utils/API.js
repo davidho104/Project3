@@ -16,5 +16,13 @@ export default {
   // Saves a book to the database
   saveBook: function(bookData) {
     return axios.post("/api/books", bookData);
-  }
+  },
+    // Gets all books
+    getData: function() {
+      return axios.get("/api/userscore");
+    },
+    // Gets all books
+    getData2: function() {
+      return axios.get("/api/quizscore");
+    },
 };
