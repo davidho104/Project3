@@ -27,12 +27,12 @@ import API from "../utils/API";
 const options2 = (user, questions) => ({
   title: "Correct Answers Per Question",
   chartArea: { width: '80%', height: '400px' },
-  // hAxis: { 
-  //   title: "Number of Users who got it Right", 
-  //   viewWindow: { min: 0, max: user } 
-  // },
-  // vAxis: { title: "Question Number", 
-  //   viewWindow: { min: questions, max: 0 } },
+  hAxis: { 
+    title: "Number of Users who got it Right"
+  , 
+    viewWindow: { min: 0, max: user } 
+  },
+  vAxis: { title: "Question Number" },
   colors: ['lightgray'],
   legend: "none"
 });
@@ -56,6 +56,7 @@ class Charts extends Component {
 
   componentDidMount() {
     this.countQuestions();
+    this.countUsers();
     this.graphdata1();
     this.graphdata2();
   };
@@ -78,6 +79,7 @@ class Charts extends Component {
     console.log();
     API.getData()
     .then(res => { 
+      // console.log("the data")
       // console.log(res.data);
       let numberOfUsers = res.data.length;
       console.log("number of Users: " + numberOfUsers)
