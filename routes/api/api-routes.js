@@ -293,9 +293,9 @@ module.exports = function(app) {
       )
       .spread(function(results1, metadata) {
         // Results will be resulting array and metadata will contain the number of affected rows.
-        console.log("data1 from database");
-        console.log(results1);
-        console.log(metadata);
+        // console.log("data1 from database");
+        // console.log(results1);
+        // console.log(metadata);
         return callback(results1);
       });
   }
@@ -313,13 +313,13 @@ module.exports = function(app) {
   function getData2(callback) {
     sequelize
       .query(
-        "SELECT quizzes.id, SUM(results.score) FROM results JOIN quizzes ON results.quizId = quizzes.id GROUP BY quizzes.id"
+        "SELECT quizzes.id, SUM(results.score) as sum FROM results JOIN quizzes ON results.quizId = quizzes.id GROUP BY quizzes.id"
       )
       .spread(function(results2, metadata) {
         // Results will be resulting array and metadata will contain the number of affected rows.
-        console.log("data1 from database");
-        console.log(results2);
-        console.log(metadata);
+        // console.log("data1 from database");
+        // console.log(results2);
+        // console.log(metadata);
         return callback(results2);
       });
   }

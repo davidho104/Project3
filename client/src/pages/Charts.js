@@ -1,79 +1,123 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import ReactDOM from "react-dom";
 import Chart from "react-google-charts";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
-const data = [
-    ["Year", "Visitations"],
-    ["Bob", 10],
-    ["Tom", 14],
-    ["Tim", 16],
-    ["Eddy", 22]
-  ];
+  // Set chart 1 options
+  const options1 = (questions) => ({
+    title: "User Scores",
+    chartArea: { width: '80%', height: '400px' },
+    hAxis: { 
+      title: "Score", viewWindow: { 
+          min: 0, 
+          max: questions 
+        } 
+      },
+    vAxis: { title: "Users", viewWindow: { min: 0 } },
+    colors: ['lightgray'],
+    legend: "none"
+  });
 
-const graph1 = data;
+  
 
-const graph2 = data;
+// Set chart 2 options
+const options2 = {
+  title: "User Scores",
+  // height: 500,
+  // chartArea: { width: '50%', height: '50%' },
+  hAxis: { 
+    title: "Score", viewWindow: { min: 0 } 
+  },
+  vAxis: { title: "Users", viewWindow: { min: 0 } },
+  colors: ['lightgray'],
+  legend: "none"
+};
+
+
+// const data = [
+//     ["Year", "Visitations"],
+//     ["Bob", 10],
+//     ["Tom", 14],
+//     ["Tim", 16],
+//     ["Eddy", 22]
+//   ];
 
 class Charts extends Component {
-    state = {
-        graph1: []
-    };
+  state = {
+      totalQuestions: 0,
+      graph1: [],
+      graph2: []
+  };
 
-    componentDidMount() {
-        this.graphdata1();
-        this.graphdata2();
-      }
+  componentDidMount() {
+    this.countQuestions();
+    this.graphdata1();
+    this.graphdata2();
+  };
 
-    graphdata1 = () => {
-        console.log();
-        API.getData()
-        .then(res => { console.log(res.data);
-            let arr0 = [["Employee", "Score"]];
-            for (let i = 0; i < res.data.length; i++) {
-                let temArr = [];
-                console.log(res.data[i].firstName);
-                temArr.push(res.data[i].firstName);
-                temArr.push(parseInt(res.data[i].sum));
-                console.log(temArr);
-                arr0.push(temArr);
-            } 
-            console.log(arr0)
-            this.setState({ 
-                graph1: arr0 })
-        })
-        .catch(err => console.log(err));
-    };
-
-        //this needs to be fixed!!!
-  graphdata2 = () => {
+  countQuestions = () => {
     console.log();
-    API.getData2()
-      .then(res => { console.log(res);
-        // this.setState({ 
-        //     books: res.data, title: "", author: "", synopsis: "" })
+    API.getData()
+    .then(res => { 
+      // console.log(res.data);
+      let numberOfQuestions = res.data.length;
+      console.log("number of questions: " + numberOfQuestions)
+      this.setState({ 
+        totalQuestions: numberOfQuestions
+      })
     })
-      .catch(err => console.log(err));
+    .catch(err => console.log(err));
   };
 
 
 
+  graphdata1 = () => {
+    console.log();
+    API.getData()
+    .then(res => { 
+      // console.log(res.data);
+      let numberOfQuestions = res.data.length;
+      let arr1 = [["User Name", "Score on Test"]];
+      for (let i = 0; i < numberOfQuestions; i++) {
+          let temArr = [];
+          // console.log(res.data[i].firstName);
+          temArr.push(res.data[i].firstName);
+          temArr.push(parseInt(res.data[i].sum));
+          // console.log(temArr);
+          arr1.push(temArr);
+      } 
+      console.log(arr1)
+      this.setState({ 
+        graph1: arr1
+      })
+    })
+    .catch(err => console.log(err));
+  };
 
-// class Charts extends Component {
-//   state = {
-//     book: {}
-//   };
-// };
-//   // When this component mounts, grab the book with the _id of this.props.match.params.id
-//   // e.g. localhost:3000/books/599dcb67f0f16317844583fc
-//   componentDidMount() {
-//     API.getBook(this.props.match.params.id)
-//       .then(res => this.setState({ book: res.data }))
-//       .catch(err => console.log(err));
-//   }
+  //this needs to be fixed!!!
+  graphdata2 = () => {
+    console.log();
+    API.getData2()
+    .then(res => { 
+      // console.log(res.data);
+      let arr2 = [["Question", "Number Correct"]];
+      for (let i = 0; i < res.data.length; i++) {
+          let temArr = [];
+          // console.log(res.data[i].firstName);
+          temArr.push(res.data[i].id);
+          temArr.push(parseInt(res.data[i].sum));
+          // console.log(temArr);
+          arr2.push(temArr);
+      } 
+      console.log(arr2)
+      this.setState({ 
+        graph2: arr2
+      })
+    })
+    .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -87,18 +131,24 @@ class Charts extends Component {
             </Jumbotron>
           </Col>
         </Row>
-        <div className="Chart">
-            <Chart chartType="BarChart" width="100%" height="400px" data={data} />
-        </div>
 
         <div size="md-12 text-center">
             {/* the 1st chart */}
-            <Chart chartType="BarChart" id="chart" width="100%" height="400px" data={this.state.graph1} />
+            <Chart chartType="BarChart" id="chart" 
+            data={this.state.graph1} 
+            options={options1(this.state.totalQuestions)}          
+            // hAxis.viewWindow.max={this.state.totalQuestions}  
+            width="100%" 
+            height="400px" 
+            />
         </div>
 
         <div size="md-12 text-center">
             {/* the 2nd chart */}
-            <Chart chartType="BarChart" id="chart" width="100%" height="400px" data={graph2} />
+            <Chart chartType="BarChart" 
+            id="chart" 
+            width="90%" height="400px" 
+            data={this.state.graph2} options={options2}/>
         </div>
 
         <Row>
