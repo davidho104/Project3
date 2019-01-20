@@ -5,16 +5,19 @@ function NavTabs() {
   return (
     <ul className="nav nav-tabs">
       <li className="nav-item">
-        <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
-          Home
+        <Link
+          to="/landingpage"
+          className={window.location.pathname === "/landingpage" ? "nav-link active" : "nav-link"}
+        >
+          LandingPage
         </Link>
       </li>
       <li className="nav-item">
         <Link
-          to="/books"
-          className={window.location.pathname === "/googlebook" ? "nav-link active" : "nav-link"}
+          to="/home"
+          className={window.location.pathname === "/home" ? "nav-link active" : "nav-link"}
         >
-          Book
+          HomePage
         </Link>
       </li>
       <li className="nav-item">
@@ -23,6 +26,30 @@ function NavTabs() {
           className={window.location.pathname === "/charts" ? "nav-link active" : "nav-link"}
         >
           Charts
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/manager"
+          className={window.location.pathname === "/manager" ? "nav-link active" : "nav-link"}
+        >
+          Manager
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/profile"
+          className={window.location.pathname === "/profile" ? "nav-link active" : "nav-link"}
+        >
+          Profile
+      </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/quiz"
+          className={window.location.pathname === "/quiz" ? "nav-link active" : "nav-link"}
+        >
+          Quiz
         </Link>
       </li>
       <li className="nav-item">
@@ -40,6 +67,14 @@ function NavTabs() {
         >
           Contact
         </Link>
+      </li>
+      <li className="nav-item">
+        <Link
+          to="/books"
+          className={window.location.pathname === "/googlebook" ? "nav-link active" : "nav-link"}
+        >
+          Book
+            </Link>
       </li>
     </ul>
   );
