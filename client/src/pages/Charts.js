@@ -151,7 +151,7 @@ class Charts extends Component {
           </Col>
         </Row>
 
-        <div size="md-12 text-center">
+        <div size="md-12 text-center">Loading Chart
             {/* the 1st chart */}
             <Chart chartType="BarChart" id="chart" 
             data={this.state.graph1} 
@@ -159,7 +159,7 @@ class Charts extends Component {
             />
         </div>
 
-        <div size="md-12 text-center">
+        <div size="md-12 text-center">Loading Chart
             {/* the 2nd chart */}
             <Chart chartType="BarChart" id="chart" 
             data={this.state.graph2} 
@@ -170,6 +170,33 @@ class Charts extends Component {
             height="400px"          
             />
         </div>
+
+        https://react-google-charts.com/table-chart
+
+            {/* Table */}
+        <div size="md-12 text-center">
+            <Chart
+              width={'500px'}
+              height={'300px'}
+              chartType="Table"
+              loader={<div>Loading Chart</div>}
+              data={this.state.graph1}
+              options={{
+                showRowNumber: true,
+              }}
+              rootProps={{ 'data-testid': '1' }}
+            />
+
+            {/* <Chart chartType="BarChart" id="chart" 
+            data={this.state.graph2} 
+            options={
+              options2(
+                this.state.totalUsers, this.state.totalQuestions)} 
+            width="100%" 
+            height="400px"          
+            />  */}
+        </div>
+
 
         <Row>
           <Col size="md-2">
