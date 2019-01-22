@@ -8,6 +8,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Manager from "./pages/Manager";
 import Quiz from "./pages/Quiz";
+import Create from "./pages/Create";
 import Home from "./pages/Home";
 import LandingPage from "./pages/Landing";
 import Profile from "./pages/Profile";
@@ -31,6 +32,7 @@ function App() {
           <Route exact path="/home" component={Home} />
           <Route exact path="/landingpage" component={LandingPage} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/create" component={Create} />
           <Route exact path="/books/:id" component={Detail} />
           <Route component={NoMatch} />
         </Switch>
