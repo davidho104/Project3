@@ -298,13 +298,13 @@ module.exports = function(app) {
         // console.log(metadata);
         return callback(results1);
       });
-  }
+}
 
   // Sends Individual Scores to html file
   app.get("/userscore", function(req, res) {
     getData(function(rows1) {
-      console.log("data1 to be sent");
-      console.log(rows1);
+      // console.log("data1 to be sent");
+      // console.log(rows1);
       res.json(rows1);
     });
   });
@@ -327,9 +327,42 @@ module.exports = function(app) {
   // Sends Test Values to html file
   app.get("/quizscore", function(req, res) {
     getData2(function(rows2) {
-      console.log("data1 to be sent");
-      console.log(rows2);
+      // console.log("data2 to be sent");
+      // console.log(rows2);
       res.json(rows2);
     });
   });
-};
+
+  // Function to collect data for the first TABLE
+  function getData3(callback) {
+    db.user.findAll({
+      include: [{ model: db.result}]
+    }).then(res=>callback(res))
+  }
+
+
+
+  // function getData3(callback) {
+  //   sequelize
+  //     .query(
+  //       "SELECT users.firstName, results.quizId as question,results.score as right FROM results JOIN users ON results.userId = users.id GROUP BY users.firstName"
+  //     )
+      // .spread(function(results3, metadata) {
+      //   // Results will be resulting array and metadata will contain the number of affected rows.
+      //   console.log("data3 from database");
+      //   console.log(results3);
+      //   console.log(metadata);
+      //   return callback(results3);
+      // });
+
+        // Sends Individual Scores to html file
+  app.get("/userincorrect", function(req, res) {
+    getData3(function(rows3) {
+      console.log("data3 to be sent");
+      console.log(rows3);
+      res.json(rows3);
+    });
+
+  });
+}
+
