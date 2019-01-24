@@ -17,12 +17,16 @@ export default {
   saveBook: function(bookData) {
     return axios.post("/api/books", bookData);
   },
-  // Gets all books
+  // Gets User Scores
   getData: function() {
     return axios.get("/api/userscore");
   },
-  // Gets all books
+  // Gets Get data on correct questions
   getData2: function() {
     return axios.get("/api/quizscore");
   },
+    // Gets Get data which problems were incorrect. 
+  getData3: function() {
+      return axios.get("/api/userincorrect");
+    }
 };
