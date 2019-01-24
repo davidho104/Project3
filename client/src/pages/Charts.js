@@ -107,7 +107,7 @@ class Charts extends Component {
           // console.log(temArr);
           arr1.push(temArr);
       } 
-      // console.log(arr1)
+      console.log(arr1)
       this.setState({ 
         graph1: arr1
       })
@@ -132,7 +132,7 @@ class Charts extends Component {
           arr2.push(temArr);
       } 
       arr2.unshift(["Question", "Number Correct"])
-      // console.log(arr2);
+      console.log(arr2);
       this.setState({ 
         graph2: arr2
       })
@@ -145,7 +145,7 @@ class Charts extends Component {
     API.getData3()
     .then(res => { 
       console.log("here is the data for table 3")
-      console.log(res.data);
+      // console.log(res.data);
       let numberOfUsers = res.data.length;
       let arr3 = [["User Name", "Incorrect Answers"]];
       for (let i = 0; i < numberOfUsers; i++) {
@@ -157,9 +157,9 @@ class Charts extends Component {
         // console.log("numberOfQuestions");
         // console.log(numberOfQuestions);
         let tempQuestionArr = [];
-        console.log("i and j");
+        // console.log("i and j");
         for (let j = 0; j < numberOfQuestions; j++) {
-          console.log(i + " and " + j);
+          // console.log(i + " and " + j);
           // HOW TO MAKE IT WORK WHEN USER ID IS ABSENT!
           if (res.data[i].results[j] === undefined) {
             break;
@@ -174,7 +174,7 @@ class Charts extends Component {
         // Stringify tempQuestionArr
         let tempQuestionList = tempQuestionArr.toString()
         temUserArr.push(tempQuestionList);
-        console.log("temUserArr");
+        // console.log("temUserArr");
         console.log(temUserArr);
         arr3.push(temUserArr);
       }
@@ -186,33 +186,6 @@ class Charts extends Component {
     })
     .catch(err => console.log(err));
   };
-
-// 0:
-//   firstName: "Michael"
-//   id: 1
-//   lastName: "Scott"
-//   permissionId: 1
-//   results: Array(5)
-//     0: {id: 1, userId: 1, quizId: 1, userAnswer: "100", score: 0, …}
-//     1: {id: 2, userId: 1, quizId: 2, userAnswer: "3", score: 1, …}
-//     2: {id: 3, userId: 1, quizId: 3, userAnswer: "don't know", score: 0, …}
-//     3: {id: 4, userId: 1, quizId: 4, userAnswer: "don't know", score: 0, …}
-//     4: {id: 5, userId: 1, quizId: 5, userAnswer: "There is no room D", score: 1, …}
-//   length: 5
-//   1:
-//     firstName: "Jim"
-//     id: 2
-//     lastName: "Halpert"
-//     permissionId: 2
-//     results: Array(5)
-//       0: {id: 6, userId: 2, quizId: 1, userAnswer: "2", score: 1, …}
-//       1: {id: 7, userId: 2, quizId: 2, userAnswer: "3", score: 1, …}
-//       2: {id: 8, userId: 2, quizId: 3, userAnswer: "don't know", score: 0, …}
-//       3: {id: 9, userId: 2, quizId: 4, userAnswer: "Throw them under the bus", score: 1, …}
-//       4: {id: 10, userId: 2, quizId: 5, userAnswer: "There is no room D", score: 1, …}
-//     length: 5
-
-
 
   render() {
     return (
