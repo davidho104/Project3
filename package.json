@@ -1,7 +1,7 @@
 {
-  "name": "mern",
+  "name": "jump-start",
   "version": "1.0.0",
-  "description": "",
+  "description": "JUMP-START (℠) is training program for your first day at work that will provide a series of challenges to test how much you absorbed through your orientation.",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -13,16 +13,23 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.0",
-    "nodemon": "^1.18.7"
+    "nodemon": "^1.18.9"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "express": "^4.16.3",
-    "mongoose": "^5.3.16",
-    "if-env": "^1.0.4"
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.4.0",
+    "mysql2": "^1.6.4",
+    "prop-types": "^15.6.2",
+    "react-google-charts": "^3.0.10",
+    "sequelize": "^4.42.0"
+  },
+  "repository": {
+    "type": "git",
   }
 }
