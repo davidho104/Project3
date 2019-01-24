@@ -13,7 +13,6 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "LMartinez14",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.0",
@@ -32,6 +31,5 @@
   },
   "repository": {
     "type": "git",
-    "url": "LMartinez14"
   }
 }
