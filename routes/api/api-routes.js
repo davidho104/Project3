@@ -352,28 +352,28 @@ module.exports = function(app) {
 
 // ---- automentor api routes: Quiz page
 
-  // Function to collect Quiz Questions and answers
-  function getQuizData(callback) {
-    db.quizzes.findAll().then(res=>callback(res))
-  }
-  
   // GET route for select all
-  // app.get("/users", function(req, res) {
-  //   db.user.findAll().then(function(result) {
-  //     res.json(result);
-  //   });
-  // });
-
-
-
-  // Sends Questions and answers to html file
   app.get("/quizquestions", function(req, res) {
-    getQuizData(function(rows4) {
+    db.quizzes.findAll().then(function(result) {
       console.log("quiz questions to be sent");
-      console.log(rows4);
-      res.json(rows4);
+      console.log(result);
+      res.json(result);
     });
   });
+
+  // Function to collect Quiz Questions and answers
+  // function getQuizData(callback) {
+  //   db.quizzes.findAll().then(res=>callback(res))
+  // }
+  //
+  // Sends Questions and answers to html file
+  // app.get("/quizquestions", function(req, res) {
+  //   getQuizData(function(rows4) {
+  //     console.log("quiz questions to be sent");
+  //     console.log(rows4);
+  //     res.json(rows4);
+  //   });
+  // });
 
 }
 
