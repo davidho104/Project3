@@ -38,6 +38,14 @@ class Quiz extends Component {
   };
 
 
+    //establish questions as objects
+    // let question0 = {
+    //   questionId: 
+    //   question: "When your boss complains about your coworkers what is the correct response?",
+    //   choice: ["Throw them under the bus", "Yes Sir, if you say so", "I think they are working very hard", "I wouldn't know"],
+    //   correct: "aChoice",
+    // };
+
   questionData1 = () => {
     console.log();
     API.getQuizData()
@@ -85,7 +93,28 @@ class Quiz extends Component {
     .catch(err => console.log(err));
   };
 
-
+  // 0:
+    // answer: "2"
+    // categoryId: null
+    // choices: "0, 2, 4, Leave Early"
+    // createdAt: "2019-01-24T14:32:10.000Z"
+    // id: 1
+    // nextId: null
+    // question: "If work hours end at 5:00 pm, how many hours after work should you stay to convince the people you are a real employee?"
+    // typeId: null
+    // updatedAt: null
+    // __proto__: Object
+  // 1:
+    // answer: "3"
+    // categoryId: null
+    // choices: "1, 3, 13, People here are always helpful"
+    // createdAt: "2019-01-24T14:32:11.000Z"
+    // id: 2
+    // nextId: null
+    // question: "How many times can you ask your coworkers to help you before they start to deliberately sabotage your efforts?"
+    // typeId: null
+    // updatedAt: null
+    // __proto__: Object
 
   handleInputChange = event => {
     const { name, value } = event.target;
