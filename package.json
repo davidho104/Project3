@@ -30,6 +30,6 @@
     "sequelize": "^4.42.0"
   },
   "repository": {
-    "type": "git",
+    "type": "git"
   }
 }
