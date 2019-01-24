@@ -161,7 +161,10 @@ class Charts extends Component {
         for (let j = 0; j < numberOfQuestions; j++) {
           console.log(i + " and " + j);
           // HOW TO MAKE IT WORK WHEN USER ID IS ABSENT!
-          if (res.data[i].results[j].userId && res.data[i].results[j].score === 0) {
+          if (res.data[i].results[j] === undefined) {
+            break;
+          }
+          if (res.data[i].results[j].score === 0 ) {
             // console.log("score");
             // console.log(res.data[i].results[j].score);
             let tempQuestion = res.data[i].results[j].quizId;
@@ -171,8 +174,8 @@ class Charts extends Component {
         // Stringify tempQuestionArr
         let tempQuestionList = tempQuestionArr.toString()
         temUserArr.push(tempQuestionList);
-        // console.log("temUserArr");
-        // console.log(temUserArr);
+        console.log("temUserArr");
+        console.log(temUserArr);
         arr3.push(temUserArr);
       }
       console.log("arr3");
