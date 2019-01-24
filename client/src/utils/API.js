@@ -31,6 +31,6 @@ export default {
   },
   // Gets quiz questions and answers. 
   getQuizData: function() {
-    return axios.get("/api/quizquestions");
+    return axios.get("/api/quizzes");
   }
 };
