@@ -43,5 +43,3 @@ JUMP-START (℠)is created and developed by David Ho, Laurence Martinez, Raymond
   
 ### Deployment
 through Heroku at: https://jump-start2.herokuapp.com/
-
-
