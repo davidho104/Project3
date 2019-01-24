@@ -1,5 +1,6 @@
 .vscode/
 yarn.lock
+.DS_Store
 
 # Logs
 logs
