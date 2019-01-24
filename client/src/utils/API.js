@@ -27,6 +27,10 @@ export default {
   },
     // Gets Get data which problems were incorrect. 
   getData3: function() {
-      return axios.get("/api/userincorrect");
-    }
+    return axios.get("/api/userincorrect");
+  },
+  // Gets quiz questions and answers. 
+  getQuizData: function() {
+    return axios.get("/api/quizquestions");
+  }
 };
