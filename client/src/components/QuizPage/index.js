@@ -10,7 +10,7 @@ function QuizPage({ children }) {
       <h2>{children}</h2>
       <p>{str}</p>
       <div id="root"></div>
-      {/* <nav class="navbar navbar-expand-lg navbar-light" id="navbarID">
+      <nav class="navbar navbar-expand-lg navbar-light" id="navbarID">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
           aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -26,7 +26,7 @@ function QuizPage({ children }) {
             <button class="btn my-2 my-sm-0" id="logoutBtn" type="submit">Log out</button>
           </form>
         </div>
-      </nav> */}
+      </nav>
       <div>
         <h1>Greetings!  Welcome to your first day at the Dunder Mifflin Paper Company.</h1>
         <div class="instructions1">
