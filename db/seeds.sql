@@ -33,7 +33,6 @@ INSERT INTO quizzes (question, choices, answer)
 VALUES ("When your boss complains about your coworkers what is the correct response?", "Throw them under the bus, Yes Sir, if you say so, I think they are working very hard, I wouldn't know", "Throw them under the bus");
 INSERT INTO quizzes (question, choices, answer) 
 VALUES ("What color is the carpet in Meeting Room D?", "Blue, Gray, Orange, There is no meeting room D", "There is no meeting room D");
-
 INSERT INTO quizzes (question, choices, answer) 
 VALUES ("When deciding what to wear to work, which color does your supervisor detest above all others?", "Light Blue, Blue, Gray, Orange", "Light Blue");
 INSERT INTO quizzes (question, choices, answer) 

@@ -1,16 +1,15 @@
 import React from "react";
 
+let str = "This is a variable inside the component";
 
-var str = "This is a variable inside the component";
-
-var test = <div>test</div>;
-
+let test = <div>test</div>;
 
 function QuizPage({ children }) {
   return (
     <div>
       <h2>{children}</h2>
       <p>{str}</p>
+      <div id="root"></div>
       {/* <nav class="navbar navbar-expand-lg navbar-light" id="navbarID">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
           aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
