@@ -23,7 +23,7 @@ class Quiz extends Component {
 
   componentDidMount() {
     this.questionData1();
-    this.loadBooks();
+    // this.loadBooks();
   }
 
   // 0:
@@ -55,21 +55,20 @@ class Quiz extends Component {
       .then(res => {
         console.log("here is the data for quizzes")
         console.log(res.data);
-        // let numberOfQuestions = res.data.length;
-        // console.log("The number of question is...")
-        // console.log(numberOfQuestions);
-        // let dataSet1 = [];
-        // for (let i = 0; i < numberOfQuestions; i++) {
-        //   console.log(res.data[i].question);
+        let numberOfQuestions = res.data.length;
+        console.log("The number of question is...")
+        console.log(numberOfQuestions);
+        let dataSet1 = [];
+        for (let i = 0; i < numberOfQuestions; i++) {
+          console.log(res.data[i].question);
+          // convert choices to array
+          let arrayOfChoices;
+          // console.log(res.data[i].choices);
+          arrayOfChoices = res.data[i].choices.split(', ');
+          // console.log(arrayOfChoices);
 
-        //   // convert choices to array
-        //   let arrayOfChoices;
-        //   console.log(res.data[i].choices);
-        //   arrayOfChoices = res.data[i].choices.split(', ');
-        //   console.log(arrayOfChoices);
-
-        //   convert answer to numeric code
-        //   let correctNumber;
+          // convert answer to numeric code
+          let correctNumber;
         //   console.log(res.data[i].answer);
 
         //   dataSet1[i] = {
@@ -77,7 +76,7 @@ class Quiz extends Component {
         //     answers: arrayOfChoices,
         //     correct: correctNumber
         //   };
-        // }
+        }
         // console.log("dataSet1");
         // console.log(dataSet1)
         // this.setState({
