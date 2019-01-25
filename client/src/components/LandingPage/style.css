@@ -3,6 +3,7 @@
 }
 
 body {
+  background-image: url("../../officeBackground.jpg");
   min-height: 400px;
   background-color: gray;
   background-size: cover;
@@ -60,7 +61,7 @@ body {
   /* border-radius: 20px; */
   outline: none;
   box-sizing: border-box;
-  border: 2px solid rgb(20, 142, 203));
+  border: 2px solid rgb(20, 142, 203);
   /* margin-bottom: 50px; */
   margin-left: 46px;
   text-align: center;
