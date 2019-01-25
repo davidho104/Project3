@@ -22,7 +22,6 @@ function LandingPage({ children }) {
 
             <div className="col-6 offset-3 text-center">
               <Link to="/create"><span className="createAccount">Don't Have An Account?</span></Link>
-              {/* <span target="_blank" className="createAccount" align="center"></span> */}
             </div>
           </div>
         </div>
