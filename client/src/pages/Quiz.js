@@ -22,12 +22,10 @@ class Quiz extends Component {
   // };
 
 
-  // componentDidMount() {
-  //   this.questionData1();
-  //   // this.loadBooks();
-  // }
-
-
+  componentDidMount() {
+    this.questionData1();
+    // this.loadBooks();
+  }
 
   questionData1 = () => {
     console.log();
@@ -68,14 +66,13 @@ class Quiz extends Component {
 
     this.state = {
       current: 0,
-      dataSet: [],
+      dataSet: dataset,
       correct: 0,
       playing: true,
       incorrect: 0,
       message: "Answer These Questions"
     }
 
-    this.questionData1();
 
 
     this.handleClick = this.handleClick.bind(this)
