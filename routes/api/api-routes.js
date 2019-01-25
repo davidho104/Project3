@@ -135,6 +135,8 @@ module.exports = function(app) {
   // GET route for select all
   app.get("/quizzes", function(req, res) {
     db.quiz.findAll().then(function(result) {
+      // console.log("quiz questions to be sent");
+      // console.log(result);
       res.json(result);
     });
   });
@@ -283,6 +285,7 @@ module.exports = function(app) {
           });
       });
   });
+
   // ---- automentor api routes: Charts
 
   // Function to collect data for FIRST Graph
@@ -340,29 +343,14 @@ module.exports = function(app) {
     }).then(res=>callback(res))
   }
 
-
-
-  // function getData3(callback) {
-  //   sequelize
-  //     .query(
-  //       "SELECT users.firstName, results.quizId as question,results.score as right FROM results JOIN users ON results.userId = users.id GROUP BY users.firstName"
-  //     )
-      // .spread(function(results3, metadata) {
-      //   // Results will be resulting array and metadata will contain the number of affected rows.
-      //   console.log("data3 from database");
-      //   console.log(results3);
-      //   console.log(metadata);
-      //   return callback(results3);
-      // });
-
-        // Sends Individual Scores to html file
+    // Sends Individual Scores to html file
   app.get("/userincorrect", function(req, res) {
     getData3(function(rows3) {
       console.log("data3 to be sent");
       console.log(rows3);
-      res.json(rows3);
+      res.json(rows3);  
     });
-
   });
+
 }
 

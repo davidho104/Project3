@@ -96,7 +96,7 @@ body {
 #managerPick,
 #employeePick {
   color: white;
-  background: rgb(21, 92, 184);
+  background: rgb(46, 86, 122);
 }
 
 .forgotPassword {
@@ -120,6 +120,10 @@ body {
   margin-left: 45px;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
+}
+
+.createAccount {
+  color: white;
 }
 
 #createAccount2 {
