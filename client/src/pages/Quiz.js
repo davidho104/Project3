@@ -21,33 +21,13 @@ class Quiz extends Component {
   //   synopsis: ""
   // };
 
-  componentDidMount() {
-    this.questionData1();
-    // this.loadBooks();
-  }
 
-  // 0:
-  // answer: "2"
-  // categoryId: null
-  // choices: "0, 2, 4, Leave Early"
-  // createdAt: "2019-01-24T14:32:10.000Z"
-  // id: 1
-  // nextId: null
-  // question: "If work hours end at 5:00 pm, how many hours after work should you stay to convince the people you are a real employee?"
-  // typeId: null
-  // updatedAt: null
-  // __proto__: Object
-  // 1:
-  // answer: "3"
-  // categoryId: null
-  // choices: "1, 3, 13, People here are always helpful"
-  // createdAt: "2019-01-24T14:32:11.000Z"
-  // id: 2
-  // nextId: null
-  // question: "How many times can you ask your coworkers to help you before they start to deliberately sabotage your efforts?"
-  // typeId: null
-  // updatedAt: null
-  // __proto__: Object
+  // componentDidMount() {
+  //   this.questionData1();
+  //   // this.loadBooks();
+  // }
+
+
 
   questionData1 = () => {
     console.log();
@@ -66,73 +46,99 @@ class Quiz extends Component {
           // console.log(res.data[i].choices);
           arrayOfChoices = res.data[i].choices.split(', ');
           // console.log(arrayOfChoices);
-
-          // convert answer to numeric code
-          let correctNumber;
-        //   console.log(res.data[i].answer);
-
-        //   dataSet1[i] = {
-        //     question: res.data[i].question,
-        //     answers: arrayOfChoices,
-        //     correct: correctNumber
-        //   };
+          console.log("answer below");
+          console.log(res.data[i].answer);
+          dataSet1[i] = {
+            question: res.data[i].question,
+            answers: arrayOfChoices,
+            correct: res.data[i].answer
+          };
         }
-        // console.log("dataSet1");
-        // console.log(dataSet1)
-        // this.setState({
-        //   dataSet: dataSet1
-        // })
+        console.log("dataSet1");
+        console.log(dataSet1)
+        this.setState({
+          dataSet: dataSet1
+        })
       })
       .catch(err => console.log(err));
   };
-
+  
   constructor(props) {
     super(props)
 
-    let dataSet = [
-      {
-        question: "What is 8 x 1?",
-        answers: [
-          "1",
-          "8",
-          "16",
-          "9"
-        ],
-        correct: 1
-      },
-      {
-        question: "Who is Steve Jobs?",
-        answers: [
-          "CEO of Microsoft",
-          "Barber in NY",
-          "Movie Star",
-          "CEO of Apple"
-        ],
-        correct: 3
-      },
-      {
-        question: "Metallica is a ____ band",
-        answers: [
-          "Blues",
-          "Hard-Rock",
-          "Jazz",
-          "Metal"
-        ],
-        correct: 3
-      },
-    ];
-
     this.state = {
       current: 0,
-      dataSet: dataSet,
+      dataSet: [],
       correct: 0,
       playing: true,
       incorrect: 0,
       message: "Answer These Questions"
     }
+
+    this.questionData1();
+
+
     this.handleClick = this.handleClick.bind(this)
 
+    // let dataSet = [
+    //   {
+    //     question: "What is 8 x 1?",
+    //     answers: [
+    //       "1",
+    //       "8",
+    //       "16",
+    //       "9"
+    //     ],
+    //     correct: "8"
+    //   },
+    //   {
+    //     question: "Who is Steve Jobs?",
+    //     answers: [
+    //       "CEO of Microsoft",
+    //       "Barber in NY",
+    //       "Movie Star",
+    //       "CEO of Apple"
+    //     ],
+    //     correct: "CEO of Apple"
+    //   },
+    //   {
+    //     question: "Metallica is a ____ band",
+    //     answers: [
+    //       "Blues",
+    //       "Hard-Rock",
+    //       "Jazz",
+    //       "Metal"
+    //     ],
+    //     correct: "Metal"
+    //   },
+    // ];
+
   } // end constructor
+
+  handleClick(choice) {
+    let numQuestions = this.state.dataSet.length;
+    console.log(numQuestions);
+    if (choice === this.state.dataSet[this.state.current].correct) {
+      console.log(this.state.dataSet[this.state.current].correct)
+      this.setState({ correct: this.state.correct + 1 })
+    } else {
+      console.log(this.state.dataSet[this.state.current].correct)
+      this.setState({ incorrect: this.state.incorrect + 1 })
+    }
+
+    if (this.state.current === numQuestions - 1) {
+      this.setState({ message: "Quiz Over" })
+      this.setState({
+        playing: false
+      })
+      // this.setState.dataSet.question({""})
+      // this.setState({ current: 0 })
+      // this.setState({ incorrect: 0 })
+      // this.setState({ correct: 0 })
+    } else {
+      this.setState({ current: this.state.current + 1 })
+    }
+  }
 
   // ------ OLD STUFF -----------------------
 
@@ -170,32 +176,12 @@ class Quiz extends Component {
   //   }
   // };
 
-  handleClick(choice) {
-    let numQuestions = this.state.dataSet.length;
-    console.log(numQuestions);
-    if (choice === this.state.dataSet[this.state.current].correct) {
-      this.setState({ correct: this.state.correct + 1 })
-    } else {
-      this.setState({ incorrect: this.state.incorrect + 1 })
-    }
-
-    if (this.state.current === numQuestions - 1) {
-      this.setState({ message: "Quiz Over" })
-      this.setState({
-        playing: false
-      })
-      // this.setState.dataSet.question({""})
-      // this.setState({ current: 0 })
-      // this.setState({ incorrect: 0 })
-      // this.setState({ correct: 0 })
-    } else {
-      this.setState({ current: this.state.current + 1 })
-    }
-  }
-
   render() {
     console.log(this.state)
-    console.log(this.state.current === (this.state.dataSet.length - 1))
+    console.log(this.state.current)
+    console.log(this.state.dataSet[this.state.current])
+    // console.log(this.state.dataSet.length)
+    // console.log(this.state.current === (this.state.dataSet.length - 1))
     return (
       <Container fluid>
         {/* <Row>
@@ -239,7 +225,7 @@ function Answer(props) {
 function AnswerList(props) {
   let answers = []
   for (let i = 0; i < props.dataSet.answers.length; i++) {
-    answers.push(<Answer choice={i} handleClick={props.handleClick} answer={props.dataSet.answers[i]} />)
+    answers.push(<Answer choice={props.dataSet.answers[i]} handleClick={props.handleClick} answer={props.dataSet.answers[i]} />)
   }
   return (
     <div>
