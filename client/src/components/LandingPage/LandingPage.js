@@ -1,26 +1,28 @@
 import React from "react";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 function LandingPage({ children }) {
 
 
   return (
 
-    <div class="row">
-      <div class="col-6 offset-3">
+    <div className="row">
+      <div className="col-6 offset-3">
         <div id="loginBlock">
-          <p class="signIn" align="center">Welcome</p>
-          <form class="form1">
-            <input class="emailInput" type="email" align="center" placeholder="Username" />
-            <input class="passwordInput" type="password" align="center" placeholder="Password" />
-            <p class="signInButton" align="center">Sign In</p>
-            <p class="forgotPassword" align="center"><a href="#"></a>Forgot Password?</p>
+          <p className="signIn" align="center">Welcome</p>
+          <form className="form1">
+            <input className="emailInput" type="email" align="center" placeholder="Username" />
+            <input className="passwordInput" type="password" align="center" placeholder="Password" />
+            <p className="signInButton" align="center">Sign In</p>
+            <p className="forgotPassword" align="center"><a href="#"></a>Forgot Password?</p>
           </form>
           <br />
           <div id="createAccount2">
 
-            <div class="col-6 offset-3 text-center">
-              <a href="./createAccount.html" target="_blank" class="createAccount" align="center">Don't have an account?</a>
+            <div className="col-6 offset-3 text-center">
+              <Link to="/create"><span className="createAccount">Don't Have An Account?</span></Link>
+              {/* <span target="_blank" className="createAccount" align="center"></span> */}
             </div>
           </div>
         </div>
