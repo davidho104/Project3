@@ -159,4 +159,4 @@ VALUES (8, 6, "Light Blue", 1);
 INSERT INTO results (userId, quizId, userAnswer, score)
 VALUES (8, 7, "Kevin", 0);
 INSERT INTO results (userId, quizId, userAnswer, score)
-VALUES (8, 8, "A former employee named Carl who has been hiding in the building for years.", 1);
+VALUES (8, 8, "A former employee named Carl who has been hiding in the building for years", 1);
