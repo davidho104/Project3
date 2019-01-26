@@ -194,7 +194,7 @@ class Charts extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1>
-                Google Charts
+                Analytics
               </h1>
             </Jumbotron>
           </Col>
