@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class AccordionSection extends Component {
   static propTypes = {
@@ -22,14 +22,14 @@ class AccordionSection extends Component {
     return (
       <div
         style={{
-          background: isOpen ? 'black' : 'grey',
-          border: '1px solid #008f68',
-          padding: '5px 10px',
+          background: isOpen ? "#000000" : "#808080",
+          border: "1px solid #008f68",
+          padding: "5px 10px",
         }}
       >
-        <div onClick={onClick} style={{ cursor: 'pointer' }}>
+        <div onClick={onClick} style={{ cursor: "pointer" }}>
           {label}
-          <div style={{ float: 'right' }}>
+          <div style={{ float: "right" }}>
             {!isOpen && <span>&#9650;</span>}
             {isOpen && <span>&#9660;</span>}
           </div>
@@ -37,10 +37,10 @@ class AccordionSection extends Component {
         {isOpen && (
           <div
             style={{
-              background: '#6db65b',
-              border: '2px solid #008f68',
+              background: "#6db65b",
+              border: "2px solid #008f68",
               marginTop: 10,
-              padding: '10px 20px',
+              padding: "10px 20px",
             }}
           >
             {this.props.children}
