@@ -6,7 +6,6 @@ function LandingPage({ children }) {
 
 
   return (
-
     <div className="row">
       <div className="col-6 offset-3">
         <div id="loginBlock">

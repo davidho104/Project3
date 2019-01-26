@@ -17,15 +17,11 @@ import NavTabs from "./components/NavTabs";
 import Background from "./officeBackground.jpg";
 
       // import Nav from "./components/Nav";
-const appContainer = {
-  backgroundImage: "url(" +  Background + ")",
-  backgroundSize: "cover"
-}
 
 function App() {
   return (
     <Router>
-      <div style={appContainer}>
+      <div>
         <NavTabs />
         <Switch>
           <Route exact path="/" component={LandingPage} />
