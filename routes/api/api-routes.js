@@ -208,13 +208,6 @@ module.exports = function(app) {
       });
   });
 
-  // app.get("/api/resultsbydate/:date", function (req, res) {
-  // not done yet
-  // Example of less than
-  //     db.result
-  //         .findAll({ where: { id: { [Op.lt]: 4 } } }).then( function(result) { res.json(result) });
-  // });
-
   app.get("/resultsbydate/:date/:userid", function(req, res) {
     var whereStatement = {};
     whereStatement.userId = req.params.userid;
