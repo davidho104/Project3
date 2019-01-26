@@ -27,41 +27,44 @@ import API from "../utils/API";
 const options2 = (user, questions) => ({
   title: "Correct Answers Per Question",
   chartArea: { width: '80%', height: '400px' },
-  // hAxis: { 
-  //   title: "Number of Users who got it Right", 
-  //   viewWindow: { min: 0, max: user } 
-  // },
-  // vAxis: { title: "Question Number", 
-  //   viewWindow: { min: questions, max: 0 } },
+  hAxis: { 
+    title: "Number of Users who got it Right"
+  , 
+    viewWindow: { min: 0, max: user } 
+  },
+  vAxis: { title: "Question Number" },
   colors: ['lightgray'],
   legend: "none"
 });
 
-
-// const data = [
-//     ["Year", "Visitations"],
-//     ["Bob", 10],
-//     ["Tom", 14],
-//     ["Tim", 16],
-//     ["Eddy", 22]
-//   ];
+  // Set Table 1 options
+  const options3 = ({
+    title: "Incorrect Answers",
+    width: "100%",
+    height: "400px",
+    chartArea: { width: '80%', height: '400px' },
+    legend: "none"
+  });
 
 class Charts extends Component {
   state = {
       totalUsers: 0,
       totalQuestions: 0,
       graph1: [],
-      graph2: []
+      graph2: [],
+      table1: []
   };
 
   componentDidMount() {
     this.countQuestions();
+    this.countUsers();
     this.graphdata1();
     this.graphdata2();
+    this.tabledata1();
   };
 
   countQuestions = () => {
-    console.log();
+    // console.log();
     API.getData2()
     .then(res => { 
       // console.log(res.data);
@@ -75,9 +78,10 @@ class Charts extends Component {
   };
 
   countUsers = () => {
-    console.log();
+    // console.log();
     API.getData()
     .then(res => { 
+      // console.log("the data")
       // console.log(res.data);
       let numberOfUsers = res.data.length;
       console.log("number of Users: " + numberOfUsers)
@@ -89,7 +93,7 @@ class Charts extends Component {
   };
 
   graphdata1 = () => {
-    console.log();
+    // console.log();
     API.getData()
     .then(res => { 
       // console.log(res.data);
@@ -113,7 +117,7 @@ class Charts extends Component {
 
   //this needs to be fixed!!!
   graphdata2 = () => {
-    console.log();
+    // console.log();
     API.getData2()
     .then(res => { 
       // console.log(res.data);
@@ -136,6 +140,53 @@ class Charts extends Component {
     .catch(err => console.log(err));
   };
 
+  tabledata1 = () => {
+    console.log();
+    API.getData3()
+    .then(res => { 
+      console.log("here is the data for table 3")
+      // console.log(res.data);
+      let numberOfUsers = res.data.length;
+      let arr3 = [["User Name", "Incorrect Answers"]];
+      for (let i = 0; i < numberOfUsers; i++) {
+        let temUserArr = [];
+        temUserArr.push(res.data[i].firstName);
+        // console.log("temp array");
+        // console.log(temUserArr);
+        let numberOfQuestions = res.data[0].results.length;
+        // console.log("numberOfQuestions");
+        // console.log(numberOfQuestions);
+        let tempQuestionArr = [];
+        // console.log("i and j");
+        for (let j = 0; j < numberOfQuestions; j++) {
+          // console.log(i + " and " + j);
+          // HOW TO MAKE IT WORK WHEN USER ID IS ABSENT!
+          if (res.data[i].results[j] === undefined) {
+            break;
+          }
+          if (res.data[i].results[j].score === 0 ) {
+            // console.log("score");
+            // console.log(res.data[i].results[j].score);
+            let tempQuestion = res.data[i].results[j].quizId;
+            tempQuestionArr.push(tempQuestion);
+          }
+        } 
+        // Stringify tempQuestionArr
+        let tempQuestionList = tempQuestionArr.toString()
+        temUserArr.push(tempQuestionList);
+        // console.log("temUserArr");
+        console.log(temUserArr);
+        arr3.push(temUserArr);
+      }
+      console.log("arr3");
+      console.log(arr3)
+      this.setState({ 
+        table1: arr3
+      })
+    })
+    .catch(err => console.log(err));
+  };
+
   render() {
     return (
       <Container fluid>
@@ -152,6 +203,7 @@ class Charts extends Component {
         <div size="md-12 text-center">
             {/* the 1st chart */}
             <Chart chartType="BarChart" id="chart" 
+            loader={<div>Loading Chart</div>}
             data={this.state.graph1} 
             options={options1(this.state.totalQuestions)}          
             />
@@ -160,6 +212,7 @@ class Charts extends Component {
         <div size="md-12 text-center">
             {/* the 2nd chart */}
             <Chart chartType="BarChart" id="chart" 
+            loader={<div>Loading Chart</div>}
             data={this.state.graph2} 
             options={
               options2(
@@ -168,6 +221,25 @@ class Charts extends Component {
             height="400px"          
             />
         </div>
+
+        {/* https://react-google-charts.com/table-chart */}
+
+            {/* Table */}
+        <div size="md-12 text-center">
+            <Chart
+              width={'500px'}
+              height={'300px'}
+              chartType="Table"
+              loader={<div>Loading Chart</div>}
+              data={this.state.table1}
+              options={{
+                // showRowNumber: true,
+                options3 
+              }}
+              rootProps={{ 'data-testid': '1' }}
+            />
+        </div>
+
 
         <Row>
           <Col size="md-2">

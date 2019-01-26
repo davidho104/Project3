@@ -135,6 +135,8 @@ module.exports = function(app) {
   // GET route for select all
   app.get("/quizzes", function(req, res) {
     db.quiz.findAll().then(function(result) {
+      // console.log("quiz questions to be sent");
+      // console.log(result);
       res.json(result);
     });
   });
@@ -283,6 +285,7 @@ module.exports = function(app) {
           });
       });
   });
+
   // ---- automentor api routes: Charts
 
   // Function to collect data for FIRST Graph
@@ -298,13 +301,13 @@ module.exports = function(app) {
         // console.log(metadata);
         return callback(results1);
       });
-  }
+}
 
   // Sends Individual Scores to html file
   app.get("/userscore", function(req, res) {
     getData(function(rows1) {
-      console.log("data1 to be sent");
-      console.log(rows1);
+      // console.log("data1 to be sent");
+      // console.log(rows1);
       res.json(rows1);
     });
   });
@@ -327,9 +330,27 @@ module.exports = function(app) {
   // Sends Test Values to html file
   app.get("/quizscore", function(req, res) {
     getData2(function(rows2) {
-      console.log("data1 to be sent");
-      console.log(rows2);
+      // console.log("data2 to be sent");
+      // console.log(rows2);
       res.json(rows2);
     });
   });
-};
+
+  // Function to collect data for the first TABLE
+  function getData3(callback) {
+    db.user.findAll({
+      include: [{ model: db.result}]
+    }).then(res=>callback(res))
+  }
+
+    // Sends Individual Scores to html file
+  app.get("/userincorrect", function(req, res) {
+    getData3(function(rows3) {
+      console.log("data3 to be sent");
+      console.log(rows3);
+      res.json(rows3);  
+    });
+  });
+
+}
+

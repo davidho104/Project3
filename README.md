@@ -9,6 +9,7 @@ Each time an employee completes the challenges they can compare their scores wit
 ## MySQL Database
 What is in MYSQL?: The questions, the answers, the accounts of each player, the scores and times of each attempt.
 
+
 ## Contributors
 JUMP-START (℠)is created and developed by David Ho, Laurence Martinez, Raymond Won, and Brian Swift.
 
@@ -43,5 +44,3 @@ JUMP-START (℠)is created and developed by David Ho, Laurence Martinez, Raymond
   
 ### Deployment
 through Heroku at: https://jump-start2.herokuapp.com/
-
-

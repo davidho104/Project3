@@ -46,5 +46,8 @@ module.exports = function (sequelize, DataTypes) {
             timestamps: true,
         });
 
+        User.associate =function(models){
+            models.user.hasMany(models.result)
+        };
     return User;
 };
