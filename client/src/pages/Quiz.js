@@ -35,7 +35,7 @@ function Answer(props) {
 function AnswerList(props) {
   let answers = []
   for (let i = 0; i < props.dataSet.answers.length; i++) {
-    answers.push(<Answer choice={props.dataSet.answers[i]} handleClick={props.handleClick} answer={props.dataSet.answers[i]} />)
+    answers.push(<Answer key={`answer-${i}`} choice={props.dataSet.answers[i]} handleClick={props.handleClick} answer={props.dataSet.answers[i]} />)
   }
   return (
     <div class="answer btn my-2 my-sm-0" >
@@ -197,17 +197,17 @@ class Quiz extends Component {
           }
 
     if (choice === this.state.dataSet[this.state.current].correct) {
-      console.log(this.state.dataSet[this.state.current].correct)
-      
-      // score = 1
+      console.log(choice === this.state.dataSet[this.state.current].correct)
+      console.log("User Picked: " + choice);
+      console.log("Correct Answer: " + this.state.dataSet[this.state.current].correct);
       this.setState({ 
         correct: this.state.correct + 1,
         score: 1
       },
       () => handleSubmit())
     } else {
-      // score = 0
-      console.log(this.state.dataSet[this.state.current].correct)
+      console.log("User Picked: " + choice);
+      console.log("Correct Answer: " + this.state.dataSet[this.state.current].correct);
       this.setState({ 
         incorrect: this.state.incorrect + 1,
         message: "The Correct Answer for the last question is " + this.state.dataSet[this.state.current].correct,
@@ -216,20 +216,15 @@ class Quiz extends Component {
       () => handleSubmit()
       )
     }
-    console.log("score for this question");
-    console.log(this.state.score);
- 
-
 
       // end game if out of questions
-    if (this.state.current === numQuestions - 1) {
-      this.setState({ message: "Quiz Over" })
+    if (this.state.current === numQuestions-1) {
       this.setState({
         playing: false
       })
-    } else {
+    } 
       this.setState({ current: this.state.current + 1 })
-    }
+    
   }
 
   // ------ OLD STUFF -----------------------
@@ -268,6 +263,5 @@ class Quiz extends Component {
     );
   }
 } // end extended component
-
 
 export default Quiz;
