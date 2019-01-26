@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import AccordionSection from './AccordionSection';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import AccordionSection from "../AccordionSection";
 
 class Accordion extends Component {
   static propTypes = {
-    children: PropTypes.instanceOf(Object).isRequired,
+    children: PropTypes.instanceOf(Object).isRequired
   };
 
   constructor(props) {
@@ -17,7 +17,7 @@ class Accordion extends Component {
 
   onClick = label => {
     const {
-      state: { openSections },
+      state: { openSections }
     } = this;
 
     const isOpen = !!openSections[label];
@@ -33,7 +33,7 @@ class Accordion extends Component {
     const {
       onClick,
       props: { children },
-      state: { openSections },
+      state: { openSections }
     } = this;
 
     return (
@@ -52,4 +52,4 @@ class Accordion extends Component {
   }
 }
 
-export default Accordion;
+ export default Accordion;

@@ -51,4 +51,4 @@ class AccordionSection extends Component {
   }
 }
 
-export default AccordionSection;
+ export default AccordionSection;
