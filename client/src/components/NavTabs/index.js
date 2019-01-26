@@ -92,14 +92,6 @@ function NavTabs() {
           Contact
         </Link>
       </li>
-      <li className="nav-item">
-        <Link
-          to="/books"
-          className={window.location.pathname === "/googlebook" ? "nav-link active" : "nav-link"}
-        >
-          Book
-            </Link>
-      </li>
     </ul>
   );
 }
