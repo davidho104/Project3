@@ -14,45 +14,71 @@ let str = "Quiz Page";
 
 class Quiz extends Component {
 
-  // state = {
-  //   books: [],
-  //   title: "",
-  //   author: "",
-  //   synopsis: ""
-  // };
+  constructor(props) {
+    super(props)
+
+    let dataSet = [
+      {
+          question: "Place-Holder Question To Make Things Work",
+          answers: [
+              "1",
+              "8",
+              "16",
+              "9"
+          ],
+          correct: 8
+      },
+  ];
+
+
+    this.state = {
+      current: 0,
+      dataSet: dataSet,
+      correct: 0,
+      playing: true,
+      incorrect: 0,
+      message: "Answer These Questions",
+      id: 0,
+      userId: 0,
+      quizId: 0,
+      userAnswer: '', 
+      score: 0
+    }
+    this.handleClick = this.handleClick.bind(this)
+
+  } // end constructor
 
 
   componentDidMount() {
     this.questionData1();
     // this.loadBooks();
   }
-
+  
   questionData1 = () => {
-    console.log();
     API.getQuizData()
       .then(res => {
-        console.log("here is the data for quizzes")
-        console.log(res.data);
+        // console.log("here is the data for quizzes")
+        // console.log(res.data);
         let numberOfQuestions = res.data.length;
-        console.log("The number of question is...")
-        console.log(numberOfQuestions);
+        // console.log("The number of question is...")
+        // console.log(numberOfQuestions);
         let dataSet1 = [];
         for (let i = 0; i < numberOfQuestions; i++) {
-          console.log(res.data[i].question);
+          // console.log(res.data[i].question);
           // convert choices to array
           let arrayOfChoices;
           // console.log(res.data[i].choices);
           arrayOfChoices = res.data[i].choices.split(', ');
           // console.log(arrayOfChoices);
-          console.log("answer below");
-          console.log(res.data[i].answer);
+          // console.log("answer below");
+          // console.log(res.data[i].answer);
           dataSet1[i] = {
             question: res.data[i].question,
             answers: arrayOfChoices,
             correct: res.data[i].answer
           };
         }
-        console.log("dataSet1");
+        console.log("Array of Questions");
         console.log(dataSet1)
         this.setState({
           dataSet: dataSet1
@@ -60,69 +86,60 @@ class Quiz extends Component {
       })
       .catch(err => console.log(err));
   };
-  
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      current: 0,
-      dataSet: dataset,
-      correct: 0,
-      playing: true,
-      incorrect: 0,
-      message: "Answer These Questions"
-    }
-
-
-
-    this.handleClick = this.handleClick.bind(this)
-
-    // let dataSet = [
-    //   {
-    //     question: "What is 8 x 1?",
-    //     answers: [
-    //       "1",
-    //       "8",
-    //       "16",
-    //       "9"
-    //     ],
-    //     correct: "8"
-    //   },
-    //   {
-    //     question: "Who is Steve Jobs?",
-    //     answers: [
-    //       "CEO of Microsoft",
-    //       "Barber in NY",
-    //       "Movie Star",
-    //       "CEO of Apple"
-    //     ],
-    //     correct: "CEO of Apple"
-    //   },
-    //   {
-    //     question: "Metallica is a ____ band",
-    //     answers: [
-    //       "Blues",
-    //       "Hard-Rock",
-    //       "Jazz",
-    //       "Metal"
-    //     ],
-    //     correct: "Metal"
-    //   },
-    // ];
-
-  } // end constructor
 
   handleClick(choice) {
     let numQuestions = this.state.dataSet.length;
+    console.log("number of questions");
     console.log(numQuestions);
+
+    // figure out if they picked the right answer
     if (choice === this.state.dataSet[this.state.current].correct) {
       console.log(this.state.dataSet[this.state.current].correct)
-      this.setState({ correct: this.state.correct + 1 })
+      this.setState({ 
+        correct: this.state.correct + 1,
+        score: this.state.score +1
+      })
     } else {
       console.log(this.state.dataSet[this.state.current].correct)
-      this.setState({ incorrect: this.state.incorrect + 1 })
-    }
+      this.setState({ 
+        incorrect: this.state.incorrect + 1,
+        score: 0
+      })
 
+    }
+    console.log("score for this question");
+    console.log(this.state.score);
+        // event.preventDefault();
+    let answerData = {
+      // id: this.state.id,
+        //HOW DO WE GET USER ID??????
+      userId: this.state.userId,
+      quizId: this.state.current +1,
+      userAnswer: choice, 
+        //SCORE ISN'T READING OUT RIGHT
+      score: this.state.score
+    }
+    console.log(answerData)
+// ADDING DATA TO DATABASE?????????
+    fetch("/api/results", {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(answerData)
+    }).then(function(response) {
+        if (response.status >= 400) {
+          throw new Error("Bad response from server");
+        }
+        return response.json();
+    }).then(function(answerData) {
+        console.log(answerData)    
+        if(answerData == "success"){
+          console.log("score added");  
+        }
+    }).catch(err => console.log(err));
+    
+
+
+      // end game if out of questions
     if (this.state.current === numQuestions - 1) {
       this.setState({ message: "Quiz Over" })
       this.setState({
@@ -160,18 +177,26 @@ class Quiz extends Component {
   //   });
   // };
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
+  // logChange(e) {
+  //   this.setState({[e.target.name]: e.target.value});  
+  // }
+
+
+
+
+  // import Validation from 'react-validation';
+  // import "../validation.js";
+    
+                  // <Validation.components.Form onClick={this.handleClick} method="POST">
+                  //     <label>Name</label>
+
+                    // MIGHT NEED STUFF FROM THIS...
+                      // <Validation.components.Input onChange={this.logChange}  value=''  name='answerChoice' validations={['required']}/>
+
+                      // <div className="submit-section">
+                      //     <Validation.components.Button className="btn btn-uth-submit">Submit</Validation.components.Button>
+                      // </div>
+                  // </Validation.components.Form>
 
   render() {
     console.log(this.state)
@@ -181,16 +206,15 @@ class Quiz extends Component {
     // console.log(this.state.current === (this.state.dataSet.length - 1))
     return (
       <Container fluid>
-        {/* <Row>
+        <Row>
           <QuizPage>
-            {str}
+            <div>
+              <h2>{this.state.message}</h2>
+              <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
+              {this.state.playing && <QuizArea handleClick={this.handleClick} method="POST" dataSet={this.state.dataSet[this.state.current]} />}
+            </div>
           </QuizPage>
-        </Row> */}
-        <div>
-          <h2>{this.state.message}</h2>
-          <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
-          {this.state.playing && <QuizArea handleClick={this.handleClick} dataSet={this.state.dataSet[this.state.current]} />}
-        </div>
+        </Row>
       </Container>
     );
   }
@@ -202,7 +226,7 @@ function Question(props) {
     color: "white",
   }
   return (
-    <h3 style={style}>{props.dataSet.question}</h3>
+    <h3 style={style} class="question">{props.dataSet.question}</h3>
   )
 }
 
@@ -225,7 +249,7 @@ function AnswerList(props) {
     answers.push(<Answer choice={props.dataSet.answers[i]} handleClick={props.handleClick} answer={props.dataSet.answers[i]} />)
   }
   return (
-    <div>
+    <div class="answer btn my-2 my-sm-0" >
       {answers}
     </div>
   )
@@ -233,7 +257,7 @@ function AnswerList(props) {
 
 function QuizArea(props) {
   let style = {
-    width: "15%",
+    width: "30%",
     display: "block",
     textAlign: "center",
     boxSizing: "border-box",
