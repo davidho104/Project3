@@ -10,214 +10,12 @@ let str = "Quiz Page";
 // use this template
 // https://codepen.io/Daanist/pen/LjLoWV
 
-class Quiz extends Component {
-
-  // state = {
-  //   books: [],
-  //   title: "",
-  //   author: "",
-  //   synopsis: ""
-  // };
-
-  // componentDidMount() {
-  //   this.questionData1();
-  //   this.loadBooks();
-  // }
-
-  // 0:
-  // answer: "2"
-  // categoryId: null
-  // choices: "0, 2, 4, Leave Early"
-  // createdAt: "2019-01-24T14:32:10.000Z"
-  // id: 1
-  // nextId: null
-  // question: "If work hours end at 5:00 pm, how many hours after work should you stay to convince the people you are a real employee?"
-  // typeId: null
-  // updatedAt: null
-  // __proto__: Object
-  // 1:
-  // answer: "3"
-  // categoryId: null
-  // choices: "1, 3, 13, People here are always helpful"
-  // createdAt: "2019-01-24T14:32:11.000Z"
-  // id: 2
-  // nextId: null
-  // question: "How many times can you ask your coworkers to help you before they start to deliberately sabotage your efforts?"
-  // typeId: null
-  // updatedAt: null
-  // __proto__: Object
-
-  // questionData1 = () => {
-  //   console.log();
-  //   API.getQuizData()
-  //   .then(res => { 
-  //     console.log("here is the data for quizzes")
-  //     console.log(res.data);
-  //     let numberOfQuestions = res.data.length;
-  //     console.log("The number of question is...")
-  //     console.log(numberOfQuestions);
-  // for (let i = 0; i < numberOfUsers; i++) {
-  //   let temUserArr = [];
-  //   temUserArr.push(res.data[i].firstName);
-  //   // console.log("temp array");
-  //   // console.log(temUserArr);
-  //   let numberOfQuestions = res.data[0].results.length;
-  //   // console.log("numberOfQuestions");
-  //   // console.log(numberOfQuestions);
-  //   let tempQuestionArr = [];
-  //   console.log("i and j");
-  //   for (let j = 0; j < numberOfQuestions; j++) {
-  //     console.log(i + " and " + j);
-  //     // HOW TO MAKE IT WORK WHEN USER ID IS ABSENT!
-  //     if (res.data[i].results[j] === undefined) {
-  //       break;
-  //     }
-  //     if (res.data[i].results[j].score === 0 ) {
-  //       // console.log("score");
-  //       // console.log(res.data[i].results[j].score);
-  //       let tempQuestion = res.data[i].results[j].quizId;
-  //       tempQuestionArr.push(tempQuestion);
-  //     }
-  //   } 
-  //   // Stringify tempQuestionArr
-  //   let tempQuestionList = tempQuestionArr.toString()
-  //   temUserArr.push(tempQuestionList);
-  //   console.log("temUserArr");
-  //   console.log(temUserArr);
-  //   arr3.push(temUserArr);
-  // }
-  // console.log("dataSet");
-  // console.log(dataSet)
-  // this.setState({ 
-  //   dataSet: dataSet
-  //     })
-  //   })
-  //   .catch(err => console.log(err));
-  // };
-
-  constructor(props) {
-    super(props)
-
-    let dataSet = [
-      {
-        question: "What is 8 x 1?",
-        answers: [
-          "1",
-          "8",
-          "16",
-          "9"
-        ],
-        correct: 1
-      },
-      {
-        question: "Who is Steve Jobs?",
-        answers: [
-          "CEO of Microsoft",
-          "Barber in NY",
-          "Movie Star",
-          "CEO of Apple"
-        ],
-        correct: 3
-      },
-      {
-        question: "Metallica is a ____ band",
-        answers: [
-          "Blues",
-          "Hard-Rock",
-          "Jazz",
-          "Metal"
-        ],
-        correct: 3
-      },
-    ];
-
-      this.state = {
-        current: 0,
-        dataSet: dataSet,
-        correct: 0,
-        incorrect: 0
-      }
-      this.handleClick = this.handleClick.bind(this)
-
-  } // end constructor
-
-  // ------ OLD STUFF -----------------------
-
-  // loadBooks = () => {
-  //   API.getBooks()
-  //     .then(res =>
-  //       this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-  //     )
-  //     .catch(err => console.log(err));
-  // };
-
-  // deleteBook = id => {
-  //   API.deleteBook(id)
-  //     .then(res => this.loadBooks())
-  //     .catch(err => console.log(err));
-  // };
-
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
-
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
-
-  handleClick(choice) {
-    let numQuestions = this.state.dataSet.length;
-    console.log(numQuestions);
-    if (choice == this.state.dataSet[this.state.current].correct) {
-      this.setState({ correct: this.state.correct + 1 })
-    } else {
-      this.setState({ incorrect: this.state.incorrect + 1 })
-    }
-
-    if (this.state.current === numQuestions) {
-      this.setState({ current: 0 })
-      this.setState({ incorrect: 0 })
-      this.setState({ correct: 0 })
-    } else {
-      this.setState({ current: this.state.current + 1 })
-    }
-  }
-
-  render() {
-    return (
-      <Container fluid>
-        {/* <Row>
-          <QuizPage>
-            {str}
-          </QuizPage>
-        </Row> */}
-        <div>
-          <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
-          <QuizArea handleClick={this.handleClick} dataSet={this.state.dataSet[this.state.current]} />
-        </div>
-      </Container>
-    );
-  }
-} // end extended component
-
 function Question(props) {
-  var style = {
-    color: "white",
+  let style = {
+    color: "blue",
   }
   return (
-    <h3 style={style}>{props.dataSet.question}</h3>
+    <h3 style={style} class="question">{props.dataSet.question}</h3>
   )
 }
 
@@ -237,10 +35,10 @@ function Answer(props) {
 function AnswerList(props) {
   let answers = []
   for (let i = 0; i < props.dataSet.answers.length; i++) {
-    answers.push(<Answer choice={i} handleClick={props.handleClick} answer={props.dataSet.answers[i]} />)
+    answers.push(<Answer choice={props.dataSet.answers[i]} handleClick={props.handleClick} answer={props.dataSet.answers[i]} />)
   }
   return (
-    <div>
+    <div class="answer btn my-2 my-sm-0" >
       {answers}
     </div>
   )
@@ -248,7 +46,7 @@ function AnswerList(props) {
 
 function QuizArea(props) {
   let style = {
-    width: "15%",
+    width: "30%",
     display: "block",
     textAlign: "center",
     boxSizing: "border-box",
@@ -303,9 +101,173 @@ function ScoreArea(props) {
   )
 }
 
-// ReactDOM.render(
-//   <Quiz />,
-//   document.getElementById("root")
-// )
+class Quiz extends Component {
+
+  constructor(props) {
+    super(props)
+
+    let dataSet = [
+      {
+          question: "Place-Holder Question To Make Things Work",
+          answers: [
+              "1",
+              "8",
+              "16",
+              "9"
+          ],
+          correct: 8
+      },
+  ];
+
+
+    this.state = {
+      current: 0,
+      dataSet: dataSet,
+      correct: 0,
+      playing: true,
+      incorrect: 0,
+      message: "Answer These Questions",
+      id: 0,
+      userId: 0,
+      quizId: 0,
+      userAnswer: '', 
+      score: 0
+    }
+    this.handleClick = this.handleClick.bind(this)
+
+  } // end constructor
+
+  componentDidMount() {
+    this.questionData1();
+  }
+  
+  questionData1 = () => {
+    API.getQuizData()
+      .then(res => {
+        // console.log("here is the data for quizzes")
+        // console.log(res.data);
+        let numberOfQuestions = res.data.length;
+        // console.log("The number of question is...")
+        // console.log(numberOfQuestions);
+        let dataSet1 = [];
+        for (let i = 0; i < numberOfQuestions; i++) {
+          // console.log(res.data[i].question);
+          // convert choices to array
+          let arrayOfChoices;
+          // console.log(res.data[i].choices);
+          arrayOfChoices = res.data[i].choices.split(', ');
+          // console.log(arrayOfChoices);
+          // console.log("answer below");
+          // console.log(res.data[i].answer);
+          dataSet1[i] = {
+            question: res.data[i].question,
+            answers: arrayOfChoices,
+            correct: res.data[i].answer
+          };
+        }
+        console.log("Array of Questions");
+        console.log(dataSet1)
+        this.setState({
+          dataSet: dataSet1
+        })
+      })
+      .catch(err => console.log(err));
+  };
+
+  handleClick(choice) {
+    // event.preventDefault();
+    let numQuestions = this.state.dataSet.length;
+    // console.log("number of questions");
+    // console.log(numQuestions);
+// score, correct, incorrect
+    // figure out if they picked the right answer
+
+    const handleSubmit = () => {
+      // ADDING DATA TO DATABASE?????????
+      API.saveChoice({
+        //HOW DO WE GET USER ID??????
+              userId: 7,
+              quizId: this.state.current,
+              userAnswer: choice, 
+        //SCORE ISN'T READING OUT RIGHT
+              score: this.state.score
+            })
+              .then(res => console.log(res))
+              .catch(err => console.log(err));
+          }
+
+    if (choice === this.state.dataSet[this.state.current].correct) {
+      console.log(this.state.dataSet[this.state.current].correct)
+      
+      // score = 1
+      this.setState({ 
+        correct: this.state.correct + 1,
+        score: 1
+      },
+      () => handleSubmit())
+    } else {
+      // score = 0
+      console.log(this.state.dataSet[this.state.current].correct)
+      this.setState({ 
+        incorrect: this.state.incorrect + 1,
+        message: "The Correct Answer for the last question is " + this.state.dataSet[this.state.current].correct,
+        score: 0,
+      },
+      () => handleSubmit()
+      )
+    }
+    console.log("score for this question");
+    console.log(this.state.score);
+ 
+
+
+      // end game if out of questions
+    if (this.state.current === numQuestions - 1) {
+      this.setState({ message: "Quiz Over" })
+      this.setState({
+        playing: false
+      })
+    } else {
+      this.setState({ current: this.state.current + 1 })
+    }
+  }
+
+  // ------ OLD STUFF -----------------------
+
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
+
+  // logChange(e) {
+  //   this.setState({[e.target.name]: e.target.value});  
+  // }
+
+// ------ RENDER --------------------------------
+
+  render() {
+    console.log(this.state)
+    console.log(this.state.current)
+    console.log(this.state.dataSet[this.state.current])
+    // console.log(this.state.dataSet.length)
+    // console.log(this.state.current === (this.state.dataSet.length - 1))
+    return (
+      <Container fluid>
+        <Row>
+          <QuizPage>
+            <div>
+              <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
+              <h2>{this.state.message}</h2>
+              {this.state.playing && <QuizArea handleClick={this.handleClick} dataSet={this.state.dataSet[this.state.current]} />}
+            </div>
+          </QuizPage>
+        </Row>
+      </Container>
+    );
+  }
+} // end extended component
+
 
 export default Quiz;
