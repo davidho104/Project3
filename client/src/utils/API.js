@@ -17,6 +17,10 @@ export default {
   saveBook: function (bookData) {
     return axios.post("/api/books", bookData);
   },
+  // Saves a user's scores to the database
+  saveChoice: function (userResult) {
+      return axios.post("/api/results", userResult);
+  },
   // Gets User Scores
   getData: function () {
     return axios.get("/api/userscore");
