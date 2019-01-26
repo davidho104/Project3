@@ -38,7 +38,7 @@ VALUES ("When deciding what to wear to work, which color does your supervisor de
 INSERT INTO quizzes (question, choices, answer) 
 VALUES ("When your make a huge mistake who is the best person to blame it one?", "Kevin, Creed, Angela, Sam", "Angela");
 INSERT INTO quizzes (question, choices, answer) 
-VALUES ("Who keep’s stealing stuff from my desk?", "Creed, Angela, Sam, A former employee named Carl who has been hiding in the building for years", "A former employee named Carl who has been hiding in the building for years.");
+VALUES ("Who keep’s stealing stuff from my desk?", "Creed, Angela, Sam, A former employee named Carl who has been hiding in the building for years", "A former employee named Carl who has been hiding in the building for years");
 
 -----
 ----- Michael
