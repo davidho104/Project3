@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 
 
-var str = "Create Quiz Page"
+var str = "Summary Page"
 
-class CreateQuiz extends Component {
+class Summary extends Component {
   state = {
     books: [],
     title: "",
@@ -66,5 +66,4 @@ class CreateQuiz extends Component {
   }
 }
 
-export default CreateQuiz;
-
+export default Summary;

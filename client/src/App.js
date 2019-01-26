@@ -12,6 +12,7 @@ import Create from "./pages/Create";
 import CreateQuiz from "./pages/CreateQuiz";
 import Home from "./pages/Home";
 import LandingPage from "./pages/Landing";
+import Summary from "./pages/Summary";
 import Profile from "./pages/Profile";
 import NavTabs from "./components/NavTabs";
 import Background from "./officeBackground.jpg";
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/create" component={Create} />
           <Route exact path="/createQuiz" component={CreateQuiz} />
+          <Route exact path="/summary" component={Summary} />
           <Route exact path="/books/:id" component={Detail} />
           <Route component={NoMatch} />
         </Switch>
