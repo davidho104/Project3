@@ -3,6 +3,7 @@ import ManagerPage from "../components/ManagerPage";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
+import NavTabsEmployee from "../components/NavTabsEmployee";
 
 
 var str = "Profile Page"
@@ -56,6 +57,7 @@ class Profile extends Component {
   render() {
     return (
       <Container fluid>
+      <NavTabsEmployee />
         <Row>
           <ManagerPage>
             {str}

@@ -2,7 +2,7 @@ import React from "react";
 import NavTabsManager from "../components/NavTabsManager";
 
 
-function Contact(props) {
+function Help(props) {
   return (
     <div>
       <NavTabsManager />
@@ -23,4 +23,4 @@ function Contact(props) {
   );
 }
 
-export default Contact;
+export default Help;
