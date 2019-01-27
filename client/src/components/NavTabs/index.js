@@ -38,6 +38,14 @@ function NavTabs() {
       </li>
       <li className="nav-item">
         <Link
+          to="/employee"
+          className={window.location.pathname === "/employee" ? "nav-link active" : "nav-link"}
+        >
+          Employee
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
           to="/create"
           className={window.location.pathname === "/create" ? "nav-link active" : "nav-link"}
         >

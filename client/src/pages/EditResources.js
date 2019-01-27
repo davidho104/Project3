@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 
 
-var str = "This is Manager Page";
+var str = "This is Edit Resource Page";
 
-class Manager extends Component {
+class EditResoruces extends Component {
   state = {
     books: [],
     title: "",
@@ -68,4 +68,4 @@ class Manager extends Component {
   }
 }
 
-export default Manager;
+export default EditResoruces;

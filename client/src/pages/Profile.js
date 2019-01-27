@@ -3,8 +3,12 @@ import ManagerPage from "../components/ManagerPage";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
+<<<<<<< HEAD
 import Chart from "react-google-charts";
 import Jumbotron from "../components/Jumbotron";
+=======
+import NavTabsEmployee from "../components/NavTabsEmployee";
+>>>>>>> 532f642f38dec1b1be3b7034a15bd0cde3e90931
 
 let str = "Profile Page"
 
@@ -27,7 +31,7 @@ class Profile extends Component {
   componentDidMount() {
     this.userName();
     this.tabledata1();
-    this.userIDTest();
+    // this.userIDTest();
   }
 
 // DOESN'T WORK, BUT DON'T KNOW WHY
@@ -132,6 +136,7 @@ class Profile extends Component {
   render() {
     return (
       <Container fluid>
+      <NavTabsEmployee />
         <Row>
           <Col size="md-12">
             <Jumbotron>

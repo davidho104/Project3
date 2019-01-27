@@ -1,11 +1,11 @@
 import React from "react";
-import NavTabsManager from "../components/NavTabsManager";
+import NavTabsEmployee from "../components/NavTabsEmployee";
 
 
-function Contact(props) {
+function HelpEmployee(props) {
   return (
     <div>
-      <NavTabsManager />
+      <NavTabsEmployee />
       <h1>Contact Page</h1>
       <p>
         Integer cursus bibendum sem non pretium. Vestibulum in aliquet sem, quis molestie urna.
@@ -23,4 +23,4 @@ function Contact(props) {
   );
 }
 
-export default Contact;
+export default HelpEmployee;
