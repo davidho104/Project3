@@ -3,12 +3,8 @@ import ManagerPage from "../components/ManagerPage";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-<<<<<<< HEAD
 import Chart from "react-google-charts";
 import Jumbotron from "../components/Jumbotron";
-=======
-import NavTabsEmployee from "../components/NavTabsEmployee";
->>>>>>> 532f642f38dec1b1be3b7034a15bd0cde3e90931
 
 let str = "Profile Page"
 
@@ -75,52 +71,36 @@ class Profile extends Component {
     .then(res => { 
       console.log("here is the data for user table")
       console.log(res.data);
-      let arr = [["Number", "Question", "Incorrect Answers", "Correct Answer"]];
+      let arr = [["", ""]];
       let numberOfUsers = res.data.length;
       // console.log("id of the user");
-      // console.log(this.state.userId +1);
+      // console.log(this.state.userId);
       for (let i = 0; i < numberOfUsers; i++) {
         if (this.state.userId === res.data[i].id) {
           // console.log("this is the id of the user");
           // console.log(res.data[i].id);
           console.log("this is the name of the user");
           console.log(res.data[i].firstName);
-          let numberOfQuest = res.data[i].results.length;
-          // console.log("number of questions");
-          // console.log(numberOfQuest);
-          for (let j = 0; j < numberOfQuest; j++) {
-            let temQuestArr = [];
-            if (res.data[i].results[j].score === 0) {
-              API.getQuizData()
-              .then(res2 => {
-                // console.log("here is the data for quizzes")
-                // console.log(res2.data);
-                let tempQuestion = '';
-                let tempAnswer = '';
-                let numberOfQuestions = res2.data.length;
-                // console.log("The number of question is...")
-                // console.log(numberOfQuestions);
-                for (let k = 0; k < numberOfQuestions; k++) {
-                  // console.log("Question ID numbers are");
-                  // console.log(res2.data[k].id);
-                  if (res.data[i].results[j].id === res2.data[k].id) {
-                    temQuestArr.push(res.data[i].results[j].id);
-                    tempQuestion = res2.data[k].question;
-                    // console.log("Questions are");
-                    // console.log(tempQuestion);
-                    temQuestArr.push(tempQuestion);
-                    temQuestArr.push(res.data[i].results[j].userAnswer);
-                    tempAnswer = res2.data[k].answer;
-                    temQuestArr.push(tempAnswer);
-                    // console.log("Array Row");
-                    // console.log(temQuestArr);
-                    arr.push(temQuestArr);
-                  }
-                };
-              })
-              .catch(err => console.log(err));
-            }
-          }
+          let usernameArr = [];
+          usernameArr.push("User Name");
+          usernameArr.push(res.data[i].username);
+          arr.push(usernameArr);
+          let firstNameArr = [];
+          firstNameArr.push("First Name");
+          firstNameArr.push(res.data[i].firstName);
+          arr.push(firstNameArr);
+          let lastNameArr = [];
+          lastNameArr.push("Last Name");
+          lastNameArr.push(res.data[i].lastName);
+          arr.push(lastNameArr);
+          let phoneArr = [];
+          phoneArr.push("Phone Number");
+          phoneArr.push(res.data[i].phone);
+          arr.push(phoneArr);
+          let emailArr = [];
+          emailArr.push("Phone Number");
+          emailArr.push(res.data[i].email);
+          arr.push(emailArr);
           console.log("Table Array");
           console.log(arr);
         } 
@@ -132,11 +112,40 @@ class Profile extends Component {
     .catch(err => console.log(err));
   };
 
+// 0:
+  // createdAt: "2019-01-24T14:32:09.000Z"
+  // departmentId: null
+  // email: "michael@dm.com"
+  // firstName: "Michael"
+  // id: 1
+  // lastName: "Scott"
+  // permissionId: 1
+  // phone: "570-123-0001"
+  // picture: "michael.png"
+  // results: (8) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+  // updatedAt: null
+  // username: "michael"
+  // __proto__: Object
+// 1:
+  // createdAt: "2019-01-24T14:32:09.000Z"
+  // departmentId: null
+  // email: "jim@dm.com"
+  // firstName: "Jim"
+  // id: 2
+  // lastName: "Halpert"
+  // permissionId: 2
+  // phone: "570-123-0002"
+  // picture: "jim.png"
+  // results: (8) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+  // updatedAt: null
+  // username: "jim"
+  // __proto__: Object
+
 
   render() {
     return (
       <Container fluid>
-      <NavTabsEmployee />
+      {/* <NavTabsEmployee /> */}
         <Row>
           <Col size="md-12">
             <Jumbotron>
