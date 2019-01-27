@@ -27,8 +27,9 @@ class Summary extends Component {
 
   componentDidMount() {
     this.countQuestions();
-    this.tabledata1();
     this.userName();
+    this.tabledata1();
+    // this.tabledata2();
   };
 
   countQuestions = () => {
@@ -48,24 +49,24 @@ class Summary extends Component {
   userName = () => {
     API.getData3()
     .then(res => { 
-      console.log("here is the data for name");
-      console.log(res.data);
-      let UserFullName = '';
+      // console.log("here is the data for name");
+      // console.log(res.data);
+      let userFullName = '';
       let numberOfUsers = res.data.length;
       for (let i = 0; i < numberOfUsers; i++) {
         // console.log("id of the user");
         // console.log(this.state.userId);
         if (this.state.userId +1 === res.data[i].id) {
-          UserFullName = res.data[i].firstName + ' ' + res.data[i].lastName;
-          // console.log(UserFullName);
+          userFullName = res.data[i].firstName + ' ' + res.data[i].lastName;
+          // console.log(userFullName);
         } else {
           // console.log("Its false");
         }
       }
       console.log("The User's full name is");
-      console.log(UserFullName);
+      console.log(userFullName);
       this.setState({ 
-        userName: UserFullName
+        userName: userFullName
       })
     })
     .catch(err => console.log(err));
@@ -76,68 +77,87 @@ class Summary extends Component {
     .then(res => { 
       console.log("here is the data for user table")
       console.log(res.data);
+      let userFullName = '';
       let userIdNumber = this.state.userId;
-      let arr = [["Question Number", "Incorrect Answers", "Correct Answer"]];
-
-      // console.log("here is the data for name");
-      // console.log(res.data);
-      // let UserFullName = '';
-      // let numberOfUsers = res.data.length;
-      // for (let i = 0; i < numberOfUsers; i++) {
-      //   // console.log("id of the user");
-      //   // console.log(this.state.userId);
-      //   if (this.state.userId +1 === res.data[i].id) {
-      //     UserFullName = res.data[i].firstName + ' ' + res.data[i].lastName;
-      //     // console.log(UserFullName);
-      //   } else {
-      //     // console.log("Its false");
-      //   }
-      // }
-      // console.log("The User's full name is");
-      // console.log(UserFullName);
-      // this.setState({ 
-      //   userName: UserFullName
-      // })
-
-
-      // for (let i = 0; i < numberOfUsers; i++) {
-      //   let temUserArr = [];
-      //   temUserArr.push(res.data[i].firstName);
-      //   // console.log("temp array");
-      //   // console.log(temUserArr);
-      //   let numberOfQuestions = res.data[0].results.length;
-      //   // console.log("numberOfQuestions");
-      //   // console.log(numberOfQuestions);
-      //   let tempQuestionArr = [];
-      //   // console.log("i and j");
-      //   for (let j = 0; j < numberOfQuestions; j++) {
-      //     // console.log(i + " and " + j);
-      //     // HOW TO MAKE IT WORK WHEN USER ID IS ABSENT!
-      //     if (res.data[i].results[j] === undefined) {
-      //       break;
-      //     }
-      //     if (res.data[i].results[j].score === 0 ) {
-      //       // console.log("score");
-      //       // console.log(res.data[i].results[j].score);
-      //       let tempQuestion = res.data[i].results[j].quizId;
-      //       tempQuestionArr.push(tempQuestion);
-      //     }
-      //   } 
-      //   // Stringify tempQuestionArr
-      //   let tempQuestionList = tempQuestionArr.toString()
-      //   temUserArr.push(tempQuestionList);
-      //   // console.log("temUserArr");
-      //   console.log(temUserArr);
-      //   arr3.push(temUserArr);
-      // }
-      // console.log("arr3");
-      // console.log(arr3)
-      // this.setState({ 
-      //   table: arr3
-      // })
+      let arr = [["Number", "Question", "Incorrect Answers", "Correct Answer"]];
+      let numberOfUsers = res.data.length;
+      // console.log("id of the user");
+      // console.log(this.state.userId +1);
+      for (let i = 0; i < numberOfUsers; i++) {
+        if (this.state.userId +1 === res.data[i].id) {
+          // console.log("this is the id of the user");
+          // console.log(res.data[i].id);
+          console.log("this is the name of the user");
+          console.log(res.data[i].firstName);
+          let numberOfQuest = res.data[i].results.length;
+          // console.log("number of questions");
+          // console.log(numberOfQuest);
+          for (let j = 0; j < numberOfQuest; j++) {
+            let temQuestArr = [];
+            if (res.data[i].results[j].score === 0) {
+              API.getQuizData()
+              .then(res2 => {
+                // console.log("here is the data for quizzes")
+                // console.log(res2.data);
+                let tempQuestion = '';
+                let tempAnswer = '';
+                let numberOfQuestions = res2.data.length;
+                // console.log("The number of question is...")
+                // console.log(numberOfQuestions);
+                for (let k = 0; k < numberOfQuestions; k++) {
+                  // console.log("Question ID numbers are");
+                  // console.log(res2.data[k].id);
+                  if (res.data[i].results[j].id === res2.data[k].id) {
+                    temQuestArr.push(res.data[i].results[j].id);
+                    tempQuestion = res2.data[k].question;
+                    // console.log("Questions are");
+                    // console.log(tempQuestion);
+                    temQuestArr.push(tempQuestion);
+                    temQuestArr.push(res.data[i].results[j].userAnswer);
+                    tempAnswer = res2.data[k].answer;
+                    temQuestArr.push(tempAnswer);
+                    // console.log("Array Row");
+                    // console.log(temQuestArr);
+                    arr.push(temQuestArr);
+                  }
+                };
+              })
+              .catch(err => console.log(err));
+            }
+          }
+          console.log("Table Array");
+          console.log(arr);
+        } 
+      }
+      this.setState({ 
+        table: arr
+      })
     })
     .catch(err => console.log(err));
   };
+
+// 0:
+  // answer: "2"
+  // categoryId: null
+  // choices: "0, 2, 4, Leave Early"
+  // createdAt: "2019-01-24T14:32:10.000Z"
+  // id: 1
+  // nextId: null
+  // question: "If work hours end at 5:00 pm, how many hours after work should you stay to convince the people you are a real employee?"
+  // typeId: null
+  // updatedAt: null
+  // __proto__: Object
+// 1:
+  // answer: "3"
+  // categoryId: null
+  // choices: "1, 3, 13, People here are always helpful"
+  // createdAt: "2019-01-24T14:32:11.000Z"
+  // id: 2
+  // nextId: null
+  // question: "How many times can you ask your coworkers to help you before they start to deliberately sabotage your efforts?"
+  // typeId: null
+  // updatedAt: null
+  // __proto__: Object
 
   // 0:
   // createdAt: "2019-01-24T18:31:28.000Z"
@@ -184,7 +204,7 @@ class Summary extends Component {
             <Jumbotron>
             <h1>{this.state.userName}</h1>
               <h2>
-                here is your answers and the correct answer for each wrong question
+                here are your answers and the correct answer for each wrong question
               </h2>
             </Jumbotron>
           </Col>
@@ -195,8 +215,8 @@ class Summary extends Component {
             {/* Table */}
         <div size="md-12 text-center">
             <Chart
-              width={'500px'}
-              height={'300px'}
+              width={'700px'}
+              height={'700px'}
               chartType="Table"
               loader={<div>Loading Chart</div>}
               data={this.state.table}
