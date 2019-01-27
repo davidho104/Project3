@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Chart from "react-google-charts";
 import Jumbotron from "../components/Jumbotron";
+import NavTabsEmployee from "../components/NavTabsEmployee";
 
 let str = "Profile Page"
 
@@ -145,7 +146,7 @@ class Profile extends Component {
   render() {
     return (
       <Container fluid>
-      {/* <NavTabsEmployee /> */}
+      <NavTabsEmployee />
         <Row>
           <Col size="md-12">
             <Jumbotron>
