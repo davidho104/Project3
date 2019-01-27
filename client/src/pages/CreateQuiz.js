@@ -1,65 +1,113 @@
 import React, { Component } from "react";
-import ManagerPage from "../components/ManagerPage";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 
+import Card from "../components/Card";
+import SearchForm from "../components/SearchForm";
+import { Input, TextArea, FormBtn2 } from "../components/InputForm";
+import { FormBtn } from "../components/Form";
 
-var str = "Create Quiz Page"
+
+var question = "";
+var choices = "";
+var answer = "";
 
 class CreateQuiz extends Component {
   state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: ""
+    result: [],
+    search: ""
   };
+
 
   componentDidMount() {
-    this.loadBooks();
+    this.loadQuizzes();
   }
 
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
+
+  loadQuizzes = query => {
+    API.getQuizData()
+      .then(res => {
+        console.log(res.data);
+        console.log(res.data[0].id);
+        this.setState({ result: res.data });
+      })
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
+
 
   handleInputChange = event => {
-    const { name, value } = event.target;
+    const value = event.target.value;
+    const name = event.target.name;
     this.setState({
       [name]: value
     });
   };
 
+
+  // When the form is submitted, search the OMDB API for the value of `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
+    this.loadQuizzes();
+  };
+
+
+  handleSaveSubmit = event => {
+
+    API.saveQuizData({
+      question: question,
+      choices: choices,
+      answer: answer
+    })
+      .then(res => { console.log(res) })
+      .catch(err => console.log(err));
+
   };
 
   render() {
     return (
-      <Container fluid>
+      <Container>
         <Row>
-          <ManagerPage>
-            {str}
-          </ManagerPage>
+          <Col size="md-8">
+            {this.state.result.map(item => {
+
+              return <Card key={item.id} heading={item.question}>
+              
+              <div>{item.choices} </div>
+              <div>{item.answer}</div>
+              </Card>
+
+
+            })}
+
+
+
+          </Col>
+          <Col size="md-4">
+            <Card heading="Search">
+              <SearchForm
+                value={this.state.search}
+                handleInputChange={this.handleInputChange}
+                handleFormSubmit={this.handleFormSubmit}
+              />
+            </Card>
+            <Card heading="Input">
+              <Input
+                value={this.state.search}
+                handleInputChange={this.handleInputChange}
+                handleFormSubmit={this.handleFormSubmit}
+              />
+              <FormBtn2
+
+                onClick={() => {
+
+                  this.handleSaveSubmit();
+                }}
+              >
+                Save
+                    </FormBtn2>
+            </Card>
+          </Col>
         </Row>
       </Container>
     );
@@ -67,4 +115,5 @@ class CreateQuiz extends Component {
 }
 
 export default CreateQuiz;
+
 
