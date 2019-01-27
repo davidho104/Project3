@@ -4,6 +4,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
+import NavTabsEmployee from "../components/NavTabsEmployee";
 
 let str = "Quiz Page";
 
@@ -250,6 +251,7 @@ class Quiz extends Component {
     // console.log(this.state.current === (this.state.dataSet.length - 1))
     return (
       <Container fluid>
+      <NavTabsEmployee />
         <Row>
           <QuizPage>
             <div>

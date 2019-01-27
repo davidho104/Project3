@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Chart from "react-google-charts";
+import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import API from "../utils/API";
+import NavTabsManager from "../components/NavTabsManager";
 
   // Set chart 1 options
   const options1 = (questions) => ({
@@ -190,6 +191,7 @@ class Charts extends Component {
   render() {
     return (
       <Container fluid>
+      <NavTabsManager />
         <Row>
           <Col size="md-12">
             <Jumbotron>

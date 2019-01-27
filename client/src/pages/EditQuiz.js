@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
-
+import NavTabsManager from "../components/NavTabsManager";
 import Card from "../components/Card";
 import SearchForm from "../components/SearchForm";
 import { Input, TextArea, FormBtn2 } from "../components/InputForm";
@@ -12,7 +12,7 @@ var question = "";
 var choices = "";
 var answer = "";
 
-class CreateQuiz extends Component {
+class EditQuiz extends Component {
   state = {
     result: [],
     search: ""
@@ -66,7 +66,8 @@ class CreateQuiz extends Component {
 
   render() {
     return (
-      <Container>
+      <Container fluid>
+        <NavTabsManager />
         <Row>
           <Col size="md-8">
             {this.state.result.map(item => {
@@ -114,6 +115,6 @@ class CreateQuiz extends Component {
   }
 }
 
-export default CreateQuiz;
+export default EditQuiz;
 
 
