@@ -19,7 +19,7 @@ const options = ({
 
 class Summary extends Component {
   state = {
-    userId: 0,
+    userId: 1,
     totalQuestions: 0,
     userName: '',
     table: []
@@ -29,7 +29,7 @@ class Summary extends Component {
     this.countQuestions();
     this.userName();
     this.tabledata1();
-    // this.tabledata2();
+    // this.userIDTest();
   };
 
   countQuestions = () => {
@@ -46,6 +46,19 @@ class Summary extends Component {
     .catch(err => console.log(err));
   };
 
+
+// DOESN'T WORK, BUT DON'T KNOW WHY
+  // userIDTest = id => {
+  //   API.getUserID(id)
+  //   .then(res => { 
+  //     console.log("here is the data for UserID");
+  //     console.log(res.data);
+  //   })
+  //   .catch(err => console.log(err));
+  // };
+
+
+
   userName = () => {
     API.getData3()
     .then(res => { 
@@ -56,7 +69,7 @@ class Summary extends Component {
       for (let i = 0; i < numberOfUsers; i++) {
         // console.log("id of the user");
         // console.log(this.state.userId);
-        if (this.state.userId +1 === res.data[i].id) {
+        if (this.state.userId === res.data[i].id) {
           userFullName = res.data[i].firstName + ' ' + res.data[i].lastName;
           // console.log(userFullName);
         } else {
@@ -77,14 +90,12 @@ class Summary extends Component {
     .then(res => { 
       console.log("here is the data for user table")
       console.log(res.data);
-      let userFullName = '';
-      let userIdNumber = this.state.userId;
       let arr = [["Number", "Question", "Incorrect Answers", "Correct Answer"]];
       let numberOfUsers = res.data.length;
       // console.log("id of the user");
       // console.log(this.state.userId +1);
       for (let i = 0; i < numberOfUsers; i++) {
-        if (this.state.userId +1 === res.data[i].id) {
+        if (this.state.userId === res.data[i].id) {
           // console.log("this is the id of the user");
           // console.log(res.data[i].id);
           console.log("this is the name of the user");

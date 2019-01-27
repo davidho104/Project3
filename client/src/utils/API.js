@@ -25,6 +25,13 @@ export default {
   getData: function () {
     return axios.get("/api/userscore");
   },
+
+  
+  // Gets specific User by ID - DOESN'T SEEM TO WORK
+  getUserID: function () {
+    return axios.get("/api/users/:id");
+  },
+
   // Gets Get data on correct questions
   getData2: function () {
     return axios.get("/api/quizscore");
