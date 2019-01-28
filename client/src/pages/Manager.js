@@ -2,10 +2,15 @@ import React, { Component } from "react";
 import ManagerPage from "../components/ManagerPage";
 import NavTabsManager from "../components/NavTabsManager";
 import API from "../utils/API";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Chart from "react-google-charts";
 import Jumbotron from "../components/Jumbotron";
+=======
+// import { Link } from "react-router-dom";
+import { Row, Container } from "../components/Grid";
+>>>>>>> fa6208013200e59ffd37cf8019f3e28749aff9fc
 
 let str = "This is Manager Page";
 

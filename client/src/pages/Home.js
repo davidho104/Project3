@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import HomePage from "../components/HomePage";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 var str = "hi";
 class Home extends Component {

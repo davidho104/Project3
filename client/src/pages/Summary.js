@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import ManagerPage from "../components/ManagerPage";
+// import ManagerPage from "../components/ManagerPage";
 import Chart from "react-google-charts";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 
-let str = "Summary Page"
 
 // Set User Table options
 const options = ({
