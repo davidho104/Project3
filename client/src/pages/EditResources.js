@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import ManagerPage from "../components/ManagerPage";
+import NavTabsManager from "../components/NavTabsManager";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 
 
-var str = "Create Quiz Page"
+var str = "This is Edit Resource Page";
 
-class CreateQuiz extends Component {
+class EditResoruces extends Component {
   state = {
     books: [],
     title: "",
@@ -56,6 +57,7 @@ class CreateQuiz extends Component {
   render() {
     return (
       <Container fluid>
+      <NavTabsManager />
         <Row>
           <ManagerPage>
             {str}
@@ -66,5 +68,4 @@ class CreateQuiz extends Component {
   }
 }
 
-export default CreateQuiz;
-
+export default EditResoruces;

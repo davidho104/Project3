@@ -3,25 +3,25 @@ INSERT INTO roles (role) VALUES ("manager");
 INSERT INTO roles (role) VALUES ("employee");
 ------
 INSERT INTO users (username, firstName, lastName, picture, email, phone, permissionId) 
-VALUES ("michael", "Michael", "Scott", "michael.png", "michael@dm.com", "570-123-0001", "1");
+VALUES ("michael", "Michael", "Scott", "https://upload.wikimedia.org/wikipedia/en/d/dc/MichaelScott.png", "michael@dm.com", "570-123-0001", "1");
 INSERT INTO users (username, firstName, lastName, picture, email, phone, permissionId) 
-VALUES ("jim", "Jim", "Halpert", "jim.png", "jim@dm.com", "570-123-0002", "2");
+VALUES ("jim", "Jim", "Halpert", "https://upload.wikimedia.org/wikipedia/en/thumb/7/7e/Jim-halpert.jpg/220px-Jim-halpert.jpg", "jim@dm.com", "570-123-0002", "2");
 INSERT INTO users (username, firstName, lastName, picture, email, phone, permissionId) 
-VALUES ("dwight", "Dwight", "Schrute", "dwight.png", "dwight@dm.com", "570-123-0003", "2");
+VALUES ("dwight", "Dwight", "Schrute", "https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/Dwight_Schrute.jpg/220px-Dwight_Schrute.jpg", "dwight@dm.com", "570-123-0003", "2");
 INSERT INTO users (username, firstName, lastName, picture, email, phone, permissionId) 
-VALUES ("pam", "Pam", "Beasley", "pam.png", "pam@dm.com", "570-123-0004", "2");
+VALUES ("pam", "Pam", "Beesly", "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Pam_Beesley.jpg/220px-Pam_Beesley.jpg", "pam@dm.com", "570-123-0004", "2");
 INSERT INTO users (username, firstName, lastName, picture, email, phone, permissionId) 
-VALUES ("standley", "Stanley", "Hudson", "standley.png", "standley@dm.com", "570-123-0005", "2");
+VALUES ("standley", "Stanley", "Hudson", "https://upload.wikimedia.org/wikipedia/en/thumb/2/23/Stanley_Hudson.jpg/245px-Stanley_Hudson.jpg", "standley@dm.com", "570-123-0005", "2");
 INSERT INTO users (username, firstName, lastName, picture, email, phone, permissionId) 
-VALUES ("phyllis", "Phyllis", "Lapin", "phyllis.png", "phylllis@dm.com", "570-123-0006", "2");
+VALUES ("phyllis", "Phyllis", "Lapin", "https://upload.wikimedia.org/wikipedia/en/thumb/f/ff/Phyllis_Lapin-Vance.jpg/220px-Phyllis_Lapin-Vance.jpg", "phylllis@dm.com", "570-123-0006", "2");
 INSERT INTO users (username, firstName, lastName, picture, email, phone, permissionId) 
-VALUES ("angela", "Angela", "Martin", "angela.png", "angela@dm.com", "570-123-0007", "2");
+VALUES ("angela", "Angela", "Martin", "https://upload.wikimedia.org/wikipedia/en/thumb/0/0b/Angela_Martin.jpg/230px-Angela_Martin.jpg", "angela@dm.com", "570-123-0007", "2");
 INSERT INTO users (username, firstName, lastName, picture, email, phone, permissionId) 
-VALUES ("oscar", "Oscar", "Gutierrez", "oscar.png", "oscar@dm.com", "570-123-0008", "2");
+VALUES ("oscar", "Oscar", "Martinez", "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Oscar_Martinez_of_The_Office.jpg/250px-Oscar_Martinez_of_The_Office.jpg", "oscar@dm.com", "570-123-0008", "2");
 INSERT INTO users (username, firstName, lastName, picture, email, phone, permissionId) 
-VALUES ("kevin", "Kevin", "Malone", "kevin.png", "kevin@dm.com", "570-123-0009", "2");
+VALUES ("kevin", "Kevin", "Malone", "https://upload.wikimedia.org/wikipedia/en/thumb/6/60/Office-1200-baumgartner1.jpg/260px-Office-1200-baumgartner1.jpg", "kevin@dm.com", "570-123-0009", "2");
 INSERT INTO users (username, firstName, lastName, picture, email, phone, permissionId) 
-VALUES ("creed", "Creed", "Bratton", "creed.png", "creed@dm.com", "570-123-0010", "2");
+VALUES ("creed", "Creed", "Bratton", "https://upload.wikimedia.org/wikipedia/en/thumb/c/cd/CreedBratton%28TheOffice%29.jpg/220px-CreedBratton%28TheOffice%29.jpg", "creed@dm.com", "570-123-0010", "2");
 ---------------
 INSERT INTO quizzes (question, choices, answer) 
 VALUES ("If work hours end at 5:00 pm, how many hours after work should you stay to convince the people you are a real employee?", "0, 2, 4, Leave Early", "2");
@@ -38,7 +38,7 @@ VALUES ("When deciding what to wear to work, which color does your supervisor de
 INSERT INTO quizzes (question, choices, answer) 
 VALUES ("When your make a huge mistake who is the best person to blame it one?", "Kevin, Creed, Angela, Sam", "Angela");
 INSERT INTO quizzes (question, choices, answer) 
-VALUES ("Who keep’s stealing stuff from my desk?", "Creed, Angela, Sam, A former employee named Carl who has been hiding in the building for years", "A former employee named Carl who has been hiding in the building for years.");
+VALUES ("Who keep’s stealing stuff from my desk?", "Creed, Angela, Sam, A former employee named Carl who has been hiding in the building for years", "A former employee named Carl who has been hiding in the building for years");
 
 -----
 ----- Michael
