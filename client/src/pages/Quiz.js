@@ -127,7 +127,9 @@ class Quiz extends Component {
       incorrect: 0,
       message: "Answer These Questions",
       id: 0,
-      userId: 0,
+      userId: props.id,
+      firstname: props.firstname,
+      uid: props.uid,
       quizId: 0,
       userAnswer: '', 
       score: 0
@@ -185,7 +187,7 @@ class Quiz extends Component {
       // ADDING DATA TO DATABASE?????????
       API.saveChoice({
         //HOW DO WE GET USER ID??????
-              userId: 7,
+              userId: this.state.userId,
               quizId: this.state.current,
               userAnswer: choice, 
         //SCORE ISN'T READING OUT RIGHT
@@ -251,6 +253,7 @@ class Quiz extends Component {
       <Container fluid>
       <NavTabsEmployee />
         <Row>
+          <h1>Hi, {this.state.firstname}, </h1>
           <QuizPage>
             <div>
               <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />

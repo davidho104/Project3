@@ -4,7 +4,6 @@ import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Chart from "react-google-charts";
-import Jumbotron from "../components/Jumbotron";
 import NavTabsEmployee from "../components/NavTabsEmployee";
 
 
@@ -18,12 +17,19 @@ const options = ({
 });
 
 class Profile extends Component {
-  state = {
-    userId: 1,
-    picture: '',
-    userName: '',
-    table: []
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      uid: props.uid,
+      userId: props.id,
+      picture: '',
+      userName: '',
+      table: []
+    };
+    // this.handleClick = this.handleClick.bind(this);
+  }
+
 
   componentDidMount() {
     this.userName();
@@ -31,7 +37,7 @@ class Profile extends Component {
     // this.userIDTest();
   }
 
-// DOESN'T WORK, BUT DON'T KNOW WHY
+  // DOESN'T WORK, BUT DON'T KNOW WHY
   // userIDTest = id => {
   //   API.getUserID(id)
   //   .then(res => { 
@@ -43,82 +49,82 @@ class Profile extends Component {
 
   userName = () => {
     API.getData3()
-    .then(res => { 
-      // console.log("here is the data for name");
-      // console.log(res.data);
-      let userFullName = '';
-      let userPicture = '';
-      let numberOfUsers = res.data.length;
-      for (let i = 0; i < numberOfUsers; i++) {
-        // console.log("id of the user");
-        // console.log(this.state.userId);
-        if (this.state.userId === res.data[i].id) {
-          userFullName = res.data[i].firstName + ' ' + res.data[i].lastName;
-          // console.log(userFullName);
-          userPicture = res.data[i].picture;
-        } else {
-          // console.log("Its false");
+      .then(res => {
+        // console.log("here is the data for name");
+        // console.log(res.data);
+        let userFullName = '';
+        let userPicture = '';
+        let numberOfUsers = res.data.length;
+        for (let i = 0; i < numberOfUsers; i++) {
+          // console.log("id of the user");
+          // console.log(this.state.userId);
+          if (this.state.userId === res.data[i].id) {
+            userFullName = res.data[i].firstName + ' ' + res.data[i].lastName;
+            // console.log(userFullName);
+            userPicture = res.data[i].picture;
+          } else {
+            // console.log("Its false");
+          }
         }
-      }
-      console.log("Picture Path");
-      console.log(userPicture);
-      console.log("The User's full name is");
-      console.log(userFullName);
-      this.setState({ 
-        userName: userFullName,
-        picture: userPicture
+        console.log("Picture Path");
+        console.log(userPicture);
+        console.log("The User's full name is");
+        console.log(userFullName);
+        this.setState({
+          userName: userFullName,
+          picture: userPicture
+        })
       })
-    })
-    .catch(err => console.log(err));
+      .catch(err => console.log(err));
   };
 
   tabledata1 = () => {
     API.getData3()
-    .then(res => { 
-      console.log("here is the data for user table")
-      console.log(res.data);
-      let arr = [["", ""]];
-      let numberOfUsers = res.data.length;
-      // console.log("id of the user");
-      // console.log(this.state.userId);
-      for (let i = 0; i < numberOfUsers; i++) {
-        if (this.state.userId === res.data[i].id) {
-          // console.log("this is the id of the user");
-          // console.log(res.data[i].id);
-          console.log("this is the name of the user");
-          console.log(res.data[i].firstName);
-          let usernameArr = [];
-          usernameArr.push("User Name");
-          usernameArr.push(res.data[i].username);
-          arr.push(usernameArr);
-          let firstNameArr = [];
-          firstNameArr.push("First Name");
-          firstNameArr.push(res.data[i].firstName);
-          arr.push(firstNameArr);
-          let lastNameArr = [];
-          lastNameArr.push("Last Name");
-          lastNameArr.push(res.data[i].lastName);
-          arr.push(lastNameArr);
-          let phoneArr = [];
-          phoneArr.push("Phone Number");
-          phoneArr.push(res.data[i].phone);
-          arr.push(phoneArr);
-          let emailArr = [];
-          emailArr.push("Email");
-          emailArr.push(res.data[i].email);
-          arr.push(emailArr);
-          console.log("Table Array");
-          console.log(arr);
-        } 
-      }
-      this.setState({ 
-        table: arr
+      .then(res => {
+        console.log("here is the data for user table")
+        console.log(res.data);
+        let arr = [["", ""]];
+        let numberOfUsers = res.data.length;
+        // console.log("id of the user");
+        // console.log(this.state.userId);
+        for (let i = 0; i < numberOfUsers; i++) {
+          if (this.state.userId === res.data[i].id) {
+            // console.log("this is the id of the user");
+            // console.log(res.data[i].id);
+            console.log("this is the name of the user");
+            console.log(res.data[i].firstName);
+            let usernameArr = [];
+            usernameArr.push("User Name");
+            usernameArr.push(res.data[i].username);
+            arr.push(usernameArr);
+            let firstNameArr = [];
+            firstNameArr.push("First Name");
+            firstNameArr.push(res.data[i].firstName);
+            arr.push(firstNameArr);
+            let lastNameArr = [];
+            lastNameArr.push("Last Name");
+            lastNameArr.push(res.data[i].lastName);
+            arr.push(lastNameArr);
+            let phoneArr = [];
+            phoneArr.push("Phone Number");
+            phoneArr.push(res.data[i].phone);
+            arr.push(phoneArr);
+            let emailArr = [];
+            emailArr.push("Email");
+            emailArr.push(res.data[i].email);
+            arr.push(emailArr);
+            console.log("Table Array");
+            console.log(arr);
+          }
+        }
+        this.setState({
+          table: arr
+        })
       })
-    })
-    .catch(err => console.log(err));
+      .catch(err => console.log(err));
   };
 
-// 0:
+  // 0:
   // createdAt: "2019-01-24T14:32:09.000Z"
   // departmentId: null
   // email: "michael@dm.com"
@@ -132,7 +138,7 @@ class Profile extends Component {
   // updatedAt: null
   // username: "michael"
   // __proto__: Object
-// 1:
+  // 1:
   // createdAt: "2019-01-24T14:32:09.000Z"
   // departmentId: null
   // email: "jim@dm.com"
@@ -151,31 +157,32 @@ class Profile extends Component {
   render() {
     return (
       <Container fluid>
-      <NavTabsEmployee />
+        <NavTabsEmployee />
         <Row>
           <Col size="md-12">
-            <Jumbotron>
-            {/* <img src={'path/to/one.jpeg'} /> */}
-            <img src={this.state.picture} height="200" alt="" />
+            <div>
+              {/* <img src={'path/to/one.jpeg'} /> */}
+              <img src={this.state.picture} height="300" alt="" />
               {/* <img src={this.state.picture} /> */}
-              <h1>{this.state.userName}</h1>
-            </Jumbotron>
+              <h2>{this.state.userName}</h2>
+            </div>
           </Col>
         </Row>
-         {/* Table */}
-         <div size="md-12 text-center">
-            <Chart
-              width={'700px'}
-              height={'700px'}
-              chartType="Table"
-              loader={<div>Loading Chart</div>}
-              data={this.state.table}
-              options={{
-                // showRowNumber: true,
-                options
-              }}
-              rootProps={{ 'data-testid': '1' }}
-            />
+        <br></br>
+        {/* Table */}
+        <div size="md-12 text-center">
+          <Chart
+            width={'700px'}
+            height={'700px'}
+            chartType="Table"
+            loader={<div>Loading Chart</div>}
+            data={this.state.table}
+            options={{
+              // showRowNumber: true,
+              options
+            }}
+            rootProps={{ 'data-testid': '1' }}
+          />
         </div>
       </Container>
     );

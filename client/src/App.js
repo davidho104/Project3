@@ -25,15 +25,18 @@ import Test from "./pages/Test";
 
 
 var user = {
-  uid: "11111",
-  email: "jim@dm.com"
+  uid: "31115",
+  id: 2,
+  email: "jim@dm.com",
+  firstname: "Jim"
 }
 
 class App extends Component {
 
   state = {
     user,
-    isAuth: false
+    isAuth: true,
+    isManager: false
   }
 
   render() {
@@ -48,23 +51,58 @@ class App extends Component {
             <Route exact path="/helpemployee" component={HelpEmployee} />
             <Route exact path="/contact" component={Contact} />
             <Route exact path="/charts" component={Charts} />
-            <Route exact path="/manager" component={Manager} />
-            <Route exact path="/employee" component={Employee} />
-            <Route exact path="/quiz" component={Quiz} />
+
+            {/* <Route exact path="/manager" component={Manager} /> */}
+            <Route
+              path='/manager'
+              render={(props) => <Manager uid={this.state.user.uid}  firstname={this.state.user.firstname}/>}
+            />
+            
+
+            {/* <Route exact path="/employee" component={Employee} /> */}
+            <Route
+              path='/employee'
+              render={(props) => <Employee uid={this.state.user.uid}  firstname={this.state.user.firstname}/>}
+            />
+            
+            {/* <Route exact path="/quiz" component={Quiz} /> */}
+            <Route
+              path='/quiz'
+              render={(props) => <Quiz uid={this.state.user.uid}  id={this.state.user.id} firstname={this.state.user.firstname} />}
+            />
+
             <Route exact path="/home" component={Home} />
             <Route exact path="/editresources" component={EditResources} />
             <Route exact path="/resources" component={Resources} />
             <Route exact path="/landingpage" component={LandingPage} />
-            <Route exact path="/profile" component={Profile} />
-            <Route exact path="/profilemanager" component={ProfileManager} />
+
+            {/* <Route exact path="/profile" component={Profile} /> */}
+            <Route
+              path='/profile'
+              render={(props) => <Profile uid={this.state.user.uid}  id={this.state.user.id}/>}
+            />
+            
+            {/* <Route exact path="/profilemanager" component={ProfileManager} /> */}
+            <Route
+              path='/profilemanager'
+              render={(props) => <ProfileManager uid={this.state.user.uid}  id={this.state.user.id}/>}
+            />
+
             <Route exact path="/create" component={Create} />
             <Route exact path="/editquiz" component={EditQuiz} />
-            <Route exact path="/summary" component={Summary} />
+
+            {/* <Route exact path="/summary" component={Summary} /> */}
+            <Route
+              path='/summary'
+              render={(props) => <Summary uid={this.state.user.uid}  id={this.state.user.id}/>}
+            />            
+
             {/* <Route exact path="/test" component={Test} /> */}
             <Route
               path='/test'
-              render={(props) => <Test currentuser={this.state.user.uid} email={this.state.user.email} />}
+              render={(props) => <Test uid={this.state.user.uid}  id={this.state.user.id}/>}
             />
+
             <Route component={NoMatch} />
           </Switch>
         </div>
