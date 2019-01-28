@@ -5,6 +5,7 @@ import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
+import NavTabsEmployee from "../components/NavTabsEmployee";
 
 
 // Set User Table options
@@ -17,12 +18,17 @@ const options = ({
 });
 
 class Summary extends Component {
-  state = {
-    userId: 1,
-    totalQuestions: 0,
-    userName: '',
-    table: []
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      userId: props.id,
+      totalQuestions: 0,
+      userName: '',
+      table: []
+    };
+    // this.handleClick = this.handleClick.bind(this);
+}
 
   componentDidMount() {
     this.countQuestions();
@@ -209,12 +215,13 @@ class Summary extends Component {
   render() {
     return (
       <Container fluid>
+      <NavTabsEmployee />
         <Row>
           <Col size="md-12">
             <Jumbotron>
             <h1>{this.state.userName}</h1>
               <h2>
-                here are your answers and the correct answer for each wrong question
+                Here are your answers and the correct answer for each wrong question
               </h2>
             </Jumbotron>
           </Col>
