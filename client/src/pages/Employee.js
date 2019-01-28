@@ -5,7 +5,6 @@ import { Row, Container } from "../components/Grid";
 import NavTabsEmployee from "../components/NavTabsEmployee";
 import Jumbotron from "../components/Jumbotron";
 
-var str = "Greetings!  Welcome to your first day at the Dunder Mifflin Paper Company.";
 
 class Employee extends Component {
 
@@ -13,6 +12,7 @@ class Employee extends Component {
     super(props);
     this.state = {
       userId: props.id,
+      uid: props.uid,
       firstname: props.firstname,
       picture: '',
       userName: '',

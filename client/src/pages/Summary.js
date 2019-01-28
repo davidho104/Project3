@@ -22,6 +22,7 @@ class Summary extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: props.uid,
       userId: props.id,
       totalQuestions: 0,
       userName: '',

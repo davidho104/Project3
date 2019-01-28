@@ -4,7 +4,6 @@ import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Chart from "react-google-charts";
-import Jumbotron from "../components/Jumbotron";
 import NavTabsEmployee from "../components/NavTabsEmployee";
 
 
@@ -22,6 +21,7 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      uid: props.uid,
       userId: props.id,
       picture: '',
       userName: '',

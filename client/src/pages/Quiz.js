@@ -129,6 +129,7 @@ class Quiz extends Component {
       id: 0,
       userId: props.id,
       firstname: props.firstname,
+      uid: props.uid,
       quizId: 0,
       userAnswer: '', 
       score: 0
