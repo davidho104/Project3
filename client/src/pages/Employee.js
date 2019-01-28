@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import ManagerPage from "../components/ManagerPage";
-import NavTabsManager from "../components/NavTabsManager";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
+import NavTabsEmployee from "../components/NavTabsEmployee";
 
 
-var str = "This is Manager Page";
+var str = "This is Employee Page";
 
-class Manager extends Component {
+class Employee extends Component {
   state = {
     books: [],
     title: "",
@@ -57,7 +57,7 @@ class Manager extends Component {
   render() {
     return (
       <Container fluid>
-      <NavTabsManager />
+      <NavTabsEmployee />
         <Row>
           <ManagerPage>
             {str}
@@ -68,4 +68,4 @@ class Manager extends Component {
   }
 }
 
-export default Manager;
+export default Employee;

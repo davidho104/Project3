@@ -105,6 +105,15 @@ module.exports = function(app) {
       });
   });
 
+    // GET - select one by id
+    app.get("/users/:id", function(req, res) {
+      db.user
+        .findOne({ where: { id: req.params.id } })
+        .then(function(result) {
+          res.json(result);
+        });
+    });
+
   // POST - insert
   app.post("/users", function(req, res) {
     db.user.create(req.body).then(function(results) {

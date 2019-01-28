@@ -1,8 +1,10 @@
 import React from "react";
+import NavTabsManager from "../components/NavTabsManager";
 
 function About() {
   return (
     <div>
+      <NavTabsManager />
       <h1>About Page</h1>
       <p>
         Nunc pharetra finibus est at efficitur. Praesent sed congue diam. Integer gravida dui
