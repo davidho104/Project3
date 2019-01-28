@@ -105,7 +105,7 @@ class Profile extends Component {
           phoneArr.push(res.data[i].phone);
           arr.push(phoneArr);
           let emailArr = [];
-          emailArr.push("Phone Number");
+          emailArr.push("Email");
           emailArr.push(res.data[i].email);
           arr.push(emailArr);
           console.log("Table Array");
