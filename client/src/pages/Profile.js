@@ -21,6 +21,7 @@ const options = ({
 class Profile extends Component {
   state = {
     userId: 1,
+    picture: '',
     userName: '',
     table: []
   };
@@ -47,6 +48,7 @@ class Profile extends Component {
       // console.log("here is the data for name");
       // console.log(res.data);
       let userFullName = '';
+      let userPicture = '';
       let numberOfUsers = res.data.length;
       for (let i = 0; i < numberOfUsers; i++) {
         // console.log("id of the user");
@@ -54,14 +56,18 @@ class Profile extends Component {
         if (this.state.userId === res.data[i].id) {
           userFullName = res.data[i].firstName + ' ' + res.data[i].lastName;
           // console.log(userFullName);
+          userPicture = res.data[i].picture;
         } else {
           // console.log("Its false");
         }
       }
+      console.log("Picture Path");
+      console.log(userPicture);
       console.log("The User's full name is");
       console.log(userFullName);
       this.setState({ 
-        userName: userFullName
+        userName: userFullName,
+        picture: userPicture
       })
     })
     .catch(err => console.log(err));
@@ -150,6 +156,9 @@ class Profile extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
+            {/* <img src={'path/to/one.jpeg'} /> */}
+            <img src={this.state.picture} height="200"/>
+              {/* <img src={this.state.picture} /> */}
               <h1>{this.state.userName}</h1>
             </Jumbotron>
           </Col>
