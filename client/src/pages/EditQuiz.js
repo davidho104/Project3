@@ -4,8 +4,8 @@ import { Col, Row, Container } from "../components/Grid";
 import NavTabsManager from "../components/NavTabsManager";
 import Card from "../components/Card";
 import SearchForm from "../components/SearchForm";
-import { Input, TextArea, FormBtn2 } from "../components/InputForm";
-import { FormBtn } from "../components/Form";
+import { Input, FormBtn2 } from "../components/InputForm";
+// import { FormBtn } from "../components/Form";
 
 
 var question = "";

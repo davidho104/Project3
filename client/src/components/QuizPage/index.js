@@ -2,7 +2,6 @@ import React from "react";
 
 // let str = "This is a variable inside the component";
 
-let test = <div>test</div>;
 
 function QuizPage({ children }) {
   return (

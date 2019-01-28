@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import ManagerPage from "../components/ManagerPage";
+// import ManagerPage from "../components/ManagerPage";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Chart from "react-google-charts";
 import Jumbotron from "../components/Jumbotron";
 import NavTabsEmployee from "../components/NavTabsEmployee";
 
-let str = "Profile Page"
 
 // Set User Table options
 const options = ({
@@ -157,7 +156,7 @@ class Profile extends Component {
           <Col size="md-12">
             <Jumbotron>
             {/* <img src={'path/to/one.jpeg'} /> */}
-            <img src={this.state.picture} height="200"/>
+            <img src={this.state.picture} height="200" alt="" />
               {/* <img src={this.state.picture} /> */}
               <h1>{this.state.userName}</h1>
             </Jumbotron>
