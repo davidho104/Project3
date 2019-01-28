@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Charts from "./pages/Charts";
 import NoMatch from "./pages/NoMatch";
@@ -18,40 +18,58 @@ import Profile from "./pages/Profile";
 import ProfileManager from "./pages/ProfileManager";
 import Resources from "./pages/Resources";
 import EditResources from "./pages/EditResources";
-import NavTabs from "./components/NavTabs";
-import Background from "./officeBackground.jpg";
+import Test from "./pages/Test";
+// import NavTabs from "./components/NavTabs";
+// import Background from "./officeBackground.jpg";
+// import Nav from "./components/Nav";
 
-      // import Nav from "./components/Nav";
 
-function App() {
-  return (
-    <Router>
-      <div>
-        
-        <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/help" component={Help} />
-          <Route exact path="/helpemployee" component={HelpEmployee} />
-          <Route exact path="/contact" component={Contact} />
-          <Route exact path="/charts" component={Charts} />
-          <Route exact path="/manager" component={Manager} />
-          <Route exact path="/employee" component={Employee} />
-          <Route exact path="/quiz" component={Quiz} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/editresources" component={EditResources} />
-          <Route exact path="/resources" component={Resources} />
-          <Route exact path="/landingpage" component={LandingPage} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/profilemanager" component={ProfileManager} />
-          <Route exact path="/create" component={Create} />
-          <Route exact path="/editquiz" component={EditQuiz} />
-          <Route exact path="/summary" component={Summary} />
-          <Route component={NoMatch} />
-        </Switch>
-      </div>
-    </Router>
-  );
+var user = {
+  uid: "11111",
+  email: "jim@dm.com"
 }
 
+class App extends Component {
+
+  state = {
+    user,
+    isAuth: false
+  }
+
+  render() {
+    return (
+      <Router>
+        <div>
+
+          <Switch>
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/help" component={Help} />
+            <Route exact path="/helpemployee" component={HelpEmployee} />
+            <Route exact path="/contact" component={Contact} />
+            <Route exact path="/charts" component={Charts} />
+            <Route exact path="/manager" component={Manager} />
+            <Route exact path="/employee" component={Employee} />
+            <Route exact path="/quiz" component={Quiz} />
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/editresources" component={EditResources} />
+            <Route exact path="/resources" component={Resources} />
+            <Route exact path="/landingpage" component={LandingPage} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/profilemanager" component={ProfileManager} />
+            <Route exact path="/create" component={Create} />
+            <Route exact path="/editquiz" component={EditQuiz} />
+            <Route exact path="/summary" component={Summary} />
+            {/* <Route exact path="/test" component={Test} /> */}
+            <Route
+              path='/test'
+              render={(props) => <Test currentuser={this.state.user.uid} email={this.state.user.email} />}
+            />
+            <Route component={NoMatch} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
+}
 export default App;

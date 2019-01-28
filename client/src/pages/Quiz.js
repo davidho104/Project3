@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import QuizPage from "../components/QuizPage";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
+// import { Link } from "react-router-dom";
+import { Row, Container } from "../components/Grid";
 import NavTabsEmployee from "../components/NavTabsEmployee";
 
-let str = "Quiz Page";
 
 // use this template
 // https://codepen.io/Daanist/pen/LjLoWV
