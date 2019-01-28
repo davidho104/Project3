@@ -69,7 +69,7 @@ class Test extends Component {
                 <Row>
                     <ManagerPage>
                         {str}
-                        {this.props.currentuser}
+                        {this.props.uid}
                         {this.props.email}
                     </ManagerPage>
                 </Row>
