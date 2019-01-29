@@ -49,7 +49,6 @@ function Resources({ children }) {
       <p>For more information see</p>
      
         <a style = {linkStyle}href="https://www.dunder-mifflin/kevin-killed-himself">
-          git config http.postBuffer 52428800
           https://www.dunder-mifflin/kevin-killed-himself
         </a>
 
