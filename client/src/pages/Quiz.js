@@ -12,17 +12,19 @@ import NavTabsEmployee from "../components/NavTabsEmployee";
 function Question(props) {
   let style = {
     color: "blue",
+    width: "150%",
   }
   return (
     <h3 style={style} class="question">{props.dataSet.question}</h3>
   )
 }
 
+// radio buttons in answer box
 function Answer(props) {
   var style = {
     width: "100%",
     height: 30,
-    color: "blue"
+    color: "blue",
   }
   return (
     <div>
@@ -62,6 +64,7 @@ function QuizArea(props) {
 
 function TotalCorrect(props) {
   let style = {
+    align: "text-center",
     display: "inline-block",
     padding: "1em",
     background: "#eee",
