@@ -1,17 +1,31 @@
 import React from "react";
 
 const divStyle = {
-        WebkitTransition: 'all', // note the capital 'W' here
-        msTransition: 'all', // 'ms' is the only lowercase vendor prefix
-        color: 'black',
-        backgroundColor: 'white',
-        opacity: 0.7,
-        margin: "2rem",
-        padding: "1rem"
-      };
+  WebkitTransition: 'all', // note the capital 'W' here
+  msTransition: 'all', // 'ms' is the only lowercase vendor prefix
+  color: 'black',
+  backgroundColor: 'white',
+  opacity: 0.7,
+  margin: "2rem",
+  padding: "1rem"
+};
 
-var str = "All information presented above is subject to change at the discretion of Goldenface."
+const linkStyle = {
+  textDecoration: "none",
+  color: "black"
+};
+
+const strStyle = {
+  fontSize: "14px",
+  textAlign: "center",
+  paddingTop: "60px",
+  paddingBottom: "20px"
+};
+
+var str =
+  "All information presented above is subject to change at the discretion of Goldenface.";
 // var str = "This is a variable inside the component";
+
 function Resources({ children }) {
   return (
     <div style={divStyle}>
@@ -36,9 +50,10 @@ function Resources({ children }) {
         The blood stains are under my desk belong to your predecessor Kevin.
       </p>
       <p>For more information see</p>
-      <a href="https://www.dunder-mifflin/kevin-killed-himself">git config http.postBuffer 52428800
-        https://www.dunder-mifflin/kevin-killed-himself
-      </a>
+     
+        <a style = {linkStyle}href="https://www.dunder-mifflin/kevin-killed-himself">
+          https://www.dunder-mifflin/kevin-killed-himself
+        </a>
 
       <br />
       <br />
@@ -73,9 +88,10 @@ function Resources({ children }) {
       </p>
 
       <p>For more information see </p>
-      <a href="https://www.dunder-mifflin/sam-can-rot-in-hell">
-        https://www.dunder-mifflin/sam-can-rot-in-hell
-      </a>
+        <a style = {linkStyle}href="https://www.dunder-mifflin/sam-can-rot-in-hell">
+          https://www.dunder-mifflin/sam-can-rot-in-hell
+        </a>
+
       <br />
       <br />
       <h2>HOURS</h2>
@@ -87,10 +103,11 @@ function Resources({ children }) {
       </p>
 
       <p>For more information see </p>
-      <a href="https://www.dunder-mifflin/numer2-on-company-time">
+      <a style = {linkStyle}href="https://www.dunder-mifflin/numer2-on-company-time">
         {" "}
         https://www.dunder-mifflin/numer2-on-company-time
       </a>
+      
 
       <br />
       <br />
@@ -113,10 +130,11 @@ function Resources({ children }) {
       </p>
 
       <p>For more information see </p>
-      <a href="https://www.dunder-mifflin/i-know-what-you-did">
+      <a style = {linkStyle}href="https://www.dunder-mifflin/i-know-what-you-did">
         {" "}
         https://www.dunder-mifflin/i-know-what-you-did{" "}
       </a>
+      
 
       <br />
       <br />
@@ -136,13 +154,14 @@ function Resources({ children }) {
       </p>
 
       <p>For more information see </p>
-      <a href="https://www.dunder-mifflin/dont-steal-my-lunch">
+      <a style = {linkStyle}href="https://www.dunder-mifflin/dont-steal-my-lunch">
         {" "}
         https://www.dunder-mifflin/dont-steal-my-lunch{" "}
       </a>
+      
 
       <h2>{children}</h2>
-      <p>{str}</p>
+      <p style = {strStyle}>{str}</p>
     </div>
   );
 }
