@@ -1,12 +1,13 @@
 import React from "react";
 
 const divStyle = {
-  WebkitTransition: "all", // note the capital 'W' here
-  msTransition: "all", // 'ms' is the only lowercase vendor prefix
-  color: "black",
-  backgroundColor: "aliceBlue",
-  opacity: "0.6",
-  padding: 14
+  WebkitTransition: 'all', // note the capital 'W' here
+  msTransition: 'all', // 'ms' is the only lowercase vendor prefix
+  color: 'black',
+  backgroundColor: 'white',
+  opacity: 0.7,
+  margin: "2rem",
+  padding: "1rem"
 };
 
 const linkStyle = {

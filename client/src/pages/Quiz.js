@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import QuizPage from "../components/QuizPage";
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Row, Container } from "../components/Grid";
 import NavTabsEmployee from "../components/NavTabsEmployee";
 
@@ -73,7 +73,7 @@ function TotalCorrect(props) {
 }
 
 function TotalIncorrect(props) {
-  var style = {
+  let style = {
     display: "inline-block",
     padding: "1em",
     background: "#eee",
@@ -85,7 +85,7 @@ function TotalIncorrect(props) {
 }
 
 function ScoreArea(props) {
-  var style = {
+  let style = {
     width: "100%",
     display: "block",
     textAlign: "left",
@@ -107,16 +107,16 @@ class Quiz extends Component {
 
     let dataSet = [
       {
-          question: "Place-Holder Question To Make Things Work",
-          answers: [
-              "1",
-              "8",
-              "16",
-              "9"
-          ],
-          correct: 8
+        question: "Place-Holder Question To Make Things Work",
+        answers: [
+          "1",
+          "8",
+          "16",
+          "9"
+        ],
+        correct: 8
       },
-  ];
+    ];
 
 
     this.state = {
@@ -131,7 +131,7 @@ class Quiz extends Component {
       firstname: props.firstname,
       uid: props.uid,
       quizId: 0,
-      userAnswer: '', 
+      userAnswer: '',
       score: 0
     }
     this.handleClick = this.handleClick.bind(this)
@@ -141,7 +141,7 @@ class Quiz extends Component {
   componentDidMount() {
     this.questionData1();
   }
-  
+
   questionData1 = () => {
     API.getQuizData()
       .then(res => {
@@ -180,68 +180,54 @@ class Quiz extends Component {
     let numQuestions = this.state.dataSet.length;
     // console.log("number of questions");
     // console.log(numQuestions);
-// score, correct, incorrect
+    // score, correct, incorrect
     // figure out if they picked the right answer
 
     const handleSubmit = () => {
-      // ADDING DATA TO DATABASE?????????
+      // ADDING DATA TO DATABASE
       API.saveChoice({
-        //HOW DO WE GET USER ID??????
-              userId: this.state.userId,
-              quizId: this.state.current,
-              userAnswer: choice, 
-        //SCORE ISN'T READING OUT RIGHT
-              score: this.state.score
-            })
-              .then(res => console.log(res))
-              .catch(err => console.log(err));
-          }
+        userId: this.state.userId,
+        quizId: this.state.current,
+        userAnswer: choice,
+        score: this.state.score
+      })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
 
     if (choice === this.state.dataSet[this.state.current].correct) {
       console.log(choice === this.state.dataSet[this.state.current].correct)
       console.log("User Picked: " + choice);
       console.log("Correct Answer: " + this.state.dataSet[this.state.current].correct);
-      this.setState({ 
+      this.setState({
         correct: this.state.correct + 1,
         score: 1
       },
-      () => handleSubmit())
+        () => handleSubmit())
     } else {
       console.log("User Picked: " + choice);
       console.log("Correct Answer: " + this.state.dataSet[this.state.current].correct);
-      this.setState({ 
+      this.setState({
         incorrect: this.state.incorrect + 1,
         message: "The Correct Answer for the last question is " + this.state.dataSet[this.state.current].correct,
         score: 0,
       },
-      () => handleSubmit()
+        () => handleSubmit()
       )
     }
 
-      // end game if out of questions
-    if (this.state.current === numQuestions-1) {
+    // end game if out of questions
+    if (this.state.current === numQuestions - 1) {
       this.setState({
         playing: false
       })
-    } 
-      this.setState({ current: this.state.current + 1 })
-    
+    }
+    this.setState({ current: this.state.current + 1 })
+
   }
 
-  // ------ OLD STUFF -----------------------
 
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
-
-  // logChange(e) {
-  //   this.setState({[e.target.name]: e.target.value});  
-  // }
-
-// ------ RENDER --------------------------------
+  // ------ RENDER --------------------------------
 
   render() {
     console.log(this.state)
@@ -251,17 +237,17 @@ class Quiz extends Component {
     // console.log(this.state.current === (this.state.dataSet.length - 1))
     return (
       <Container fluid>
-      <NavTabsEmployee />
-        <Row>
-          <h1>Hi, {this.state.firstname}, </h1>
-          <QuizPage>
-            <div>
-              <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
-              <h2>{this.state.message}</h2>
-              {this.state.playing && <QuizArea handleClick={this.handleClick} dataSet={this.state.dataSet[this.state.current]} />}
-            </div>
-          </QuizPage>
-        </Row>
+        <NavTabsEmployee />
+          <Row>
+            <h1>Hi, {this.state.firstname}, </h1>
+            <QuizPage>
+              <div>
+                <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
+                <h2>{this.state.message}</h2>
+                {this.state.playing && <QuizArea handleClick={this.handleClick} dataSet={this.state.dataSet[this.state.current]} />}
+              </div>
+            </QuizPage>
+          </Row>
       </Container>
     );
   }

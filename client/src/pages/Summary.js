@@ -221,10 +221,12 @@ class Summary extends Component {
             </Jumbotron>
           </Col>
         </Row>
-
-        {/* https://react-google-charts.com/table-chart */}
-
             {/* Table */}
+            <div           
+        style={{
+            position: 'absolute', left: '50%',
+            transform: 'translate(-50%)'}}
+        >
         <div size="md-12 text-center">
             <Chart
               width={'700px'}
@@ -238,6 +240,7 @@ class Summary extends Component {
               }}
               rootProps={{ 'data-testid': '1' }}
             />
+        </div>
         </div>
         <Row>
           <Col size="md-2">

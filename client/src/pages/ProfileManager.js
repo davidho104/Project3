@@ -158,6 +158,11 @@ class ProfileManager extends Component {
     return (
       <Container fluid>
         <NavTabsManager />
+        <div           
+        style={{
+            position: 'absolute', left: '50%',
+            transform: 'translate(-20%)'}}
+        >
         <Row>
           <Col size="md-12">
             <div>
@@ -183,6 +188,7 @@ class ProfileManager extends Component {
             }}
             rootProps={{ 'data-testid': '1' }}
           />
+        </div>
         </div>
       </Container>
     );
