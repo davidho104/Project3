@@ -5,6 +5,10 @@ const divStyle = {
         WebkitTransition: 'all', // note the capital 'W' here
         msTransition: 'all', // 'ms' is the only lowercase vendor prefix
         color: 'black',
+        backgroundColor: 'white',
+        opacity: 0.7,
+        margin: "2rem",
+        padding: "1rem"
       };
 
 var str = "All information presented above is subject to change at the discretion of Goldenface."

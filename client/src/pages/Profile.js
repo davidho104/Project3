@@ -124,43 +124,18 @@ class Profile extends Component {
       .catch(err => console.log(err));
   };
 
-  // 0:
-  // createdAt: "2019-01-24T14:32:09.000Z"
-  // departmentId: null
-  // email: "michael@dm.com"
-  // firstName: "Michael"
-  // id: 1
-  // lastName: "Scott"
-  // permissionId: 1
-  // phone: "570-123-0001"
-  // picture: "michael.png"
-  // results: (8) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-  // updatedAt: null
-  // username: "michael"
-  // __proto__: Object
-  // 1:
-  // createdAt: "2019-01-24T14:32:09.000Z"
-  // departmentId: null
-  // email: "jim@dm.com"
-  // firstName: "Jim"
-  // id: 2
-  // lastName: "Halpert"
-  // permissionId: 2
-  // phone: "570-123-0002"
-  // picture: "jim.png"
-  // results: (8) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
-  // updatedAt: null
-  // username: "jim"
-  // __proto__: Object
-
-
   render() {
     return (
       <Container fluid>
         <NavTabsEmployee />
+        <div           
+        style={{
+            position: 'absolute', left: '50%',
+            transform: 'translate(-30%)'}}
+        >
         <Row>
           <Col size="md-12">
-            <div>
+            <div >
               {/* <img src={'path/to/one.jpeg'} /> */}
               <img src={this.state.picture} height="300" alt="" />
               {/* <img src={this.state.picture} /> */}
@@ -183,6 +158,7 @@ class Profile extends Component {
             }}
             rootProps={{ 'data-testid': '1' }}
           />
+        </div>
         </div>
       </Container>
     );

@@ -6,6 +6,15 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import NavTabsManager from "../components/NavTabsManager";
 
+const divStyle = {
+  WebkitTransition: 'all', // note the capital 'W' here
+  msTransition: 'all', // 'ms' is the only lowercase vendor prefix
+  color: 'black',
+  backgroundColor: 'white',
+  margin: "2rem",
+  padding: "1rem"
+};
+
   // Set chart 1 options
   const options1 = (questions) => ({
     title: "User Scores",
@@ -202,8 +211,7 @@ class Charts extends Component {
             </Jumbotron>
           </Col>
         </Row>
-
-        <div size="md-12 text-center">
+        <div size="md-12 text-center" style={divStyle}>
             {/* the 1st chart */}
             <Chart chartType="BarChart" id="chart" 
             loader={<div>Loading Chart</div>}
@@ -212,7 +220,7 @@ class Charts extends Component {
             />
         </div>
 
-        <div size="md-12 text-center">
+        <div size="md-12 text-center" style={divStyle}>
             {/* the 2nd chart */}
             <Chart chartType="BarChart" id="chart" 
             loader={<div>Loading Chart</div>}
@@ -228,7 +236,10 @@ class Charts extends Component {
         {/* https://react-google-charts.com/table-chart */}
 
             {/* Table */}
-        <div size="md-12 text-center">
+        <div size="md-12 text-center"           style={{
+            position: 'absolute', left: '50%',
+            transform: 'translate(-40%)'
+          }}>
             <Chart
               width={'500px'}
               height={'300px'}

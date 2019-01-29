@@ -65,38 +65,41 @@ class Manager extends Component {
       .catch(err => console.log(err));
   };
 
-  
+
   render() {
     return (
       <Container fluid>
         <NavTabsManager />
-        <div className='opacContainer'>
-        <div className='opacContainer'>
-        <Row>
-          <h1>Hi, {this.state.firstname},</h1>
-        </Row>
-        <Row>
-          <h1>All Employees:</h1>
-        </Row>
-        <Row>
-          {/* Table */}
-          <div size="md-12 text-center">
-            <Chart
-              width={'700px'}
-              height={'700px'}
-              chartType="Table"
-              loader={<div>Loading Chart</div>}
-              data={this.state.table}
-              options={{
-                // showRowNumber: true,
-                options
-              }}
-              rootProps={{ 'data-testid': '1' }}
-            />
-          </div>
 
-        </Row>
-        </div>
+        <div
+          style={{
+            position: 'absolute', left: '50%',
+            transform: 'translate(-20%)'
+          }}
+      
+          <Row>
+            <h1>Hi, {this.state.firstname},</h1>
+          </Row>
+          <Row>
+            <h1>All Employees:</h1>
+          </Row>
+          <Row>
+            {/* Table */}
+            <div size="md-12 text-center">
+              <Chart
+                width={'700px'}
+                height={'700px'}
+                chartType="Table"
+                loader={<div>Loading Chart</div>}
+                data={this.state.table}
+                options={{
+                  // showRowNumber: true,
+                  options
+                }}
+                rootProps={{ 'data-testid': '1' }}
+              />
+            </div>
+          </Row>
         </div>
       </Container>
     );

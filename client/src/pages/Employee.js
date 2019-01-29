@@ -34,6 +34,7 @@ class Employee extends Component {
           <h2>This is your first assignment: click on Quiz tab above.</h2>
         </div>
         </Jumbotron>
+        <Row>
         </Row>
         </div>
       </Container>
