@@ -13,7 +13,7 @@ function Question(props) {
   let style = {
     color: "blue",
 
-      position: 'absolute', left: '50%',
+      position: 'absolute', left: '60%',
       transform: 'translate(-20%)'
 
   }
@@ -54,7 +54,7 @@ function QuizArea(props) {
     textAlign: "center",
     boxSizing: "border-box",
     float: "center",
-    padding: "0 2em",
+    padding: "1em",
   }
   return (
     <div style={style}>
@@ -92,8 +92,8 @@ function ScoreArea(props) {
   let style = {
     width: "100%",
     display: "block",
-    textAlign: "left",
-    float: "left",
+    textAlign: "center",
+    float: "center",
     padding: "1em"
   }
   return (
@@ -242,7 +242,7 @@ class Quiz extends Component {
     return (
       <Container fluid>
         <NavTabsEmployee />
-          <dev           style={{
+          <dev style={{
             position: 'absolute', left: '50%',
             transform: 'translate(-60%)',
           }}>
