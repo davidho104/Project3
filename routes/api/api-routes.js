@@ -341,7 +341,8 @@ module.exports = function(app) {
   // Function to collect data for the first TABLE
   function getData3(callback) {
     db.user.findAll({
-      include: [{ model: db.result}]
+      include: [{ model: db.result}],
+      // include: [{ model: db.quiz}]
     }).then(res=>callback(res))
   }
 
