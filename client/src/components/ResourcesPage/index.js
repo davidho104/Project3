@@ -4,7 +4,7 @@ const divStyle = {
   WebkitTransition: "all", // note the capital 'W' here
   msTransition: "all", // 'ms' is the only lowercase vendor prefix
   color: "black",
-  backgroundColor: "white",
+  backgroundColor: "aliceBlue",
   opacity: "0.6",
   padding: 14
 };
@@ -16,7 +16,9 @@ const linkStyle = {
 
 const strStyle = {
   fontSize: "14px",
-  textAlign: "center"
+  textAlign: "center",
+  paddingTop: "60px",
+  paddingBottom: "20px"
 };
 
 var str =
