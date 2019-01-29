@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import ManagerPage from "../components/ManagerPage";
+import Resources from "../components/Resources";
 import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Row, Container } from "../components/Grid";
 import NavTabsEmployee from "../components/NavTabsEmployee";
 
 
-var str = "Resources Page"
+let str = "Resources Page"
 
-class Resources extends Component {
+class Resources1 extends Component {
   state = {
     books: [],
     title: "",
@@ -59,9 +59,9 @@ class Resources extends Component {
       <Container fluid>
       <NavTabsEmployee />
         <Row>
-          <ManagerPage>
+          <Resources>
             {str}
-          </ManagerPage>
+          </Resources>
         </Row>
       </Container>
     );
