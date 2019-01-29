@@ -12,6 +12,10 @@ import NavTabsEmployee from "../components/NavTabsEmployee";
 function Question(props) {
   let style = {
     color: "blue",
+
+      position: 'absolute', left: '50%',
+      transform: 'translate(-20%)'
+
   }
   return (
     <h3 style={style} class="question">{props.dataSet.question}</h3>
@@ -19,7 +23,7 @@ function Question(props) {
 }
 
 function Answer(props) {
-  var style = {
+  let style = {
     width: "100%",
     height: 30,
     color: "blue"
@@ -45,12 +49,12 @@ function AnswerList(props) {
 
 function QuizArea(props) {
   let style = {
-    width: "30%",
+    width: "10%",
     display: "block",
     textAlign: "center",
     boxSizing: "border-box",
     float: "center",
-    padding: "0 2em"
+    padding: "0 2em",
   }
   return (
     <div style={style}>
@@ -238,16 +242,21 @@ class Quiz extends Component {
     return (
       <Container fluid>
         <NavTabsEmployee />
+          <dev           style={{
+            position: 'absolute', left: '50%',
+            transform: 'translate(-60%)',
+          }}>
           <Row>
             <h1>Hi, {this.state.firstname}, </h1>
-            <QuizPage>
-              <div>
+            <QuizPage >
+              <div style={{background: "white", padding: "1rem"}}>
                 <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
                 <h2>{this.state.message}</h2>
                 {this.state.playing && <QuizArea handleClick={this.handleClick} dataSet={this.state.dataSet[this.state.current]} />}
               </div>
             </QuizPage>
           </Row>
+          </dev>
       </Container>
     );
   }

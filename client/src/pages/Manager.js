@@ -73,7 +73,8 @@ class Manager extends Component {
         <div
           style={{
             position: 'absolute', left: '50%',
-            transform: 'translate(-20%)'
+            transform: 'translate(-20%)',
+            background: "white"
           }}
         >
           <Row>
