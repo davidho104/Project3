@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 
 
-var str = "Create Page"
-
 class Create extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +11,7 @@ class Create extends Component {
   }
   handleClick = (e) => {
     let employeePicked;
-    if (e.target.id == "employeePick") {
+    if (e.target.id === "employeePick") {
       employeePicked = true;
     } else {
       employeePicked = false;
