@@ -13,6 +13,8 @@ function Question(props) {
   let style = {
     color: "blue",
     width: "150%",
+    position: 'absolute', left: '30%',
+    transform: 'translate(-20%)'
   }
   return (
     <h3 style={style} class="question">{props.dataSet.question}</h3>
@@ -241,10 +243,10 @@ class Quiz extends Component {
     return (
       <Container fluid>
       <NavTabsEmployee />
-      <div className='opacContainer'>
+      <div className='opacContainer' >
         <Row>
-          <h1>Hi, {this.state.firstname}, </h1>
-          <QuizPage>
+          <h1 >Hi, {this.state.firstname}, </h1>
+          <QuizPage >
             <div>
               <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
               <h2>{this.state.message}</h2>
