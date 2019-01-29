@@ -73,20 +73,20 @@ class Manager extends Component {
 
         <div
           style={{
-            position: 'absolute', left: '50%',
+            position: 'absolute', left: '40%',
             transform: 'translate(-20%)',
             background: "white"
           }}>
       
           <Row>
-            <h1>Hi, {this.state.firstname},</h1>
+            <h1 style={{margin: "2rem"}}>Hi, {this.state.firstname},</h1>
           </Row>
           <Row>
-            <h1>All Employees:</h1>
+            <h1 style={{margin: "2rem"}}>All Employees:</h1>
           </Row>
           <Row>
             {/* Table */}
-            <div size="md-12 text-center">
+            <div size="md-12 text-center" style={{margin: "2rem"}}>
               <Chart
                 width={'700px'}
                 height={'700px'}
