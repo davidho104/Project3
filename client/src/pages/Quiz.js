@@ -13,6 +13,8 @@ function Question(props) {
   let style = {
     color: "blue",
     width: "150%",
+    position: 'absolute', left: '30%',
+    transform: 'translate(-20%)'
   }
   return (
     <h3 style={style} class="question">{props.dataSet.question}</h3>
@@ -21,7 +23,7 @@ function Question(props) {
 
 // radio buttons in answer box
 function Answer(props) {
-  var style = {
+  let style = {
     width: "100%",
     height: 30,
     color: "blue",
@@ -47,12 +49,12 @@ function AnswerList(props) {
 
 function QuizArea(props) {
   let style = {
-    width: "30%",
+    width: "10%",
     display: "block",
     textAlign: "center",
     boxSizing: "border-box",
     float: "center",
-    padding: "0 2em"
+    padding: "1em",
   }
   return (
     <div style={style}>
@@ -91,8 +93,8 @@ function ScoreArea(props) {
   let style = {
     width: "100%",
     display: "block",
-    textAlign: "left",
-    float: "left",
+    textAlign: "center",
+    float: "center",
     padding: "1em"
   }
   return (
@@ -241,10 +243,10 @@ class Quiz extends Component {
     return (
       <Container fluid>
       <NavTabsEmployee />
-      <div className='opacContainer'>
+      <div className='opacContainer' >
         <Row>
-          <h1>Hi, {this.state.firstname}, </h1>
-          <QuizPage>
+          <h1 >Hi, {this.state.firstname}, </h1>
+          <QuizPage >
             <div>
               <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
               <h2>{this.state.message}</h2>
