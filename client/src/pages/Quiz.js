@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import QuizPage from "../components/QuizPage";
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Row, Container } from "../components/Grid";
 import NavTabsEmployee from "../components/NavTabsEmployee";
 
@@ -73,7 +73,7 @@ function TotalCorrect(props) {
 }
 
 function TotalIncorrect(props) {
-  var style = {
+  let style = {
     display: "inline-block",
     padding: "1em",
     background: "#eee",
@@ -85,7 +85,7 @@ function TotalIncorrect(props) {
 }
 
 function ScoreArea(props) {
-  var style = {
+  let style = {
     width: "100%",
     display: "block",
     textAlign: "left",
@@ -184,18 +184,16 @@ class Quiz extends Component {
     // figure out if they picked the right answer
 
     const handleSubmit = () => {
-      // ADDING DATA TO DATABASE?????????
+      // ADDING DATA TO DATABASE
       API.saveChoice({
-        //HOW DO WE GET USER ID??????
               userId: this.state.userId,
               quizId: this.state.current,
               userAnswer: choice, 
-        //SCORE ISN'T READING OUT RIGHT
               score: this.state.score
             })
               .then(res => console.log(res))
               .catch(err => console.log(err));
-          }
+    }
 
     if (choice === this.state.dataSet[this.state.current].correct) {
       console.log(choice === this.state.dataSet[this.state.current].correct)
@@ -228,18 +226,6 @@ class Quiz extends Component {
     
   }
 
-  // ------ OLD STUFF -----------------------
-
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
-
-  // logChange(e) {
-  //   this.setState({[e.target.name]: e.target.value});  
-  // }
 
 // ------ RENDER --------------------------------
 

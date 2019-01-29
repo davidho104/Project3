@@ -6,7 +6,7 @@ import NavTabsManager from "../components/NavTabsManager";
 import { Row, Container } from "../components/Grid";
 
 
-var str = "This is Edit Resource Page";
+var str = "This is Edit Study Plan Page";
 
 class EditResoruces extends Component {
   state = {

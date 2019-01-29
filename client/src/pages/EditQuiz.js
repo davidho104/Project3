@@ -7,16 +7,19 @@ import SearchForm from "../components/SearchForm";
 import { Input, FormBtn2 } from "../components/InputForm";
 // import { FormBtn } from "../components/Form";
 
-
-var question = "";
-var choices = "";
-var answer = "";
+let question = "";
+let choices = "";
+let answer = "";
 
 class EditQuiz extends Component {
   state = {
     result: [],
-    search: ""
+    search: "",
+    question: "",
+    choices: "",
+    answer: ""
   };
+  // this.handleClick = this.handleClick.bind(this)
 
 
   componentDidMount() {
@@ -45,6 +48,8 @@ class EditQuiz extends Component {
   };
 
 
+
+
   // When the form is submitted, search the OMDB API for the value of `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
@@ -53,16 +58,19 @@ class EditQuiz extends Component {
 
 
   handleSaveSubmit = event => {
-
+    event.preventDefault();
+    console.log(question)
     API.saveQuizData({
-      question: question,
-      choices: choices,
-      answer: answer
+      question: this.state.question,
+      choices: this.state.choices,
+      answer: this.state.answer
     })
-      .then(res => { console.log(res) })
+      .then(res => { 
+        console.log(res) 
+      })
       .catch(err => console.log(err));
-
   };
+
 
   render() {
     return (
@@ -77,7 +85,6 @@ class EditQuiz extends Component {
               <div>{item.choices} </div>
               <div>{item.answer}</div>
               </Card>
-
 
             })}
 
@@ -95,9 +102,23 @@ class EditQuiz extends Component {
             <Card heading="Input">
               <Input
                 value={this.state.search}
+                // value={this.state.question}
                 handleInputChange={this.handleInputChange}
                 handleFormSubmit={this.handleFormSubmit}
+                name="question"
               />
+              {/* <Input
+                value={this.state.choices}
+                handleInputChange={this.handleInputChange}
+                handleFormSubmit={this.handleFormSubmit}
+                name="choices"
+              />
+              <Input
+                value={this.state.answer}
+                handleInputChange={this.handleInputChange}
+                handleFormSubmit={this.handleFormSubmit}
+                name="answer"
+              /> */}
               <FormBtn2
 
                 onClick={() => {
