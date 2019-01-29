@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { Row, Container } from "../components/Grid";
 import NavTabsEmployee from "../components/NavTabsEmployee";
 import Jumbotron from "../components/Jumbotron";
-
+import "../style.css";
 
 class Employee extends Component {
 
@@ -24,8 +24,9 @@ class Employee extends Component {
   
   render() {
     return (
-      <Container fluid>
+      <Container>
       <NavTabsEmployee />
+      <div className='opacContainer2'>
         <Row>
           <Jumbotron>
         <h2>Greetings! {this.state.firstname}. Welcome to your first day at the Dunder Mifflin Paper Company.</h2>
@@ -34,6 +35,7 @@ class Employee extends Component {
         </div>
         </Jumbotron>
         </Row>
+        </div>
       </Container>
     );
   }

@@ -1,18 +1,17 @@
 import React from "react";
+import '../../style.css';
 
 const divStyle = {
         WebkitTransition: 'all', // note the capital 'W' here
         msTransition: 'all', // 'ms' is the only lowercase vendor prefix
         color: 'black',
-        backgroundColor: 'white',
-        opacity: 0.5
       };
 
 var str = "All information presented above is subject to change at the discretion of Goldenface."
 // var str = "This is a variable inside the component";
 function Resources({ children }) {
   return (
-    <div style={divStyle}>
+    <div className='opacContainer' style={divStyle}>
       <h1>Resources for Study</h1>
       <br />
       <br />

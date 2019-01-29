@@ -4,7 +4,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Row, Container } from "../components/Grid";
 import NavTabsEmployee from "../components/NavTabsEmployee";
-
+import '../style.css';
 
 // use this template
 // https://codepen.io/Daanist/pen/LjLoWV
@@ -238,6 +238,7 @@ class Quiz extends Component {
     return (
       <Container fluid>
       <NavTabsEmployee />
+      <div className='opacContainer'>
         <Row>
           <h1>Hi, {this.state.firstname}, </h1>
           <QuizPage>
@@ -248,6 +249,7 @@ class Quiz extends Component {
             </div>
           </QuizPage>
         </Row>
+        </div>
       </Container>
     );
   }
