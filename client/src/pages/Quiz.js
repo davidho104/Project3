@@ -4,7 +4,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Row, Container } from "../components/Grid";
 import NavTabsEmployee from "../components/NavTabsEmployee";
-
+import '../style.css';
 
 // use this template
 // https://codepen.io/Daanist/pen/LjLoWV
@@ -240,17 +240,19 @@ class Quiz extends Component {
     // console.log(this.state.current === (this.state.dataSet.length - 1))
     return (
       <Container fluid>
-        <NavTabsEmployee />
-          <Row>
-            <h1>Hi, {this.state.firstname}, </h1>
-            <QuizPage>
-              <div>
-                <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
-                <h2>{this.state.message}</h2>
-                {this.state.playing && <QuizArea handleClick={this.handleClick} dataSet={this.state.dataSet[this.state.current]} />}
-              </div>
-            </QuizPage>
-          </Row>
+      <NavTabsEmployee />
+      <div className='opacContainer'>
+        <Row>
+          <h1>Hi, {this.state.firstname}, </h1>
+          <QuizPage>
+            <div>
+              <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
+              <h2>{this.state.message}</h2>
+              {this.state.playing && <QuizArea handleClick={this.handleClick} dataSet={this.state.dataSet[this.state.current]} />}
+            </div>
+          </QuizPage>
+        </Row>
+        </div>
       </Container>
     );
   }
