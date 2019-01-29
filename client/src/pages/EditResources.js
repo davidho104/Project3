@@ -4,16 +4,16 @@ import NavTabsManager from "../components/NavTabsManager";
 // import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Row, Container } from "../components/Grid";
+import "../style.css";
 
-
-var str = "This is Edit Study Plan Page";
+var str = "Here is where you can edit the study plans";
 
 class EditResoruces extends Component {
   state = {
-    books: [],
+    plans: [],
     title: "",
-    author: "",
-    synopsis: ""
+    creator: "",
+    summary: ""
   };
 
   
@@ -22,11 +22,13 @@ class EditResoruces extends Component {
     return (
       <Container fluid>
       <NavTabsManager />
+      <div className='opacContainer'>
         <Row>
           <ManagerPage>
             {str}
           </ManagerPage>
         </Row>
+        </div>
       </Container>
     );
   }

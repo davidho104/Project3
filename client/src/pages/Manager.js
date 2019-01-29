@@ -5,7 +5,7 @@ import API from "../utils/API";
 import Chart from "react-google-charts";
 import { Row, Container } from "../components/Grid";
 // import Jumbotron from "../components/Jumbotron";
-
+import '../style.css';
 
 // Set User Table options
 const options = ({
@@ -70,13 +70,14 @@ class Manager extends Component {
     return (
       <Container fluid>
         <NavTabsManager />
+
         <div
           style={{
             position: 'absolute', left: '50%',
             transform: 'translate(-20%)',
             background: "white"
-          }}
-        >
+          }}>
+      
           <Row>
             <h1>Hi, {this.state.firstname},</h1>
           </Row>

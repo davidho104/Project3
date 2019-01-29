@@ -1,6 +1,8 @@
 import React from "react";
+import '../../style.css';
 
 const divStyle = {
+  textAlign: "center",
   WebkitTransition: 'all', // note the capital 'W' here
   msTransition: 'all', // 'ms' is the only lowercase vendor prefix
   color: 'black',
@@ -28,7 +30,7 @@ var str =
 
 function Resources({ children }) {
   return (
-    <div style={divStyle}>
+    <div className='opacContainer' style={divStyle}>
       <h1>Resources for Study</h1>
       <br />
       <br />

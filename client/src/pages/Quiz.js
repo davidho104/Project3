@@ -4,7 +4,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Row, Container } from "../components/Grid";
 import NavTabsEmployee from "../components/NavTabsEmployee";
-
+import '../style.css';
 
 // use this template
 // https://codepen.io/Daanist/pen/LjLoWV
@@ -12,21 +12,19 @@ import NavTabsEmployee from "../components/NavTabsEmployee";
 function Question(props) {
   let style = {
     color: "blue",
-
-      position: 'absolute', left: '60%',
-      transform: 'translate(-20%)'
-
+    width: "150%",
   }
   return (
     <h3 style={style} class="question">{props.dataSet.question}</h3>
   )
 }
 
+// radio buttons in answer box
 function Answer(props) {
   let style = {
     width: "100%",
     height: 30,
-    color: "blue"
+    color: "blue",
   }
   return (
     <div>
@@ -66,6 +64,7 @@ function QuizArea(props) {
 
 function TotalCorrect(props) {
   let style = {
+    align: "text-center",
     display: "inline-block",
     padding: "1em",
     background: "#eee",
@@ -241,22 +240,19 @@ class Quiz extends Component {
     // console.log(this.state.current === (this.state.dataSet.length - 1))
     return (
       <Container fluid>
-        <NavTabsEmployee />
-          <dev style={{
-            position: 'absolute', left: '50%',
-            transform: 'translate(-60%)',
-          }}>
-          <Row>
-            <h1>Hi, {this.state.firstname}, </h1>
-            <QuizPage >
-              <div style={{background: "white", padding: "1rem"}}>
-                <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
-                <h2>{this.state.message}</h2>
-                {this.state.playing && <QuizArea handleClick={this.handleClick} dataSet={this.state.dataSet[this.state.current]} />}
-              </div>
-            </QuizPage>
-          </Row>
-          </dev>
+      <NavTabsEmployee />
+      <div className='opacContainer'>
+        <Row>
+          <h1>Hi, {this.state.firstname}, </h1>
+          <QuizPage>
+            <div>
+              <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
+              <h2>{this.state.message}</h2>
+              {this.state.playing && <QuizArea handleClick={this.handleClick} dataSet={this.state.dataSet[this.state.current]} />}
+            </div>
+          </QuizPage>
+        </Row>
+        </div>
       </Container>
     );
   }
