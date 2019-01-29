@@ -12,9 +12,9 @@ import '../style.css';
 function Question(props) {
   let style = {
     color: "blue",
-    width: "150%",
-    position: 'absolute', left: '30%',
-    transform: 'translate(-20%)'
+    width: "50%",
+    position: 'absolute', left: '10%',
+    transform: 'translate(-15%)'
   }
   return (
     <h3 style={style} class="question">{props.dataSet.question}</h3>
@@ -49,12 +49,12 @@ function AnswerList(props) {
 
 function QuizArea(props) {
   let style = {
-    width: "10%",
+    width: "60%",
     display: "block",
     textAlign: "center",
     boxSizing: "border-box",
-    float: "center",
-    padding: "1em",
+    float: "right",
+    padding: "2em",
   }
   return (
     <div style={style}>
