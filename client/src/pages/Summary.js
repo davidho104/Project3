@@ -10,7 +10,7 @@ import NavTabsEmployee from "../components/NavTabsEmployee";
 
 // Set User Table options
 const options = ({
-  title: "Incorrect Answers",
+  // title: "Incorrect Answers",
   width: "100%",
   height: "400px",
   chartArea: { width: '80%', height: '400px' },
@@ -26,30 +26,31 @@ class Summary extends Component {
       userId: props.id,
       totalQuestions: 0,
       userName: '',
-      table: []
+      table: [],
+      dbData: {}
     };
     // this.handleClick = this.handleClick.bind(this);
 }
 
   componentDidMount() {
-    this.countQuestions();
-    this.userName();
+    // this.countQuestions();
+    // this.userName();
     this.tabledata1();
     // this.userIDTest();
   };
 
-  countQuestions = () => {
-    API.getData2()
-    .then(res => { 
-      // console.log(res.data);
-      let numberOfQuestions = res.data.length;
-      // console.log("number of questions: " + numberOfQuestions)
-      this.setState({ 
-        totalQuestions: numberOfQuestions
-      })
-    })
-    .catch(err => console.log(err));
-  };
+  // countQuestions = () => {
+  //   API.getData2()
+  //   .then(res => { 
+  //     // console.log(res.data);
+  //     let numberOfQuestions = res.data.length;
+  //     // console.log("number of questions: " + numberOfQuestions)
+  //     this.setState({ 
+  //       totalQuestions: numberOfQuestions
+  //     })
+  //   })
+  //   .catch(err => console.log(err));
+  // };
 
 
 // DOESN'T WORK, BUT DON'T KNOW WHY
@@ -63,12 +64,11 @@ class Summary extends Component {
   // };
 
 
-
-  userName = () => {
+  tabledata1 = () => {
     API.getData3()
     .then(res => { 
-      // console.log("here is the data for name");
-      // console.log(res.data);
+      console.log("here is the data for user table")
+      console.log(res.data);
       let userFullName = '';
       let numberOfUsers = res.data.length;
       for (let i = 0; i < numberOfUsers; i++) {
@@ -81,24 +81,11 @@ class Summary extends Component {
           // console.log("Its false");
         }
       }
-      console.log("The User's full name is");
-      console.log(userFullName);
-      this.setState({ 
-        userName: userFullName
-      })
-    })
-    .catch(err => console.log(err));
-  };
 
-  tabledata1 = () => {
-    API.getData3()
-    .then(res => { 
-      console.log("here is the data for user table")
-      console.log(res.data);
       let arr = [["Number", "Question", "Incorrect Answers", "Correct Answer"]];
-      let numberOfUsers = res.data.length;
       // console.log("id of the user");
       // console.log(this.state.userId);
+      numberOfUsers = res.data.length;
       for (let i = 0; i < numberOfUsers; i++) {
         if (this.state.userId === res.data[i].id) {
           // console.log("this is the id of the user");
@@ -118,8 +105,8 @@ class Summary extends Component {
                 let tempQuestion = '';
                 let tempAnswer = '';
                 let numberOfQuestions = res2.data.length;
-                // console.log("The number of question is...")
-                // console.log(numberOfQuestions);
+                console.log("The number of question is...")
+                console.log(numberOfQuestions);
                 for (let k = 0; k < numberOfQuestions; k++) {
                   // console.log("First Data ID");
                   // console.log(res.data[i].results[j].quizId)
@@ -134,8 +121,8 @@ class Summary extends Component {
                     temQuestArr.push(res.data[i].results[j].userAnswer);
                     tempAnswer = res2.data[k].answer;
                     temQuestArr.push(tempAnswer);
-                    // console.log("Array Row");
-                    // console.log(temQuestArr);
+                //     // console.log("Array Row");
+                //     // console.log(temQuestArr);
                     arr.push(temQuestArr);
                   }
                 };
@@ -147,10 +134,16 @@ class Summary extends Component {
           console.log(arr);
         } 
       }
+      console.log("The User's full name is");
+      console.log(userFullName);
       this.setState({ 
-        table: arr
+        table: arr,
+        userName: userFullName
       })
     })
+    .then (
+
+    )
     .catch(err => console.log(err));
   };
 
