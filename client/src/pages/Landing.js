@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import LandingPage from "../components/LandingPage";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 var str = "hi";
 
