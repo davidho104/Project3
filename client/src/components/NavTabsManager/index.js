@@ -33,7 +33,7 @@ function NavTabsManager() {
           to="/editresources"
           className={window.location.pathname === "/editresources" ? "nav-link active" : "nav-link"}
         >
-          Edit Resources
+          Edit Study Plan
         </Link>
       </li>
       <li className="nav-item">
