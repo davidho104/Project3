@@ -5,7 +5,6 @@ import NavTabsManager from "../components/NavTabsManager";
 import Card from "../components/Card";
 import SearchForm from "../components/SearchForm";
 import { Input, FormBtn2 } from "../components/InputForm";
-import './stylesheets';
 // import { FormBtn } from "../components/Form";
 
 
