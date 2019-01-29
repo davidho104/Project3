@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import ManagerPage from "../components/ManagerPage";
+import ResourcesPage from "../components/ResourcesPage";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
+// import { Link } from "react-router-dom";
+import { Row, Container } from "../components/Grid";
 import NavTabsEmployee from "../components/NavTabsEmployee";
 
 
-var str = "Resources Page"
+let str = "Resources Page"
 
 class Resources extends Component {
   state = {
@@ -59,9 +59,8 @@ class Resources extends Component {
       <Container fluid>
       <NavTabsEmployee />
         <Row>
-          <ManagerPage>
-            {str}
-          </ManagerPage>
+          <ResourcesPage>
+          </ResourcesPage>
         </Row>
       </Container>
     );

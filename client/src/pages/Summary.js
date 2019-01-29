@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import ManagerPage from "../components/ManagerPage";
+// import ManagerPage from "../components/ManagerPage";
 import Chart from "react-google-charts";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
+import NavTabsEmployee from "../components/NavTabsEmployee";
 
-let str = "Summary Page"
 
 // Set User Table options
 const options = ({
-  title: "Incorrect Answers",
+  // title: "Incorrect Answers",
   width: "100%",
   height: "400px",
   chartArea: { width: '80%', height: '400px' },
@@ -18,33 +18,39 @@ const options = ({
 });
 
 class Summary extends Component {
-  state = {
-    userId: 1,
-    totalQuestions: 0,
-    userName: '',
-    table: []
-  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      uid: props.uid,
+      userId: props.id,
+      totalQuestions: 0,
+      userName: '',
+      table: [],
+      dbData: {}
+    };
+    // this.handleClick = this.handleClick.bind(this);
+}
 
   componentDidMount() {
-    this.countQuestions();
-    this.userName();
+    // this.countQuestions();
+    // this.userName();
     this.tabledata1();
     // this.userIDTest();
   };
 
-  countQuestions = () => {
-    // console.log();
-    API.getData2()
-    .then(res => { 
-      // console.log(res.data);
-      let numberOfQuestions = res.data.length;
-      console.log("number of questions: " + numberOfQuestions)
-      this.setState({ 
-        totalQuestions: numberOfQuestions
-      })
-    })
-    .catch(err => console.log(err));
-  };
+  // countQuestions = () => {
+  //   API.getData2()
+  //   .then(res => { 
+  //     // console.log(res.data);
+  //     let numberOfQuestions = res.data.length;
+  //     // console.log("number of questions: " + numberOfQuestions)
+  //     this.setState({ 
+  //       totalQuestions: numberOfQuestions
+  //     })
+  //   })
+  //   .catch(err => console.log(err));
+  // };
 
 
 // DOESN'T WORK, BUT DON'T KNOW WHY
@@ -58,12 +64,11 @@ class Summary extends Component {
   // };
 
 
-
-  userName = () => {
+  tabledata1 = () => {
     API.getData3()
     .then(res => { 
-      // console.log("here is the data for name");
-      // console.log(res.data);
+      console.log("here is the data for user table")
+      console.log(res.data);
       let userFullName = '';
       let numberOfUsers = res.data.length;
       for (let i = 0; i < numberOfUsers; i++) {
@@ -76,30 +81,17 @@ class Summary extends Component {
           // console.log("Its false");
         }
       }
-      console.log("The User's full name is");
-      console.log(userFullName);
-      this.setState({ 
-        userName: userFullName
-      })
-    })
-    .catch(err => console.log(err));
-  };
 
-  tabledata1 = () => {
-    API.getData3()
-    .then(res => { 
-      console.log("here is the data for user table")
-      console.log(res.data);
       let arr = [["Number", "Question", "Incorrect Answers", "Correct Answer"]];
-      let numberOfUsers = res.data.length;
       // console.log("id of the user");
-      // console.log(this.state.userId +1);
+      // console.log(this.state.userId);
+      numberOfUsers = res.data.length;
       for (let i = 0; i < numberOfUsers; i++) {
         if (this.state.userId === res.data[i].id) {
           // console.log("this is the id of the user");
           // console.log(res.data[i].id);
-          console.log("this is the name of the user");
-          console.log(res.data[i].firstName);
+          // console.log("this is the name of the user");
+          // console.log(res.data[i].firstName);
           let numberOfQuest = res.data[i].results.length;
           // console.log("number of questions");
           // console.log(numberOfQuest);
@@ -108,18 +100,20 @@ class Summary extends Component {
             if (res.data[i].results[j].score === 0) {
               API.getQuizData()
               .then(res2 => {
-                // console.log("here is the data for quizzes")
-                // console.log(res2.data);
+                console.log("here is the data for quizzes")
+                console.log(res2.data);
                 let tempQuestion = '';
                 let tempAnswer = '';
                 let numberOfQuestions = res2.data.length;
-                // console.log("The number of question is...")
-                // console.log(numberOfQuestions);
+                console.log("The number of question is...")
+                console.log(numberOfQuestions);
                 for (let k = 0; k < numberOfQuestions; k++) {
-                  // console.log("Question ID numbers are");
-                  // console.log(res2.data[k].id);
-                  if (res.data[i].results[j].id === res2.data[k].id) {
-                    temQuestArr.push(res.data[i].results[j].id);
+                  // console.log("First Data ID");
+                  // console.log(res.data[i].results[j].quizId)
+                  // console.log("Second Data ID");
+                  // console.log(res2.data[k].id)
+                  if (res.data[i].results[j].quizId === res2.data[k].id) {
+                    temQuestArr.push(res.data[i].results[j].quizId);
                     tempQuestion = res2.data[k].question;
                     // console.log("Questions are");
                     // console.log(tempQuestion);
@@ -127,8 +121,8 @@ class Summary extends Component {
                     temQuestArr.push(res.data[i].results[j].userAnswer);
                     tempAnswer = res2.data[k].answer;
                     temQuestArr.push(tempAnswer);
-                    // console.log("Array Row");
-                    // console.log(temQuestArr);
+                //     // console.log("Array Row");
+                //     // console.log(temQuestArr);
                     arr.push(temQuestArr);
                   }
                 };
@@ -140,10 +134,16 @@ class Summary extends Component {
           console.log(arr);
         } 
       }
+      console.log("The User's full name is");
+      console.log(userFullName);
       this.setState({ 
-        table: arr
+        table: arr,
+        userName: userFullName
       })
     })
+    .then (
+
+    )
     .catch(err => console.log(err));
   };
 
@@ -210,12 +210,13 @@ class Summary extends Component {
   render() {
     return (
       <Container fluid>
+      <NavTabsEmployee />
         <Row>
           <Col size="md-12">
             <Jumbotron>
             <h1>{this.state.userName}</h1>
               <h2>
-                here are your answers and the correct answer for each wrong question
+                Here are your answers and the correct answer for each wrong question
               </h2>
             </Jumbotron>
           </Col>

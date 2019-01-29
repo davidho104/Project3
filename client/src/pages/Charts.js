@@ -148,12 +148,13 @@ class Charts extends Component {
       console.log("here is the data for table 3")
       // console.log(res.data);
       let numberOfUsers = res.data.length;
-      let arr3 = [["User Name", "Incorrect Answers"]];
+      let arr3 = [["First Name", "Last Name", "Incorrect Answers"]];
       for (let i = 0; i < numberOfUsers; i++) {
         let temUserArr = [];
         temUserArr.push(res.data[i].firstName);
         // console.log("temp array");
         // console.log(temUserArr);
+        temUserArr.push(res.data[i].lastName);
         let numberOfQuestions = res.data[0].results.length;
         // console.log("numberOfQuestions");
         // console.log(numberOfQuestions);

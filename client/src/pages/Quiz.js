@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import QuizPage from "../components/QuizPage";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
+// import { Link } from "react-router-dom";
+import { Row, Container } from "../components/Grid";
 import NavTabsEmployee from "../components/NavTabsEmployee";
 
-let str = "Quiz Page";
 
 // use this template
 // https://codepen.io/Daanist/pen/LjLoWV
@@ -129,7 +127,9 @@ class Quiz extends Component {
       incorrect: 0,
       message: "Answer These Questions",
       id: 0,
-      userId: 0,
+      userId: props.id,
+      firstname: props.firstname,
+      uid: props.uid,
       quizId: 0,
       userAnswer: '', 
       score: 0
@@ -187,7 +187,7 @@ class Quiz extends Component {
       // ADDING DATA TO DATABASE?????????
       API.saveChoice({
         //HOW DO WE GET USER ID??????
-              userId: 7,
+              userId: this.state.userId,
               quizId: this.state.current,
               userAnswer: choice, 
         //SCORE ISN'T READING OUT RIGHT
@@ -253,6 +253,7 @@ class Quiz extends Component {
       <Container fluid>
       <NavTabsEmployee />
         <Row>
+          <h1>Hi, {this.state.firstname}, </h1>
           <QuizPage>
             <div>
               <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />

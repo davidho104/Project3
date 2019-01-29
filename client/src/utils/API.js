@@ -27,9 +27,13 @@ export default {
   },
 
   
-  // Gets specific User by ID - DOESN'T SEEM TO WORK
-  getUserID: function () {
-    return axios.get("/api/users/:id");
+  // Gets specific User 
+  getUserByEmail: function (email) {
+    return axios.get("/api/users/" + email );
+  },
+
+  checkRoleByEmail: function (email) {
+    return axios.get("/api/checkrole/" + email );
   },
 
   // Gets Get data on correct questions

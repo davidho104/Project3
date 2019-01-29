@@ -22,10 +22,18 @@ function NavTabsEmployee() {
       </li>
       <li className="nav-item">
         <Link
+          to="/summary"
+          className={window.location.pathname === "/summary" ? "nav-link active" : "nav-link"}
+        >
+          Summary
+        </Link>
+      </li>
+      <li className="nav-item">
+        <Link
           to="/resources"
           className={window.location.pathname === "/resources" ? "nav-link active" : "nav-link"}
         >
-          Resources
+          Study Plan
         </Link>
       </li>
       <li className="nav-item">
