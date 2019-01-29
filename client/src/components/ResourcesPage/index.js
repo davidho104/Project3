@@ -2,7 +2,7 @@ import React from "react";
 
 
 var str = "This is a variable inside the component";
-function Resources({ children }) {
+function ResourcesPage({ children }) {
         return (
                 <div>
                         <h1>Resources for Study</h1>
@@ -40,34 +40,34 @@ function Resources({ children }) {
                         <p>For more information see </p>
                         <a href="https://www.dunder-mifflin/numer2-on-company-time"> https://www.dunder-mifflin/numer2-on-company-time</a>
 
-                                <br />
-                                <br />
-                                <h2>WORKING WITH YOUR SUPERVISOR</h2>
-                                <p>Raises are given out when you happen to catch the boss smuggling his mistress out of the office and he feels that paying you more will get you to keep your mouth shut.</p>
+                        <br />
+                        <br />
+                        <h2>WORKING WITH YOUR SUPERVISOR</h2>
+                        <p>Raises are given out when you happen to catch the boss smuggling his mistress out of the office and he feels that paying you more will get you to keep your mouth shut.</p>
 
-                                <p>Your supervisor detests the color light blue and will be annoyed with anyone who displays that color.  </p>
+                        <p>Your supervisor detests the color light blue and will be annoyed with anyone who displays that color.  </p>
 
-                                <p>Codes for using the photocopier can be obtained by finding a coworker who is so far behind their work that they need you to do their copying for them.</p>
+                        <p>Codes for using the photocopier can be obtained by finding a coworker who is so far behind their work that they need you to do their copying for them.</p>
 
-                                <p>For more information see </p>
-                                <a href="https://www.dunder-mifflin/i-know-what-you-did"> https://www.dunder-mifflin/i-know-what-you-did </a>
+                        <p>For more information see </p>
+                        <a href="https://www.dunder-mifflin/i-know-what-you-did"> https://www.dunder-mifflin/i-know-what-you-did </a>
 
-                                <br />
-                                <br />
-                                <h2>MISCELLANEOUS</h2>
-                                <p>The restroom by the photo-copier is always out of soap and toilet paper.  </p>
+                        <br />
+                        <br />
+                        <h2>MISCELLANEOUS</h2>
+                        <p>The restroom by the photo-copier is always out of soap and toilet paper.  </p>
 
-                                <p>Richard licks all his food before packing his lunch just to make sure you don’t steal it. </p>
+                        <p>Richard licks all his food before packing his lunch just to make sure you don’t steal it. </p>
 
-                                <p>Don’t try to ride your bike in the office.  Only the boss’s niece gets to do that. </p>
+                        <p>Don’t try to ride your bike in the office.  Only the boss’s niece gets to do that. </p>
 
-                                <p>For more information see </p>
-                                <a href="https://www.dunder-mifflin/dont-steal-my-lunch"> https://www.dunder-mifflin/dont-steal-my-lunch</a>
+                        <p>For more information see </p>
+                        <a href="https://www.dunder-mifflin/dont-steal-my-lunch"> https://www.dunder-mifflin/dont-steal-my-lunch</a>
 
-                                <h2>{children}</h2>
-                                <p>{str}</p>
-     </div>
-                        );
-                      }
-                      
-                      export default Resources;
+                        <h2>{children}</h2>
+                        <p>{str}</p>
+                </div>
+        );
+}
+
+export default ResourcesPage;

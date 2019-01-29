@@ -53,20 +53,20 @@ class App extends Component {
             <Route exact path="/charts" component={Charts} />
 
             {/* <Route exact path="/manager" component={Manager} /> */}
-            <Route
+            <Route exact
               path='/manager'
               render={(props) => <Manager uid={this.state.user.uid}  firstname={this.state.user.firstname}/>}
             />
             
 
             {/* <Route exact path="/employee" component={Employee} /> */}
-            <Route
+            <Route exact
               path='/employee'
               render={(props) => <Employee uid={this.state.user.uid}  firstname={this.state.user.firstname}/>}
             />
             
             {/* <Route exact path="/quiz" component={Quiz} /> */}
-            <Route
+            <Route exact
               path='/quiz'
               render={(props) => <Quiz uid={this.state.user.uid}  id={this.state.user.id} firstname={this.state.user.firstname} />}
             />
@@ -77,13 +77,13 @@ class App extends Component {
             <Route exact path="/landingpage" component={LandingPage} />
 
             {/* <Route exact path="/profile" component={Profile} /> */}
-            <Route
+            <Route exact
               path='/profile'
               render={(props) => <Profile uid={this.state.user.uid}  id={this.state.user.id}/>}
             />
             
             {/* <Route exact path="/profilemanager" component={ProfileManager} /> */}
-            <Route
+            <Route exact
               path='/profilemanager'
               render={(props) => <ProfileManager uid={this.state.user.uid}  id={this.state.user.id}/>}
             />
@@ -92,13 +92,13 @@ class App extends Component {
             <Route exact path="/editquiz" component={EditQuiz} />
 
             {/* <Route exact path="/summary" component={Summary} /> */}
-            <Route
+            <Route exact
               path='/summary'
               render={(props) => <Summary uid={this.state.user.uid}  id={this.state.user.id}/>}
             />            
 
             {/* <Route exact path="/test" component={Test} /> */}
-            <Route
+            <Route exact
               path='/test'
               render={(props) => <Test uid={this.state.user.uid}  id={this.state.user.id}/>}
             />
