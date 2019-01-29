@@ -1,6 +1,5 @@
 import React from "react";
 
-<<<<<<< HEAD:client/src/components/Resources/index.js
 const divStyle = {
         WebkitTransition: 'all', // note the capital 'W' here
         msTransition: 'all', // 'ms' is the only lowercase vendor prefix
@@ -219,4 +218,3 @@ function ResourcesPage({ children }) {
 }
 
 export default ResourcesPage;
->>>>>>> origin/develop:client/src/components/ResourcesPage/index.js
