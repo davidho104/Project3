@@ -34,7 +34,7 @@ function Resources({ children }) {
         The blood stains are under my desk belong to your predecessor Kevin.
       </p>
       <p>For more information see</p>
-      <a href="https://www.dunder-mifflin/kevin-killed-himself">
+      <a href="https://www.dunder-mifflin/kevin-killed-himself">git config http.postBuffer 52428800
         https://www.dunder-mifflin/kevin-killed-himself
       </a>
 
