@@ -70,7 +70,7 @@ class Test extends Component {
                     <ManagerPage>
                         {str}
                         {this.props.uid}
-                        {this.props.email}
+                        {this.props.id}
                     </ManagerPage>
                 </Row>
             </Container>

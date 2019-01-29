@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Resources from "../components/Resources";
+import ResourcesPage from "../components/ResourcesPage";
 import API from "../utils/API";
 // import { Link } from "react-router-dom";
 import { Row, Container } from "../components/Grid";
@@ -8,7 +8,7 @@ import NavTabsEmployee from "../components/NavTabsEmployee";
 
 let str = "Resources Page"
 
-class Resources1 extends Component {
+class Resources extends Component {
   state = {
     books: [],
     title: "",
@@ -59,9 +59,8 @@ class Resources1 extends Component {
       <Container fluid>
       <NavTabsEmployee />
         <Row>
-          <Resources>
-            {str}
-          </Resources>
+          <ResourcesPage>
+          </ResourcesPage>
         </Row>
       </Container>
     );

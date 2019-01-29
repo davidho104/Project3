@@ -33,7 +33,7 @@ function NavTabsEmployee() {
           to="/resources"
           className={window.location.pathname === "/resources" ? "nav-link active" : "nav-link"}
         >
-          Resources
+          Study Plan
         </Link>
       </li>
       <li className="nav-item">
