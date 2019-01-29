@@ -76,12 +76,7 @@ function TotalCorrect(props) {
 }
 
 function TotalIncorrect(props) {
-<<<<<<< HEAD
-  var style = {
-    align: "text-center",
-=======
   let style = {
->>>>>>> 0a56d4bfe18bfc0e64bb2d4a3f8caf004418175e
     display: "inline-block",
     padding: "1em",
     background: "#eee",

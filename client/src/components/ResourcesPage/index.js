@@ -1,6 +1,7 @@
 import React from "react";
 
 const divStyle = {
+  textAlign: "center",
   WebkitTransition: 'all', // note the capital 'W' here
   msTransition: 'all', // 'ms' is the only lowercase vendor prefix
   color: 'black',
