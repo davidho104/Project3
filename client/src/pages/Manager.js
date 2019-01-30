@@ -5,7 +5,7 @@ import API from "../utils/API";
 import Chart from "react-google-charts";
 import { Row, Container } from "../components/Grid";
 // import Jumbotron from "../components/Jumbotron";
-
+import '../style.css';
 
 // Set User Table options
 const options = ({
@@ -65,35 +65,43 @@ class Manager extends Component {
       .catch(err => console.log(err));
   };
 
-  
+
   render() {
     return (
       <Container fluid>
         <NavTabsManager />
-        <Row>
-          <h1>Hi, {this.state.firstname},</h1>
-        </Row>
-        <Row>
-          <h1>All Employees:</h1>
-        </Row>
-        <Row>
-          {/* Table */}
-          <div size="md-12 text-center">
-            <Chart
-              width={'700px'}
-              height={'700px'}
-              chartType="Table"
-              loader={<div>Loading Chart</div>}
-              data={this.state.table}
-              options={{
-                // showRowNumber: true,
-                options
-              }}
-              rootProps={{ 'data-testid': '1' }}
-            />
-          </div>
 
-        </Row>
+        <div
+          style={{
+            position: 'absolute', left: '40%',
+            transform: 'translate(-20%)',
+            background: "white"
+          }}>
+      
+          <Row>
+            <h1 style={{margin: "2rem"}}>Hi, {this.state.firstname},</h1>
+          </Row>
+          <Row>
+            <h1 style={{margin: "2rem"}}>All Employees:</h1>
+          </Row>
+          <Row>
+            {/* Table */}
+            <div size="md-12 text-center" style={{margin: "2rem"}}>
+              <Chart
+                width={'700px'}
+                height={'700px'}
+                chartType="Table"
+                loader={<div>Loading Chart</div>}
+                data={this.state.table}
+                options={{
+                  // showRowNumber: true,
+                  options
+                }}
+                rootProps={{ 'data-testid': '1' }}
+              />
+            </div>
+          </Row>
+        </div>
       </Container>
     );
   }
