@@ -6,8 +6,7 @@ Designed to relieve first-day jitters, this app functions as a game with timers 
 
 Each time an employee completes the challenges they can compare their scores with previous "players." Employers can see which questions each employee got right through the manager analytics page.
 
-## Spec
-User Stories
+## Features and Specifics to Role
 
 As an employee, I can...
 - take the quiz.
