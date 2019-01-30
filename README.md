@@ -9,19 +9,19 @@ Each time an employee completes the challenges they can compare their scores wit
 ## Features and Specifics to Role
 
 As an employee, I can...
-- take the quiz.
-- see the summary of my quiz.
-- see my study plan and my mentor. 
-- see other resource materials arranged by topic and they are searchable. 
-- leave comments and give rating for the study plan and resource materials 
+- take a quiz,
+- see the summary of my quizzes,
+- access my study plan and my mentor,
+- review other resource materials arranged and searchable by topic,
+- leave comments and feedback and give rating for the study plan and resource materials. 
 
 As an employer, I can...
-- design quiz to be multiple choices, true/false and fill in the blank. 
-- have images as the input for questions, choices and answers.
-- decide whether to show the right answer right after the question or after all the questions been answered. 
-- set pass/fail criteria.
-- edit employee study plan and assign mentor. 
-- edit the resource materials
+- design quizzes to be multiple choice, true/false, Likert, and fill in the blank, 
+- have images as the input for questions, choices, and answers,
+- decide whether to show the right answer immediately after the question or as a summary after all questions been answered, 
+- set pass/fail criteria,
+- edit employee study plan and assign mentors,
+- edit the resource materials.
 
 ## MySQL Database
 What is in MYSQL?: The questions, the answers, the accounts of each player, the scores and times of each attempt.
@@ -31,7 +31,7 @@ JUMP-START (℠)is created and developed by David Ho, Laurence Martinez, Raymond
 
 ## Technology
 * React
-* Firebase authentication (Possibly Auth0)
+* Firebase authentication (Auth0 in future development)
 * Node.js Express server
 * Sequelize ORM
 * MySQL database
@@ -57,5 +57,4 @@ JUMP-START (℠)is created and developed by David Ho, Laurence Martinez, Raymond
 * /api/results/<id> - update result
   
 ### Deployment
-through Heroku at: https://jump-start2.herokuapp.com/
--
+through Heroku at: https://project3develop.herokuapp.com
