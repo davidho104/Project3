@@ -29,9 +29,9 @@ function Answer(props) {
     color: "blue",
   }
   return (
-    <div>
+    <row>
       <button style={style} onClick={() => props.handleClick(props.choice)}>{props.answer}</button>
-    </div>
+    </row>
   )
 }
 
