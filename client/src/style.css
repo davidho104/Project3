@@ -224,3 +224,15 @@ a {
 .list-overflow-container li:last-child {
   border-bottom: none;
 }
+
+.opacContainer{
+  background-color: white;
+  opacity: 0.85;
+  padding: 22px
+}
+
+.opacContainer2{
+  background-color: white;
+  opacity: 0.85;
+  padding: 50px
+}

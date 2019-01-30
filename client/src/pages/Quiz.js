@@ -4,7 +4,7 @@ import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Row, Container } from "../components/Grid";
 import NavTabsEmployee from "../components/NavTabsEmployee";
-
+import '../style.css';
 
 // use this template
 // https://codepen.io/Daanist/pen/LjLoWV
@@ -12,7 +12,9 @@ import NavTabsEmployee from "../components/NavTabsEmployee";
 function Question(props) {
   let style = {
     color: "blue",
-    width: "150%",
+    width: "50%",
+    position: 'absolute', left: '10%',
+    transform: 'translate(-15%)'
   }
   return (
     <h3 style={style} class="question">{props.dataSet.question}</h3>
@@ -21,7 +23,8 @@ function Question(props) {
 
 // radio buttons in answer box
 function Answer(props) {
-  var style = {
+  let style = {
+    width: "100%",
     height: 30,
     color: "blue",
   }
@@ -46,12 +49,12 @@ function AnswerList(props) {
 
 function QuizArea(props) {
   let style = {
-    width: "30%",
+    width: "60%",
     display: "block",
     textAlign: "center",
     boxSizing: "border-box",
-    float: "center",
-    padding: "0 2em"
+    float: "right",
+    padding: "2em",
   }
   return (
     <div style={style}>
@@ -90,8 +93,8 @@ function ScoreArea(props) {
   let style = {
     width: "100%",
     display: "block",
-    textAlign: "left",
-    float: "left",
+    textAlign: "center",
+    float: "center",
     padding: "1em"
   }
   return (
@@ -239,17 +242,19 @@ class Quiz extends Component {
     // console.log(this.state.current === (this.state.dataSet.length - 1))
     return (
       <Container fluid>
-        <NavTabsEmployee />
-          <Row>
-            <h1>Hi, {this.state.firstname}, </h1>
-            <QuizPage>
-              <div>
-                <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
-                <h2>{this.state.message}</h2>
-                {this.state.playing && <QuizArea handleClick={this.handleClick} dataSet={this.state.dataSet[this.state.current]} />}
-              </div>
-            </QuizPage>
-          </Row>
+      <NavTabsEmployee />
+      <div className='opacContainer' >
+        <Row>
+          <h1 >Hi, {this.state.firstname}, </h1>
+          <QuizPage >
+            <div>
+              <ScoreArea correct={this.state.correct} incorrect={this.state.incorrect} />
+              <h2>{this.state.message}</h2>
+              {this.state.playing && <QuizArea handleClick={this.handleClick} dataSet={this.state.dataSet[this.state.current]} />}
+            </div>
+          </QuizPage>
+        </Row>
+        </div>
       </Container>
     );
   }

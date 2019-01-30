@@ -1,4 +1,5 @@
 import React from "react";
+import '../../style.css';
 
 const divStyle = {
   textAlign: "center",
@@ -29,7 +30,7 @@ var str =
 
 function Resources({ children }) {
   return (
-    <div style={divStyle}>
+    <div className='opacContainer' style={divStyle}>
       <h1>Resources for Study</h1>
       <br />
       <br />
