@@ -15,7 +15,7 @@ function QuizPage({ children }) {
       </div>
 
 
-        <div class="row">
+        <div>
             <div class="col-12 text-center">
                 <div>{children}</div>
             </div>
