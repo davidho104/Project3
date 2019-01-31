@@ -5,14 +5,14 @@ import React from "react";
 export function Input(props) {
   return (
     <div className="form-group">
-      <p>Question</p> 
+      {/* <p>Question</p>  */}
       <input className="form-control" {...props} />
-      <br></br>
+      {/* <br></br>
       <p>Choices (separated by a comma) </p> 
       <input className="form-control" {...props} />
       <br></br>
       <p>Answer</p>
-      <input className="form-control" {...props} />
+      <input className="form-control" {...props} /> */}
     </div>
   );
 }
@@ -32,3 +32,12 @@ export function FormBtn2(props) {
     </button>
   );
 }
+
+export function FormBtn(props) {
+  return (
+    <button {...props} style={{ marginBottom: 10 }} className="btn btn-success">
+      {props.children}
+    </button>
+  );
+}
+

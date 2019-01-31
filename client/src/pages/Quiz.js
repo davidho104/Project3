@@ -12,7 +12,7 @@ import '../style.css';
 function Question(props) {
   let style = {
     color: "blue",
-    width: "50%",
+    width: "40%",
     position: 'absolute', left: '10%',
     transform: 'translate(-15%)'
   }
@@ -25,7 +25,7 @@ function Question(props) {
 function Answer(props) {
   let style = {
     width: "100%",
-    height: 30,
+    height: 40,
     color: "blue",
   }
   return (
