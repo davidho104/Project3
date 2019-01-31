@@ -1,11 +1,15 @@
 import React, { Component } from "react";
+import DeleteBtn from "../components/DeleteBtn";
+import { Link } from "react-router-dom";
 import API from "../utils/API";
+import Jumbotron from "../components/Jumbotron";
 import { Col, Row, Container } from "../components/Grid";
 import NavTabsManager from "../components/NavTabsManager";
 import Card from "../components/Card";
 import SearchForm from "../components/SearchForm";
-import { Input, FormBtn2 } from "../components/InputForm";
-// import { FormBtn } from "../components/Form";
+import { Input2, FormBtn2 } from "../components/InputForm";
+import { List, ListItem } from "../components/List";
+import { Input, TextArea, FormBtn } from "../components/Form";
 
 let question = "";
 let choices = "";
@@ -37,7 +41,12 @@ class EditQuiz extends Component {
       .catch(err => console.log(err));
   };
 
-
+  // NOTE: For deleting the quiz questions later
+  // deleteBook = id => {
+  //   API.deleteBook(id)
+  //     .then(res => this.loadBooks())
+  //     .catch(err => console.log(err));
+  // };
 
   handleInputChange = event => {
     const value = event.target.value;
@@ -47,49 +56,51 @@ class EditQuiz extends Component {
     });
   };
 
-
-
-
-  // When the form is submitted, search the OMDB API for the value of `this.state.search`
+        // When the form is submitted, search the database for the value of `this.state.search`
+        // not working yet
   handleFormSubmit = event => {
     event.preventDefault();
     this.loadQuizzes();
   };
 
-
+  
   handleSaveSubmit = event => {
     event.preventDefault();
-    console.log(question)
+    console.log("new question is...");
+    console.log(question);
+
     API.saveQuizData({
       question: this.state.question,
       choices: this.state.choices,
       answer: this.state.answer
     })
-      .then(res => { 
-        console.log(res) 
+      .then(res => {
+        this.setState({
+          question: "",
+          choices: "",
+          answer: ""        
+        });
+        console.log(res)
       })
+      .then(res => this.loadQuizzes())
       .catch(err => console.log(err));
   };
-
 
   render() {
     return (
       <Container fluid>
         <NavTabsManager />
+        <Jumbotron>
+          <h1>Quiz Editing</h1>
+        </Jumbotron>
         <Row>
           <Col size="md-8">
             {this.state.result.map(item => {
-
               return <Card key={item.id} heading={item.question}>
-              
-              <div>{item.choices} </div>
-              <div>{item.answer}</div>
+                <div>{item.choices} </div>
+                <div>{item.answer}</div>
               </Card>
-
             })}
-
-
-
           </Col>
           <Col size="md-4">
             <Card heading="Search">
@@ -99,35 +110,43 @@ class EditQuiz extends Component {
                 handleFormSubmit={this.handleFormSubmit}
               />
             </Card>
-            <Card heading="Input">
-              <Input
-                value={this.state.search}
-                // value={this.state.question}
-                handleInputChange={this.handleInputChange}
-                handleFormSubmit={this.handleFormSubmit}
-                name="question"
-              />
-              {/* <Input
-                value={this.state.choices}
-                handleInputChange={this.handleInputChange}
-                handleFormSubmit={this.handleFormSubmit}
-                name="choices"
-              />
-              <Input
-                value={this.state.answer}
-                handleInputChange={this.handleInputChange}
-                handleFormSubmit={this.handleFormSubmit}
-                name="answer"
-              /> */}
-              <FormBtn2
-
+            <Card heading="Add Another Question">
+              <form>
+                <p>Question</p>
+                <Input
+                  value={this.state.question}
+                  onChange={this.handleInputChange}
+                  // handleSaveSubmit={this.handleSaveSubmit}
+                  name="question"
+                />
+                <p>Choices (separated by a comma) </p>
+                <Input
+                  value={this.state.choices}
+                  onChange={this.handleInputChange}
+                  // handleSaveSubmit={this.handleSaveSubmit}
+                  name="choices"
+                />
+                <p>Answer</p>
+                <Input
+                  value={this.state.answer}
+                  onChange={this.handleInputChange}
+                  // handleSaveSubmit={this.handleSaveSubmit}
+                  name="answer"
+                />
+                <FormBtn
+                  disabled={!(this.state.question && this.state.choices && this.state.answer)}
+                  onClick={this.handleSaveSubmit}
+                >
+                  Submit Question
+              </FormBtn>
+              </form>
+              {/* <FormBtn2
                 onClick={() => {
-
                   this.handleSaveSubmit();
                 }}
               >
                 Save
-                    </FormBtn2>
+              </FormBtn2> */}
             </Card>
           </Col>
         </Row>

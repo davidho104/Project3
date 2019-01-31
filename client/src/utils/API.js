@@ -37,6 +37,7 @@ export default {
   getOneQuiz: function (id) {
     return axios.get("/api/quizzes/" + id);
   },
+  // Saves a new question to the Quizzes database
   saveQuizData: function (quizData) {
     return axios.post("/api/quizzes", quizData);
   }
