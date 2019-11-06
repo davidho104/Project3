@@ -26,6 +26,6 @@
     "mysql2": "^1.6.4",
     "prop-types": "^15.6.2",
     "react-google-charts": "^3.0.10",
-    "sequelize": "^4.42.0"
+    "sequelize": "^5.15.1"
   }
 }
